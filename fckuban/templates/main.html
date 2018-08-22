@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    {% include "mainpage/head_banner.html" %}
+    {% include "mainpage/news.html" %}
+
+<section class="main-content">
+    <div class="media">
+
+        <div class="main-content-news">
+            {% include "mainpage/main_content/list_news.html" %}
+        </div>
+
+        <div class="video">
+            {% include "mainpage/main_content/video.html" %}
+        </div>
+    </div>
+    <div class="side-bar">
+        {% include "mainpage/main_content/calendar.html" %}
+        {% include "mainpage/main_content/vk-widget.html" %}
+        {% include "mainpage/main_content/events.html" %}
+    </div>
+</section>
+<section class="info">
+    <div>
+        <h3>ИНФО</h3>
+        <img src="{% static 'images/banner.jpg' %}" class="info-banner">
+    </div>
+    <div class="our-support">
+        {% include "mainpage/our_support.html" %}
+    </div>
+    <div class="map">
+        {% include "mainpage/map.html" %}
+    </div>
+</section>
+{% endblock %}
