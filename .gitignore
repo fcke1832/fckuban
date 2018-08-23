@@ -52,3 +52,5 @@ local.py
 
 *.pid
 .vagrant/
+/my.cnf
+/fckuban/local_settings.py
