@@ -54,3 +54,4 @@ local.py
 .vagrant/
 /my.cnf
 /fckuban/local_settings.py
+/media/
