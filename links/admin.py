@@ -1,3 +1,16 @@
 from django.contrib import admin
+from .models import YoutubeLink, SocialNetworkLink
 
-# Register your models here.
+
+@admin.register(YoutubeLink)
+class YoutubeLinkAdmin(admin.ModelAdmin):
+    list_display = ('description', 'on_main', 'date_pub',)
+    list_editable = ('on_main',)
+    list_filter = ('on_main', 'date_pub',)
+
+
+@admin.register(SocialNetworkLink)
+class SocialNetworkLinkAdmin(admin.ModelAdmin):
+    list_display = ('name', 'link',)
+    list_editable = ('link',)
+    list_filter = ('name', 'link',)
