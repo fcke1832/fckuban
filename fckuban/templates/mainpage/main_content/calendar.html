@@ -15,95 +15,17 @@
         <div class="game-date"><span class="day">4</span><br>АВГ</div>
     </div>
     <div class="calendar-info">
-        <div class="game-info">
-            <h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-            <div class="game-result">
-                <div class="team"><span><img src="{% static 'images/logo-kuban.png' %}"><br>КУБАНЬ</span></div>
-                <div class="score-versus">VS</div>
-                <div class="team"><span><img src="{% static 'images/spartak-moskva-logo.png' %}"><br>СПАРТАК</span></div>
+        {% for match in fcke_matches_list %}
+            <div class="game-info">
+                <h4 class="when-where">Суббота 19:00,<br>{{ match.stadium }}</h4>
+                <div class="game-result">
+                    <div class="team"><span><img src="{% static 'images/logo-kuban.png' %}"><br>{{ match.home_team }}</span></div>
+                    <div class="score-versus">VS</div>
+                    <div class="team"><span><img src="{% static 'images/spartak-moskva-logo.png' %}"><br>{{ match.guest_team }}</span></div>
+                </div>
+                <div class="tournament">{{ match.tournament }}<br>{{ match.tour }}</div>
+                <div class="buy-tickets"></div>
             </div>
-            <div class="tournament">Чемпионат России<br>Тур 2</div>
-            <div class="buy-tickets"></div>
-        </div>
-        <div class="game-info">
-            <h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-            <div class="game-result">
-                <div class="team"><span><img src="{% static 'images/logo-kuban.png' %}"><br>КУБАНЬ</span></div>
-                <div class="score-versus">VS</div>
-                <div class="team"><span><img src="{% static 'images/spartak-moskva-logo.png' %}"><br>СПАРТАК</span></div>
-            </div>
-            <div class="tournament">Чемпионат России<br>Тур 2</div>
-            <div class="buy-tickets"></div>
-        </div>
-        <div class="game-info">
-            <h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-            <div class="game-result">
-                <div class="team"><span><img src="{% static 'images/logo-kuban.png' %}"><br>КУБАНЬ</span></div>
-                <div class="score-versus">VS</div>
-                <div class="team"><span><img src="{% static 'images/spartak-moskva-logo.png' %}"><br>СПАРТАК</span></div>
-            </div>
-            <div class="tournament">Чемпионат России<br>Тур 2</div>
-            <div class="buy-tickets"></div>
-        </div>
-        <div class="game-info">
-            <h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-            <div class="game-result">
-                <div class="team"><span><img src="{% static 'images/logo-kuban.png' %}"><br>КУБАНЬ</span></div>
-                <div class="score-versus">VS</div>
-                <div class="team"><span><img src="{% static 'images/spartak-moskva-logo.png' %}"><br>СПАРТАК</span></div>
-            </div>
-            <div class="tournament">Чемпионат России<br>Тур 2</div>
-            <div class="buy-tickets"></div>
-        </div>
-        <div class="game-info">
-            <h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-            <div class="game-result">
-                <div class="team"><span><img src="{% static 'images/logo-kuban.png' %}"><br>КУБАНЬ</span></div>
-                <div class="score-versus">VS</div>
-                <div class="team"><span><img src="{% static 'images/spartak-moskva-logo.png' %}"><br>СПАРТАК</span></div>
-            </div>
-            <div class="tournament">Чемпионат России<br>Тур 2</div>
-            <div class="buy-tickets"></div>
-        </div>
-        <div class="game-info">
-            <h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-            <div class="game-result">
-                <div class="team"><span><img src="{% static 'images/logo-kuban.png' %}"><br>КУБАНЬ</span></div>
-                <div class="score-versus">VS</div>
-                <div class="team"><span><img src="{% static 'images/spartak-moskva-logo.png' %}"><br>СПАРТАК</span></div>
-            </div>
-            <div class="tournament">Чемпионат России<br>Тур 2</div>
-            <div class="buy-tickets"></div>
-        </div>
-        <div class="game-info">
-            <h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-            <div class="game-result">
-                <div class="team"><span><img src="{% static 'images/logo-kuban.png' %}"><br>КУБАНЬ</span></div>
-                <div class="score-versus">VS</div>
-                <div class="team"><span><img src="{% static 'images/spartak-moskva-logo.png' %}"><br>СПАРТАК</span></div>
-            </div>
-            <div class="tournament">Чемпионат России<br>Тур 2</div>
-            <div class="buy-tickets"></div>
-        </div>
-        <div class="game-info">
-            <h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-            <div class="game-result">
-                <div class="team"><span><img src="{% static 'images/logo-kuban.png' %}"><br>КУБАНЬ</span></div>
-                <div class="score-versus">VS</div>
-                <div class="team"><span><img src="{% static 'images/spartak-moskva-logo.png' %}"><br>СПАРТАК</span></div>
-            </div>
-            <div class="tournament">Чемпионат России<br>Тур 2</div>
-            <div class="buy-tickets"></div>
-        </div>
-        <div class="game-info">
-            <h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-            <div class="game-result">
-                <div class="team"><span><img src="{% static 'images/logo-kuban.png' %}"><br>КУБАНЬ</span></div>
-                <div class="score-versus">VS</div>
-                <div class="team"><span><img src="{% static 'images/spartak-moskva-logo.png' %}"><br>СПАРТАК</span></div>
-            </div>
-            <div class="tournament">Чемпионат России<br>Тур 2</div>
-            <div class="buy-tickets"></div>
-        </div>
+        {% endfor %}
     </div>
 </div>

@@ -45,8 +45,7 @@ INSTALLED_APPS = [
     'fckuban',
     'links',
     'news',
-    'polls',
-    'team',
+    'calendar_matches',
     'tournaments',
 ]
 
