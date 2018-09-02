@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # apps
     'fckuban',
+    'links',
     'news',
     'polls',
     'team',
