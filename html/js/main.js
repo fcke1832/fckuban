@@ -1,24 +1,26 @@
 $(document).ready(function(){
-  var gd = $('.game-date');
+  var gamedate = $('div.calendar-nav').find("div.slick-slide").children();
   var win = $(this);
 
-// sript for Scoretable
-$(window).on('orientationchange', function() {
-  $('.scoretable-items').css("display", "");
+// sript for Header Menu on resize
+window.addEventListener("resize", function() {
   if ($(this).width() >= 850) {
    $('.header-menu').css('display' , 'block'); 
  }else {
   $('.header-menu').css('display' , 'none'); 
 }
 });
-
+// sript for Scoretable on resize
 $('.scoretable-trigger').on("click", function() {
-  if (win.width() <= 1100) {
+  if (win.width() <= 820) {
     $('.scoretable-items').slideToggle();       
   }
 });
 
-
+$(window).on('orientationchange', function() {
+  $('.scoretable-items').css("display", "");
+});
+// Insagram widget
 var galleryFeed = new Instafeed({
   get: "user",
   userId: 4622774,
@@ -28,14 +30,12 @@ var galleryFeed = new Instafeed({
   limit: 9,
   template: '<div class="img-wrap"><a href="{{link}}"><div class="img-featured-container"><div class="img-backdrop"></div><div class="description-container"><i class="icon ion-heart"></i><span class="likes">{{likes}}</span><i class="icon icon-chatbubble"></i><span class="comments">{{comments}}</span></div><img src="{{image}}" class="img-responsive"></div></a></div>',
   target: "instafeed-gallery-feed",
-  after: function() {
-    // disable button if no more results to load
-    if (!this.hasNext()) {
-      btnInstafeedLoad.setAttribute('disabled', 'disabled');
-    }
-  },
 });
 galleryFeed.run();
+
+new SimpleBar(document.getElementById('scoretable'), { 
+  autoHide: false,
+});
 
 // sliders
 $('.main-slider').slick({
@@ -89,15 +89,14 @@ $('.search').on('click',function() {
 });
 
 // size for calendar navigation items
-gd.width($('.calendar-nav').width() * 0.17);
-$('div.slick-current').find("div.game-date").width($('.calendar-nav').width() * 0.32);
-gd.on('click', function() {
-  gd.not(this).width($('.calendar-nav').width() * 0.17);
-  $(this).width($('.calendar-nav').width() * 0.32);
+($('div.calendar-nav').find("div.slick-slide").children().addClass('game-date').width($('.calendar-nav').width() * 0.17));
+$('div.slick-current').find("div.game-date").addClass('current').width($('.calendar-nav').width() * 0.32);
+$('.game-date').on('click', function() {
+  $('.game-date').not(this).removeClass('current').width($('.calendar-nav').width() * 0.17);
+  $(this).addClass('current').width($('.calendar-nav').width() * 0.32);
 });
-
 $( window ).on("resize", function(){
-  gd.width($('.calendar-nav').width() * 0.17);
+   $('.game-date').width($('.calendar-nav').width() * 0.17);
   $('div.slick-current').find("div.game-date").width($('.calendar-nav').width() * 0.32);
 });  
 });

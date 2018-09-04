@@ -4,10 +4,11 @@
 	<link rel="stylesheet" type="text/css" href="styles/normalize.css">
 	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="slick/slick-custom-theme.css"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
 	<link rel="stylesheet" type="text/css" href="styles/main.css">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ФК 'Кубань'</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ФК 'Кубань'</title>
 </head>
 <body>
 	<header>
@@ -22,7 +23,7 @@
 			</ul>
 			<div class="search"></div>
 		</nav>
-		<input type="search" class="search-field search-field-of">
+		<input type="search" class="search-field">
 	</header>
 	<section class="head-banner">
 		<div class="main-banner">
@@ -39,17 +40,17 @@
 			</div>
 			<div class='scoretable'>
 				<nav class="scoretable-trigger">Турнирная Таблица</nav>
-				<div class="scoretable-items">
+				<div class="scoretable-items" id='scoretable'>
 					<table>
-							<thead>
-								<tr>
-									<th class="number">№</th>
-									<th>Команда</th>
-									<th>И</th>
-									<th>О</th>
-								</tr>
-							</thead>
-							<tbody>
+						<thead>
+							<tr>
+								<th class="number">№</th>
+								<th>Команда</th>
+								<th>И</th>
+								<th>О</th>
+							</tr>
+						</thead>
+						<tbody>
 							<tr class='special'>
 								<td class="number">1</td>
 								<td>Кубань</td>
@@ -145,7 +146,61 @@
 								<td>Енисей</td>
 								<td>1</td>
 								<td>0</td>
+							</tr>
+							<tr>
+								<td class="number">16</td>
+								<td>Енисей</td>
+								<td>1</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td class="number">16</td>
+								<td>Енисей</td>
+								<td>1</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td class="number">16</td>
+								<td>Енисей</td>
+								<td>1</td>
+								<td>0</td>
 							</tr>					
+							<tr>
+								<td class="number">16</td>
+								<td>Енисей</td>
+								<td>1</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td class="number">16</td>
+								<td>Енисей</td>
+								<td>1</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td class="number">16</td>
+								<td>Енисей</td>
+								<td>1</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td class="number">16</td>
+								<td>Енисей</td>
+								<td>1</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td class="number">16</td>
+								<td>Енисей</td>
+								<td>1</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td class="number">16</td>
+								<td>Енисей</td>
+								<td>1</td>
+								<td>0</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -196,7 +251,7 @@
 					</div>
 				</a></div>
 			</div>
-		</div>		
+		</div>	
 	</section>
 	<section class="main-content">
 		<div class="media">
@@ -288,23 +343,23 @@
 			<div class="game-calendar">
 				<h3>КАЛЕНДАРЬ</h3>
 				<div class="calendar-nav">
-					<div class="game-date"><div><span class="day">4</span><br>АВГ</div></div>
-					<div class="game-date"><span class="day">29</span><br>ИЮН</div>
-					<div class="game-date"><span class="day">4</span><br>АВГ</div>
-					<div class="game-date"><span class="day">29</span><br>ИЮН</div>
-					<div class="game-date"><span class="day">4</span><br>АВГ</div>
-					<div class="game-date"><span class="day">29</span><br>ИЮН</div>
-					<div class="game-date"><span class="day">4</span><br>АВГ</div>
-					<div class="game-date"><span class="day">29</span><br>ИЮН</div>
-					<div class="game-date"><span class="day">4</span><br>АВГ</div>
+					<span><span class="day">4</span><br>АВГ</span>
+					<span><span class="day">29</span><br>ИЮН</span>
+					<span><span class="day">4</span><br>АВГ</span>
+					<span><span class="day">29</span><br>ИЮН</span>
+					<span><span class="day">4</span><br>АВГ</span>
+					<span><span class="day">29</span><br>ИЮН</span>
+					<span><span class="day">4</span><br>АВГ</span>
+					<span><span class="day">29</span><br>ИЮН</span>
+					<span><span class="day">4</span><br>АВГ</span>
 				</div>
 				<div class="calendar-info">
 					<div class="game-info">
 						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
 						<div class="game-result">
-							<div class="team"><span><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</span></div>
+							<div class="team"><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</div>
 							<div class="score-versus">VS</div>
-							<div class="team"><span><img src="images/spartak-moskva-logo.png" alt="ФК «Спартак» Москва"><br>СПАРТАК</span></div>
+							<div class="team"><img src="images/spartak-moskva-logo.png" alt="ФК «Спартак» Москва"><br>СПАРТАК</div>
 						</div>
 						<div class="tournament">Чемпионат России<br>Тур 2</div>
 						<div class="buy-tickets"></div>
@@ -312,83 +367,83 @@
 					<div class="game-info">
 						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
 						<div class="game-result">
-							<div class="team"><span><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</span></div>
+							<div class="team"><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</div>
 							<div class="score-versus">VS</div>
-							<div class="team"><span><img src="images/spartak-moskva-logo.png"  alt="ФК «Спартак» Москва"><br>СПАРТАК</span></div>
+							<div class="team"><img src="images/spartak-moskva-logo.png" alt="ФК «Спартак» Москва"><br>СПАРТАК</div>
+						</div>
+						<div class="tournament">Чемпионат России<br>Тур 2</div>
+						<div class="buy-tickets"></div>
+					</div>										
+					<div class="game-info">
+						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
+						<div class="game-result">
+							<div class="team"><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</div>
+							<div class="score-versus">VS</div>
+							<div class="team"><img src="images/spartak-moskva-logo.png" alt="ФК «Спартак» Москва"><br>СПАРТАК</div>
+						</div>
+						<div class="tournament">Чемпионат России<br>Тур 2</div>
+						<div class="buy-tickets"></div>
+					</div>					
+					<div class="game-info">
+						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
+						<div class="game-result">
+							<div class="team"><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</div>
+							<div class="score-versus">VS</div>
+							<div class="team"><img src="images/spartak-moskva-logo.png" alt="ФК «Спартак» Москва"><br>СПАРТАК</div>
+						</div>
+						<div class="tournament">Чемпионат России<br>Тур 2</div>
+						<div class="buy-tickets"></div>
+					</div>					
+					<div class="game-info">
+						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
+						<div class="game-result">
+							<div class="team"><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</div>
+							<div class="score-versus">VS</div>
+							<div class="team"><img src="images/spartak-moskva-logo.png" alt="ФК «Спартак» Москва"><br>СПАРТАК</div>
+						</div>
+						<div class="tournament">Чемпионат России<br>Тур 2</div>
+						<div class="buy-tickets"></div>
+					</div>					
+					<div class="game-info">
+						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
+						<div class="game-result">
+							<div class="team"><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</div>
+							<div class="score-versus">VS</div>
+							<div class="team"><img src="images/spartak-moskva-logo.png" alt="ФК «Спартак» Москва"><br>СПАРТАК</div>
+						</div>
+						<div class="tournament">Чемпионат России<br>Тур 2</div>
+						<div class="buy-tickets"></div>
+					</div>					
+					<div class="game-info">
+						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
+						<div class="game-result">
+							<div class="team"><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</div>
+							<div class="score-versus">VS</div>
+							<div class="team"><img src="images/spartak-moskva-logo.png" alt="ФК «Спартак» Москва"><br>СПАРТАК</div>
+						</div>
+						<div class="tournament">Чемпионат России<br>Тур 2</div>
+						<div class="buy-tickets"></div>
+					</div>					
+					<div class="game-info">
+						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
+						<div class="game-result">
+							<div class="team"><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</div>
+							<div class="score-versus">VS</div>
+							<div class="team"><img src="images/spartak-moskva-logo.png" alt="ФК «Спартак» Москва"><br>СПАРТАК</div>
+						</div>
+						<div class="tournament">Чемпионат России<br>Тур 2</div>
+						<div class="buy-tickets"></div>
+					</div>					
+					<div class="game-info">
+						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
+						<div class="game-result">
+							<div class="team"><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</div>
+							<div class="score-versus">VS</div>
+							<div class="team"><img src="images/spartak-moskva-logo.png" alt="ФК «Спартак» Москва"><br>СПАРТАК</div>
 						</div>
 						<div class="tournament">Чемпионат России<br>Тур 2</div>
 						<div class="buy-tickets"></div>
 					</div>
-					<div class="game-info">
-						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-						<div class="game-result">
-							<div class="team"><span><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</span></div>
-							<div class="score-versus">VS</div>
-							<div class="team"><span><img src="images/spartak-moskva-logo.png"  alt="ФК «Спартак» Москва"><br>СПАРТАК</span></div>
-						</div>
-						<div class="tournament">Чемпионат России<br>Тур 2</div>
-						<div class="buy-tickets"></div>
-					</div>
-					<div class="game-info">
-						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-						<div class="game-result">
-							<div class="team"><span><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</span></div>
-							<div class="score-versus">VS</div>
-							<div class="team"><span><img src="images/spartak-moskva-logo.png"  alt="ФК «Спартак» Москва"><br>СПАРТАК</span></div>
-						</div>
-						<div class="tournament">Чемпионат России<br>Тур 2</div>
-						<div class="buy-tickets"></div>
-					</div>
-					<div class="game-info">
-						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-						<div class="game-result">
-							<div class="team"><span><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</span></div>
-							<div class="score-versus">VS</div>
-							<div class="team"><span><img src="images/spartak-moskva-logo.png"  alt="ФК «Спартак» Москва"><br>СПАРТАК</span></div>
-						</div>
-						<div class="tournament">Чемпионат России<br>Тур 2</div>
-						<div class="buy-tickets"></div>
-					</div>
-					<div class="game-info">
-						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-						<div class="game-result">
-							<div class="team"><span><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</span></div>
-							<div class="score-versus">VS</div>
-							<div class="team"><span><img src="images/spartak-moskva-logo.png"  alt="ФК «Спартак» Москва"><br>СПАРТАК</span></div>
-						</div>
-						<div class="tournament">Чемпионат России<br>Тур 2</div>
-						<div class="buy-tickets"></div>
-					</div>
-					<div class="game-info">
-						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-						<div class="game-result">
-							<div class="team"><span><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</span></div>
-							<div class="score-versus">VS</div>
-							<div class="team"><span><img src="images/spartak-moskva-logo.png"  alt="ФК «Спартак» Москва"><br>СПАРТАК</span></div>
-						</div>
-						<div class="tournament">Чемпионат России<br>Тур 2</div>
-						<div class="buy-tickets"></div>
-					</div>
-					<div class="game-info">
-						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-						<div class="game-result">
-							<div class="team"><span><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</span></div>
-							<div class="score-versus">VS</div>
-							<div class="team"><span><img src="images/spartak-moskva-logo.png"  alt="ФК «Спартак» Москва"><br>СПАРТАК</span></div>
-						</div>
-						<div class="tournament">Чемпионат России<br>Тур 2</div>
-						<div class="buy-tickets"></div>
-					</div>
-					<div class="game-info">
-						<h4 class="when-where">Суббота 19:00,<br>Москва,Стадион «РЖД Арена»</h4>
-						<div class="game-result">
-							<div class="team"><span><img src="images/logo-kuban.png" alt="ФК«Кубань»"><br>КУБАНЬ</span></div>
-							<div class="score-versus">VS</div>
-							<div class="team"><span><img src="images/spartak-moskva-logo.png"  alt="ФК «Спартак» Москва"><br>СПАРТАК</span></div>
-						</div>
-						<div class="tournament">Чемпионат России<br>Тур 2</div>
-						<div class="buy-tickets"></div>
-					</div>			
 				</div>		
 			</div>
 			<div class="instagram-widget">
@@ -443,13 +498,15 @@
 			</p>
 		</div>
 	</footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
-<script src="slick/slick.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
+	<script src="slick/slick.js"></script>
 
-<script type="text/javascript" src="/js/instafeed.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.js"></script>
 
-<script src="/js/main.js"></script>
+	<script type="text/javascript" src="/js/instafeed.min.js"></script>
+
+	<script src="/js/main.js"></script>
 </body>
 
 </html>
