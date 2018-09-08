@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # libs
     'sorl.thumbnail',
+    'embed_video',
 
     # apps
     'fckuban',
