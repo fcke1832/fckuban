@@ -1,9 +1,8 @@
+{% load embed_video_tags %}
 <h3>МЕДИА</h3>
 <div class="video-description">
     <h4>{{ youtube_link.description }}</h4>
     <div class="video-wrap">
-        <iframe width="560" height="315" src="{{ youtube_link.link }}"
-                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-        </iframe>
+        {% video youtube_link.link '560 x 315' %}
     </div>
 </div>
