@@ -40,13 +40,13 @@ INSTALLED_APPS = [
 
     # libs
     'sorl.thumbnail',
+    'embed_video',
 
     # apps
     'fckuban',
     'links',
     'news',
-    'polls',
-    'team',
+    'calendar_matches',
     'tournaments',
 ]
 
