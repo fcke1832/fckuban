@@ -2,17 +2,9 @@
 <div class="game-calendar">
     <h3>КАЛЕНДАРЬ</h3>
     <div class="calendar-nav">
-        <div class="game-date">
-            <div><span class="day">4</span><br>АВГ</div>
-        </div>
-        <div class="game-date"><span class="day">29</span><br>ИЮН</div>
-        <div class="game-date"><span class="day">4</span><br>АВГ</div>
-        <div class="game-date"><span class="day">29</span><br>ИЮН</div>
-        <div class="game-date"><span class="day">4</span><br>АВГ</div>
-        <div class="game-date"><span class="day">29</span><br>ИЮН</div>
-        <div class="game-date"><span class="day">4</span><br>АВГ</div>
-        <div class="game-date"><span class="day">29</span><br>ИЮН</div>
-        <div class="game-date"><span class="day">4</span><br>АВГ</div>
+        {% for match in fcke_matches_list %}
+            <div class="game-date"><span class="day">{{ match.start_time|date:"j" }}</span><br>{{ match.start_time|date:"b" }}</div>
+        {% endfor %}
     </div>
     <div class="calendar-info">
         {% for match in fcke_matches_list %}
