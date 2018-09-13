@@ -12,7 +12,6 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['news_qs'] = News.objects.filter(published=True).order_by('-date_pub')[:4]
-
         current_tournament = Tournament.objects.filter(on_main=True).first()
         if current_tournament:
             context['current_tournament'] = current_tournament
@@ -38,5 +37,4 @@ class MainView(TemplateView):
         context['guest_matches'] = guest_matches
         fcke_matches_list = sorted(chain(home_matches, guest_matches), key=lambda instance: instance.start_time)
         context['fcke_matches_list'] = fcke_matches_list
-
         return context
