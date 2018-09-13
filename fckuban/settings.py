@@ -40,12 +40,13 @@ INSTALLED_APPS = [
 
     # libs
     'sorl.thumbnail',
+    'embed_video',
 
     # apps
     'fckuban',
+    'links',
     'news',
-    'polls',
-    'team',
+    'calendar_matches',
     'tournaments',
 ]
 
@@ -127,6 +128,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 

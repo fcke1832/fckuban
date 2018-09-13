@@ -13,113 +13,27 @@
             <div class="hashtag">#КУБАНЬЖИВА</div>
         </div>
         <div class='scoretable'>
-            <nav><a href="">Турнирная Таблица</a></nav>
+            <nav class="scoretable-trigger">Турнирная Таблица</nav>
+            <div class="scoretable-items" id='scoretable'>
             <table>
                 <tbody>
-                <thead>
-                <th class="number">№</th>
-                <th>Команда</th>
-                <th>И</th>
-                <th>О</th>
-                </thead>
-                <tr class='special'>
-                    <td class="number">1</td>
-                    <td>Кубань</td>
-                    <td>1</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td class="number">2</td>
-                    <td>Рубин</td>
-                    <td>1</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td class="number">3</td>
-                    <td>Анжи</td>
-                    <td>1</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td class="number">4</td>
-                    <td>Спартак</td>
-                    <td>1</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td class="number">5</td>
-                    <td>Ростов</td>
-                    <td>1</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td class="number">6</td>
-                    <td>Уфа</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td class="number">7</td>
-                    <td>Локомотив</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td class="number">8</td>
-                    <td>Крылья Советов</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td class="number">9</td>
-                    <td>Динамо</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td class="number">10</td>
-                    <td>ЦСКА</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td class="number">11</td>
-                    <td>Арсенал</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td class="number">12</td>
-                    <td>Краснодар</td>
-                    <td>1</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td class="number">13</td>
-                    <td>Оренбург</td>
-                    <td>1</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td class="number">14</td>
-                    <td>Ахмат</td>
-                    <td>1</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td class="number">15</td>
-                    <td>Урал</td>
-                    <td>1</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td class="number">16</td>
-                    <td>Енисей</td>
-                    <td>1</td>
-                    <td>0</td>
-                </tr>
+                    <thead>
+                        <th class="number">№</th>
+                        <th>Команда</th>
+                        <th>И</th>
+                        <th>О</th>
+                    </thead>
+                    {% for team in teams %}
+                        <tr class='{% if team.is_fcke %}special{% endif %}'>
+                            <td class="number">{{ forloop.counter }}</td>
+                            <td>{{ team.name }}</td>
+                            <td>{{ team.matches }}</td>
+                            <td>{{ team.points }}</td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </section>

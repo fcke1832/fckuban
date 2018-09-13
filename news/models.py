@@ -12,7 +12,7 @@ class News(models.Model):
     published = models.BooleanField('Опубликовать', default=False)
     image = ImageField('Фото', default='', null=None, blank=False, upload_to='media/news_upload')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     class Meta:
