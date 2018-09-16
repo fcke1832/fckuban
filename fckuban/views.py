@@ -11,7 +11,7 @@ class MainView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['news_qs'] = News.objects.filter(published=True).order_by('-date_pub')[:4]
+        context['news_qs'] = News.objects.filter(published=True).order_by('-date_pub')[:6]
         current_tournament = Tournament.objects.filter(on_main=True).first()
         if current_tournament:
             context['current_tournament'] = current_tournament
