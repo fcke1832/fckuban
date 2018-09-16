@@ -17,10 +17,8 @@
             {% for slider_news in news_qs %}
                 <div class="slide">
                     <a href="">
-                        {% thumbnail slider_news.image "100x100" as im %}
-                            <img src="{{ im.url }}"  width="{{ im.width }}" heigh="{{ im.height }}">
-                        {% empty %}
-                            <img src="{% static 'images/kuban-dinamo.jpg' %}">
+                        {% thumbnail slider_news.image "700x400" as im %}
+                            <img src="{{ im.url }}"">
                         {% endthumbnail %}
                         <div class="slide-description">
                             <h3>"{{ slider_news.title }}"</h3>
@@ -28,32 +26,6 @@
                     </a>
                 </div>
             {% endfor %}
-            {% comment %}
-            <div class="slide"><a href="">
-                <img src="{% static 'images/kuban-dinamo.jpg' %}">
-                <div class="slide-description">
-                    <h3>test text</h3>
-                </div>
-            </a></div>
-            <div class="slide"><a href="">
-                <img src="{% static 'images/kuban-dinamo.jpg' %}">
-                <div class="slide-description">
-                    <h3>разный текст</h3>
-                </div>
-            </a></div>
-            <div class="slide"><a href="">
-                <img src="{% static 'images/kuban-dinamo.jpg' %}">
-                <div class="slide-description">
-                    <h3></h3>
-                </div>
-            </a></div>
-            <div class="slide"><a href="">
-                <img src="{% static 'images/kuban-dinamo.jpg' %}">
-                <div class="slide-description">
-                    <h3>еще текст</h3>
-                </div>
-            </a></div>
-            {% endcomment %}
         </div>
     </div>
 </section>
