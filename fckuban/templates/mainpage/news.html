@@ -4,7 +4,7 @@
 <section class="news">
     <div class="main-news">
         <div class="main-news-window">
-            <h2>Новости</h2>
+            <h3>Новости</h3>
             <ul>
                 {% for simple_news in news_qs %}
                     <li><a href="">{{ simple_news.date_pub|date:"SHORT_DATE_FORMAT" }}</span><span>{{ simple_news.title }}</a>
@@ -17,7 +17,7 @@
             {% for slider_news in news_qs %}
                 <div class="slide">
                     <a href="">
-                        {% thumbnail slider_news.image "700x400" as im %}
+                        {% thumbnail slider_news.image "700x400" crop="center" as im %}
                             <img src="{{ im.url }}"">
                         {% endthumbnail %}
                         <div class="slide-description">
