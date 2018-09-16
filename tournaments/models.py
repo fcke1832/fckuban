@@ -1,4 +1,5 @@
 from django.db import models
+from sorl.thumbnail import ImageField
 
 
 class Tournament(models.Model):
@@ -20,6 +21,7 @@ class Team(models.Model):
     matches = models.PositiveSmallIntegerField('Матчи', default=0)
     is_active = models.BooleanField('Активная', default=True)
     is_fcke = models.BooleanField('Наша команда', default=False)
+    logo = ImageField('Логотип', default='', null=True, blank=True, upload_to='media/logo')
 
     def __str__(self):
         return self.name
