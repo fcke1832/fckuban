@@ -56,3 +56,4 @@ local.py
 /fckuban/local_settings.py
 /media/
 /cache/
+/fckuban/static/images/
