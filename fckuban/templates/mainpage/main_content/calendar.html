@@ -3,19 +3,19 @@
     <h3>КАЛЕНДАРЬ</h3>
     <div class="calendar-nav">
         {% for match in fcke_matches_list %}
-            <div class="game-date"><span class="day">{{ match.start_time|date:"j" }}</span><br>{{ match.start_time|date:"b" }}</div>
+            <div><span class="day">{{ match.start_time|date:"j" }}</span><br>{{ match.start_time|date:"b" }}</div>
         {% endfor %}
     </div>
     <div class="calendar-info">
         {% for match in fcke_matches_list %}
             <div class="game-info">
-                <h4 class="when-where">Суббота 19:00,<br>{{ match.stadium }}</h4>
+                <h4 class="when-where">{{ match.start_time|date:"l" }}{% if not match.time_invisible %} {{ match.start_time|date:"H:i" }}{% endif %},<br>{% if match.stadium %}{{ match.stadium }}{% endif %}</h4>
                 <div class="game-result">
                     <div class="team"><span><img src="{% static 'images/logo-kuban.png' %}"><br>{{ match.home_team }}</span></div>
-                    <div class="score-versus">VS</div>
+                    <div class="{% if forloop.first %}score{% else %}versus{% endif %}">{% if forloop.first %}2:1{% else %}VS{% endif %}</div>
                     <div class="team"><span><img src="{% static 'images/spartak-moskva-logo.png' %}"><br>{{ match.guest_team }}</span></div>
                 </div>
-                <div class="tournament">{{ match.tournament }}<br>{{ match.tour }}</div>
+                <div class="tournament">{% if match.tournament %}{{ match.tournament }}{% endif %}<br>{% if match.tour %}{{ match.tour }}{% endif %}</div>
                 <div class="buy-tickets"></div>
             </div>
         {% endfor %}
