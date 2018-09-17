@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import YoutubeLink, SocialNetworkLink
+from .models import YoutubeLink, SocialNetworkLink, MapsLink
 
 
 @admin.register(YoutubeLink)
@@ -11,6 +11,13 @@ class YoutubeLinkAdmin(admin.ModelAdmin):
 
 @admin.register(SocialNetworkLink)
 class SocialNetworkLinkAdmin(admin.ModelAdmin):
+    list_display = ('name', 'link',)
+    list_editable = ('link',)
+    list_filter = ('name', 'link',)
+
+
+@admin.register(MapsLink)
+class MapsLinkAdmin(admin.ModelAdmin):
     list_display = ('name', 'link',)
     list_editable = ('link',)
     list_filter = ('name', 'link',)
