@@ -18,3 +18,11 @@ class SocialNetworkLink(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class MapsLink(models.Model):
+    name = models.CharField('Название', max_length=30)
+    link = models.URLField('Ссылка  ')
+
+    def __str__(self):
+        return self.name
