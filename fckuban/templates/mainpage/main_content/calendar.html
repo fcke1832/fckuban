@@ -1,4 +1,5 @@
 {% load static %}
+{% load thumbnail %}
 <div class="game-calendar">
     <h3>КАЛЕНДАРЬ</h3>
     <div class="calendar-nav">
@@ -11,9 +12,31 @@
             <div class="game-info">
                 <h4 class="when-where">{{ match.start_time|date:"l" }}{% if not match.time_invisible %} {{ match.start_time|date:"H:i" }}{% endif %},<br>{% if match.stadium %}{{ match.stadium }}{% endif %}</h4>
                 <div class="game-result">
-                    <div class="team"><span><img src="{% static 'images/logo-kuban.png' %}"><br>{{ match.home_team }}</span></div>
-                    <div class="{% if forloop.first %}score{% else %}versus{% endif %}">{% if forloop.first %}2:1{% else %}VS{% endif %}</div>
-                    <div class="team"><span><img src="{% static 'images/spartak-moskva-logo.png' %}"><br>{{ match.guest_team }}</span></div>
+                    <div class="team">
+                        <span>
+                            {% thumbnail match.home_team.logo "80x80" crop="center" as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                            <br>
+                            {{ match.home_team }}
+                        </span>
+                    </div>
+                    <div class="{% if match.is_finished and match.home_goals %}score{% else %}versus{% endif %}">
+                        {% if match.is_finished and match.home_goals %}
+                            {{ match.home_goals }}:{{ match.guest_goals }}
+                        {% else %}
+                            VS
+                        {% endif %}
+                    </div>
+                    <div class="team">
+                        <span>
+                            {% thumbnail match.guest_team.logo "80x80" crop="center" as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                            <br>
+                            {{ match.guest_team }}
+                        </span>
+                    </div>
                 </div>
                 <div class="tournament">{% if match.tournament %}{{ match.tournament }}{% endif %}<br>{% if match.tour %}{{ match.tour }}{% endif %}</div>
                 <div class="buy-tickets"></div>
