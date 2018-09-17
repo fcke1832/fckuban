@@ -3,7 +3,7 @@ from itertools import chain
 from django.views.generic import ListView, View, TemplateView
 from news.models import  News
 from tournaments.models import Tournament, Team
-from links.models import YoutubeLink, SocialNetworkLink
+from links.models import YoutubeLink, SocialNetworkLink, MapsLink
 from calendar_matches.models import Match
 
 class MainView(TemplateView):
@@ -29,6 +29,9 @@ class MainView(TemplateView):
                     context['vk_link'] = link.link
                 elif 'www.instagram.com' in link.link:
                     context['instagram_link'] = link.link
+        maps_link = MapsLink.objects.filter(is_active=True).first()
+        if maps_link:
+            context['maps_link'] = maps_link.link
 
         fcke_team = Team.objects.filter(is_fcke=True).first()
         home_matches = Match.objects.filter(tournament=current_tournament, home_team=fcke_team).exclude(start_time=None)
