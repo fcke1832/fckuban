@@ -15,7 +15,9 @@ class MainView(TemplateView):
         current_tournament = Tournament.objects.filter(on_main=True).first()
         if current_tournament:
             context['current_tournament'] = current_tournament
-            context['teams'] = current_tournament.team.filter(is_active=True).order_by('-points')
+            is_position_teams = current_tournament.team.filter(is_active=True).exclude(position_number=None).order_by('position_number')
+            zero_position_teams = current_tournament.team.filter(is_active=True, position_number=None)
+            context['teams'] = list(chain(is_position_teams, zero_position_teams))
 
         youtube_link = YoutubeLink.objects.filter(on_main=True).first()
         if youtube_link:
