@@ -12,6 +12,7 @@ class Match(models.Model):
     home_goals = models.PositiveSmallIntegerField('Голы хозяев', default=0)
     guest_goals = models.PositiveSmallIntegerField('Голы гостей', default=0)
     tour = models.CharField('Тур', max_length=10, blank=True, null=True)
+    time_invisible = models.BooleanField('Скрыть время', default=False)
 
     def __str__(self):
         return '{0} - {1}'.format(self.home_team, self.guest_team)

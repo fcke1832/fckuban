@@ -1,11 +1,15 @@
 $(document).ready(function(){
-  var gamedate = $('div.calendar-nav').find("div.slick-slide").children();
+  var gamedate = $("div.calendar-nav").find("div.slick-slide").children();
   var win = $(this);
+
+$('.publication-p').each(function(index, element) {
+    $clamp(element, { clamp: 5});
+});
 
 // sript for Header Menu on resize
 window.addEventListener("resize", function() {
   if ($(this).width() >= 850) {
-   $('.header-menu').css('display' , 'block'); 
+   $(".header-menu").css('display' , 'block'); 
  }else {
   $('.header-menu').css('display' , 'none'); 
 }

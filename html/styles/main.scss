@@ -30,6 +30,9 @@
 		background-color: rgb(42,62,51);
 		font-family: 'Exo 2',sans-serif;
 		@include BaseColor;
+		a {
+			@include BaseColor;
+		}
 		.game-date {
 			position: relative;
 			text-align: center;
@@ -56,6 +59,10 @@
 			height: 100%;
 
 		}
+		h3 {
+			font-size: 200%;
+			font-style: italic;
+		}
 	}
 	.main-menu {
 		background-color: rgb(38,38,38);
@@ -70,23 +77,24 @@
 		}
 		ul {
 			li {
-				display: inline-block;
-				float: left;
-				text-align: center;
-				@include BaseColor;
-				@include ExtraLightFont;
-				font-size: 150%;
-				padding: 7px 25px;
-				text-align: center;
-				cursor: pointer;
-
-				&:hover {
+				a {
+					display: inline-block;
+					float: left;
+					text-align: center;
+					@include ExtraLightFont;
+					font-size: 150%;
+					padding: 7px 25px;
+					text-align: center;
+					cursor: pointer;	
+				}
+				a:hover,
+				.current-page {
 					color:  $BaseYellow;
 					background-color: $BaseGreen;  
 					letter-spacing: 0;
 					@include ExtraBoldFont;
 				}
-				&::after {
+				a::after {
 					display: block;
 					content: attr(title);
 					font-weight: bold;
@@ -154,7 +162,6 @@
 			top: 40px;
 			.main-title {
 				margin-left: 20%;
-				@include BaseColor;
 				font-size: 150%;
 				h1 {
 					@include MediumFont;
@@ -171,12 +178,12 @@
 			position: relative;
 			z-index: 1;
 			display: flex;
-			justify-content: center;
+			justify-content: flex-start;
 			align-items: center;
+			padding-left: 6%;
 			.hashtag {
 				@include ExtraBoldFont;
 				font-size: 7vw;
-				@include BaseColor;
 				letter-spacing: 0;
 			}
 		}
@@ -263,17 +270,16 @@
 	}
 	.main-news-window,.main-slider {
 		background-color: transparent;
-		@include BaseColor;
 		box-sizing: border-box;
 	}
 	.main-news-window {
 		width: 45vw;
 		text-align: center;
 		position: relative;
-		h2{
+		h3{
 			margin: 4% 0;
-			font-size:2.5vw;
-			font-weight: 500;
+			font-size: 250%;
+			font-style: italic;
 		}	
 		ul {
 			text-align: left;
@@ -284,7 +290,6 @@
 				padding: 2% 0;
 				font-size: .9vw;
 				a {
-					@include BaseColor;
 					display: flex;
 					align-items: center;
 
@@ -300,7 +305,6 @@
 		}
 		.all-news-button {
 			font-size: .9vw;
-			@include BaseColor;
 			border: .22vw solid white;
 			padding: 1em 1.7em;
 			position: absolute;
@@ -329,7 +333,6 @@
 				height: 30%;
 				width: 100%;
 				background-color: rgba(39,43,41,0.7);
-				@include BaseColor;
 				position: absolute;
 				z-index: 1000;
 				bottom: 0;
@@ -355,182 +358,186 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			h3 {
+/*			h3 {
 				font-size: 200%;
 				font-style: italic;
-			}
+				}*/
 
-			.video {
-				width: 100%;
-
-				h3 {
-					margin: .7em 0;
-				}
-
-				.video-description {
+				.video {
 					width: 100%;
-					height: 90vh;
-					background: rgb(38,38,38);	
-					padding: 4.5% 4%;
-					position: relative;
-					box-sizing: border-box;
 
-					h4 {
-						position: absolute;
-						top: 3%;
-						left: 3%;
-						font-size: 120%;
-						font-weight: 200;
+					h3 {
+						margin-bottom: 1em; 
 					}
-					.video-wrap {
-						position: relative;
+
+					.video-description {
 						width: 100%;
-						height: 100%;
-						iframe {
+						height: 90vh;
+						background: rgb(38,38,38);	
+						padding: 4.5% 4%;
+						position: relative;
+						box-sizing: border-box;
+
+						h4 {
+							position: absolute;
+							top: 3%;
+							left: 3%;
+							font-size: 120%;
+							font-weight: 200;
+						}
+						.video-wrap {
+							position: relative;
 							width: 100%;
 							height: 100%;
-							position: absolute;
-						}
-					}
-				}
-			}
-			.main-content-news {
-				background: white;
-				color: black;
-				padding: 20px;
-
-				.button-wrap{
-					position: relative;
-					width: 100%;
-					.another-news-button {
-						text-align: center;
-						width: 15%; 
-						padding: 1em 0;
-						border: 1px solid gray;
-						font-size: 110%;
-						font-weight: 300;
-						color: black;
-						position: relative;
-						left: 38%;
-						display: block;
-						bottom: 20px;
-
-					}
-				}
-
-				.news-items-wrap {
-					display: flex;
-					flex-wrap: wrap;
-					position: relative;
-
-					.social-nets {
-						display: flex;
-						flex-direction: column;
-						position: absolute;
-						right: 0;
-						top: 7%;
-
-						img {
-							width: 55px;
-							margin-top: 1%;
-
-							&:hover {
-								opacity:.3;
-							}
-						}
-					}
-
-					.news-item {
-						width: 25%;
-						margin-right: 8%;
-						margin-top: 2%;
-						margin-bottom: 10px;
-
-						a {
-							p {
-								text-decoration: underline;
-							}
-						}
-
-						.top-caption {
-							position: relative;
-							height: 1em;
-							width: 100%;
-							margin-bottom: .5em;
-							span {
+							iframe {
+								width: 100%;
+								height: 100%;
 								position: absolute;
-								font-size: .9em;
-								text-decoration: underline;
-								color: gray;
 							}
-
-							.more-info {
-								right: .5em;
-							}
-							.news-item-date {
-								left: .5em; 
-								opacity: .5;
-							}	
-						}
-
-						img {
-							width: 100%;
-							height: 60%;
-							object-fit: cover;
-						}
-
-						.news-item-title {
-							color: black;
-							margin: 0;
-							margin-top: .8em;
-							text-align: center;
 						}
 					}
-				}	
-			}
-		}
-		.side-bar {
-			display: flex;
-			flex-direction: column;
-			width: 20%;
-			min-width: 254px;
-			justify-content: space-between;
-			position: relative;
+				}
+				.main-content-news {
+					order: 2;
+					background: white;
+					color: black;
+					padding: 20px;
 
-			h3 {
-				margin: 1em 0;	
-				font-size: 150%;	
-				font-weight: 400;
+					.button-wrap{
+						position: relative;
+						width: 100%;
+						.another-news-button {
+							text-align: center;
+							width: 15%; 
+							padding: 1em 0;
+							border: 1px solid gray;
+							font-size: 110%;
+							font-weight: 300;
+							color: black;
+							display: block;
+							bottom: 20px;
+							margin: 1em auto;
+
+						}
+					}
+
+					.news-items-wrap {
+						display: flex;
+						flex-wrap: wrap;
+						position: relative;
+						justify-content: space-between;
+
+						.social-nets {
+							display: flex;
+							flex-direction: column;
+							position: absolute;
+							right: 0;
+							top: 7%;
+
+							img {
+								width: 55px;
+								margin-top: 1%;
+
+								&:hover {
+									opacity:.3;
+								}
+							}
+						}
+
+						.news-item {
+							width: 30%;
+							margin-top: 2%;
+							margin-bottom: 10px;
+							a {
+								p {
+									text-decoration: underline;
+								}
+							}
+
+							.top-caption {
+								position: relative;
+								height: 1em;
+								width: 100%;
+								margin-bottom: .5em;
+								span {
+									position: absolute;
+									font-size: .9em;
+									text-decoration: underline;
+									color: gray;
+								}
+
+								.more-info {
+									right: .5em;
+								}
+								.news-item-date {
+									left: .5em; 
+									opacity: .5;
+								}	
+							}
+
+							img {
+								width: 100%;
+								height: 60%;
+								object-fit: cover;
+							}
+							.news-video-wrap {
+								position: relative;
+								height: 0;
+								border: none;
+								padding-top: 60%;
+								.news-video {
+									position: absolute;
+									top: 0;
+									right: 0;
+									bottom: 0;
+									left: 0;
+									background: #eee;
+									iframe {
+										width: 100%;
+										height: 100%;
+									}
+								}
+							}
+
+							.news-item-title {
+								color: black;
+								margin: 0;
+								margin-top: .8em;
+								text-align: center;
+								text-decoration: underline;
+							}
+						}
+					}	
+				}
 			}
-			.game-calendar {
-				width: 100%;
-				min-width: 254px;
+			.side-bar {
 				display: flex;
 				flex-direction: column;
+				width: 20%;
+				min-width: 254px;
+				justify-content: space-between;
 				position: relative;
-				@include BaseColor;
-				overflow: hidden;
 
 				h3 {
-					margin-top: 0;
+					margin: 1em 0;	
 				}
-
-				.calendar-nav {
-					display: flex;
-					position: relative;
+				.game-calendar {
 					width: 100%;
-					border: 1px solid white;
+					min-width: 254px;
+					display: flex;
+					flex-direction: column;
+					position: relative;
+					overflow: hidden;
 
+					h3 {
+						margin-top: 0;
+					}
 
-/*					.slick-slide.slick-current.slick-center>.game-date{
-						background: $BaseYellow;
-						color: black;
-						border: none;
-						font-size: 180%;
-						padding: 4px 0;
-						font-weight: 500;
-						height: 100%;
-						}	*/
+					.calendar-nav {
+						display: flex;
+						position: relative;
+						width: 100%;
+						border: 1px solid white;
 						.slick-list>.slick-track>.slick-slide>div {
 							height: 100%;
 						}
@@ -564,6 +571,9 @@
 										box-sizing: border-box;
 										display: inline-block;
 									}
+									.team-city {
+										font-size: .8em;
+									}
 								}
 							}
 							.when-where {
@@ -574,13 +584,15 @@
 								padding: 8% 0;
 							}
 
-							.score-versus {
+							.score,.versus {
 								font-size: 170%;
 								font-weight: 900;
 								font-style: italic;
 								color: lightgray;
 							}
-
+							.score {
+								color: black;
+							}
 
 						}
 
@@ -714,7 +726,6 @@
 					.events-section-button {
 						padding: .8em 0;
 						border: .18vw solid white;
-						@include BaseColor;
 						font-size: 112%;
 						font-weight: 500;
 						display: block;
@@ -750,11 +761,124 @@
 				}
 			}	
 		}
+		.publications-wrap {
+			text-align: center;
+			h3 {
+				padding: 1em 0;
+			}
+			ul {
+				li {
+					display: inline-block;
+					margin: 0 .2em;
+					a {
+						color: white;
+						text-decoration: underline;
+						font-size: 200%;
+					}
+				}
+			}
+		}
+		.publication-title {
+			font-weight: 600;
+			padding: 1em 0;
+			font-size: 170%;
+		}
+		.opened-title {
+			width: 90%;
+			margin: 0 auto;
+			text-align: left;
+		}
+		.opened-publication {
+			background: white;
+			width: 90%;
+			color: black;
+			text-align: left;
+			font-size: 24px;
+			padding: 20px;
+			margin: 0 5%;
+			box-sizing: border-box;
+			.introduction {
+				width: 100%;
+				p {
+					margin: 0;
+					margin-bottom: 2em;
+				}
+				.social-nets {
+					margin-bottom: 1em;
+				}
+				.introduction-img {
+					float: left;
+					margin-right: 20px;
+					margin-bottom: 20px;
+					width: 40%;
+					max-width: 550px;
+					height: auto;
+				}
+			}
+			.publication-text {
+				clear: both;
+				padding-bottom: 2em;
+				p {
+					margin: 0;
+				}
+			}
+		}
+		.similar-publications {
+			width: 100%;
+			text-align: left;
+			margin: 1em 0;
+		}
+		.publications-items {
+			display: flex;
+			flex-direction: row;
+			flex-wrap:wrap;
+			justify-content: space-between;
+			padding: 0 5.5%;
+		}
+		.publication {
+			background: white;
+			width: 26%;
+			position: relative;
+			font-size: 20px;
+			margin-bottom: 1em;
+			.publication-title {
+				background: $BaseGreen;
+				padding: .3em;
+				font-weight: 500;
+				font-size: inherit;
+			}
+			.publication-description {
+				color:black;
+				padding: 1em .5em;
+				font-weight: 500;
+				text-align: left;
+				p {
+					margin-top: 0;
+					padding-top: 1em;
+					border-top: 1.5px solid $BaseYellow;
+					text-decoration: underline;
+				}
+				.read-more {
+					text-decoration: underline;
+					float: right;
+
+				}
+				.publication-date {
+					font-size: 14px;
+					font-weight: 600;
+				}
+
+			}
+			img {
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+
 		.info {
 			padding: 0 30px;
 
 			h3{
-				font-size: 200%;
 				margin: .7em 0;
 			}	
 			.info-banner {
@@ -830,10 +954,12 @@
 					width: 100%;
 
 					li {
-						float: none;
-						display: block;
-						text-align: left;
-						padding: .5em 25px;
+						a{
+							float: none;
+							display: block;
+							text-align: left;
+							padding: .5em 25px;
+						}
 					}
 
 				}
@@ -1020,8 +1146,8 @@
 							}
 						}
 
-						h2 {
-							font-size: 150%;
+						h3 {
+							font-size: 170%;
 						}
 
 						.all-news-button {
@@ -1033,6 +1159,20 @@
 							position: relative;
 							margin: 0 20px 20px 20px;
 						}
+					}
+				}
+			}
+			.publications-wrap {
+				.publication {
+					width: 100%;
+				} 
+			}
+			.opened-publication {
+				text-align: center;
+				font-size: 20px;
+				.introduction {
+					.introduction-img {
+						width: 100%;
 					}
 				}
 			}
@@ -1143,10 +1283,6 @@
 
 					.events {
 						width: 100%;
-						h3 {
-							margin-bottom: 100px;
-							font-size: 200%;
-						}
 					}
 				}
 
@@ -1182,6 +1318,18 @@
 								left: 0;
 							}
 						}
+					}
+				}
+			}
+			.publications-wrap {
+				.publication {
+					width: 47%;
+				} 
+			}
+			.opened-publication {
+				.introduction {
+					.introduction-img {
+						width: 60%;
 					}
 				}
 			}
@@ -1248,7 +1396,6 @@
 					}
 				}
 			}
-
 			.info {
 
 				.map {
@@ -1338,8 +1485,7 @@
 							}
 							.news-item{
 								display: none;
-								width: 40%;
-								margin-right: 7%;
+								width: 48%;
 								&:nth-child(-n+4){
 									display: block;
 								}
@@ -1366,9 +1512,6 @@
 					.events {
 						width: 100%;
 						font-size: 20px;
-						h3 {
-							font-size: 25px;
-						}
 						.events-list {
 							li {
 								padding: 1.2em;
@@ -1380,6 +1523,11 @@
 						}
 					}
 				}
+			}
+			.publications-wrap {
+				.publication {
+					width: 47%;
+				} 
 			}
 			.info {
 				.map {
@@ -1398,10 +1546,6 @@
 		}
 		@media screen and (min-width: 821px) and (max-width: 1700px) {
 			.main-banner{
-				.underbanner {
-					justify-content: flex-start;
-					padding-left: 12%;
-				}
 				.scoretable {
 					top: 15vh;
 					.scoretable-items {
@@ -1543,6 +1687,9 @@
 				.yellow-line {
 					height: 60px;
 				}
+			}
+			.opened-publication {
+				font-size: 28px;
 			}
 		}
 

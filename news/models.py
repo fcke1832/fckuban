@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from sorl.thumbnail import ImageField
 
 from fckuban.utils import image_path
@@ -9,7 +10,7 @@ class News(models.Model):
     date_pub = models.DateTimeField('Дата публикации')
     news_text = models.TextField('Полный текст', null=True)
     published = models.BooleanField('Опубликовать', default=False)
-    image = ImageField('Фото', default='', null=None, blank=False, upload_to='news_upload')
+    image = ImageField('Фото', default='', null=None, blank=False, upload_to='media/news_upload')
 
     def __str__(self):
         return self.title
