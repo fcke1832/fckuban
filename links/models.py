@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import URLValidator
 from embed_video.fields import EmbedVideoField
 
 
@@ -22,7 +23,7 @@ class SocialNetworkLink(models.Model):
 
 class MapsLink(models.Model):
     name = models.CharField('Название', max_length=30)
-    link = models.URLField('Ссылка  ')
+    iframe = models.TextField('Ссылка', default='', validators=[URLValidator()])
     is_active = models.BooleanField('На главной', default=False)
 
     def __str__(self):

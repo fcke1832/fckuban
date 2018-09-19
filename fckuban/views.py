@@ -38,7 +38,7 @@ class MainView(TemplateView):
                     context['youtube_channel'] = link.link
         maps_link = MapsLink.objects.filter(is_active=True).first()
         if maps_link:
-            context['maps_link'] = maps_link.link
+            context['maps_link'] = maps_link.iframe
 
         fcke_team = Team.objects.filter(is_fcke=True).first()
         home_matches = Match.objects.filter(tournament=current_tournament, home_team=fcke_team).exclude(start_time=None)
