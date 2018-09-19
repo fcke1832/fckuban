@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{% block content %}
+<section class="publications-wrap">
+		<h3>НОВОСТИ</h3>
+		<div class="publications-items">
+			{% for news in news_list %}
+			<a href="" class="publication">
+				<h4 class="publication-title">ВСЕ НА ВЫЕЗД</h4>
+				{% thumbnail news.image "700x400" crop="center" as im %}
+					<img src="{{ im.url }}">
+				{% endthumbnail %}
+				<div class="publication-description">
+					<p class="publication-p">
+						{{ news.title }}
+					</p>
+					<span class="publication-date">{{ news.date_pub|date:"SHORT_DATE_FORMAT" }}</span>
+					<span class="read-more">Читать далее</span>
+				</div>
+			</a>
+			{% endfor %}
+		</div>
+		<ul>
+			<li><a href="">1</a></li>
+			<li><a href="">2</a></li>
+			<li><a href="">3</a></li>
+			<li><a href="">4</a></li>
+			<li><a href="">5</a></li>
+			<li><a href="">6</a></li>
+			<li><a href="">>></a></li>
+		</ul>
+	</section>
+{% endblock %}
