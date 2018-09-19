@@ -11,7 +11,7 @@
                     </li>
                 {% endfor %}
             </ul>
-            <a href="" class="all-news-button">Перейти в раздел</a>
+            <a href="{% url 'news:news_list' %}" class="all-news-button">Перейти в раздел</a>
         </div>
         <div class="main-slider">
             {% for slider_news in news_qs %}
