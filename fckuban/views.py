@@ -22,6 +22,9 @@ class MainView(TemplateView):
         youtube_link = YoutubeLink.objects.filter(on_main=True).first()
         if youtube_link:
             context['youtube_link'] = youtube_link
+        youtube_blog = YoutubeLink.objects.exclude(id=youtube_link.id).order_by('-id')[:6]
+        if youtube_blog:
+            context['youtube_blog'] = youtube_blog
         social_networks_links = SocialNetworkLink.objects.all()
         if social_networks_links:
             for link in social_networks_links:
@@ -31,6 +34,8 @@ class MainView(TemplateView):
                     context['vk_link'] = link.link
                 elif 'www.instagram.com' in link.link:
                     context['instagram_link'] = link.link
+                elif 'www.youtube.com' in link.link:
+                    context['youtube_channel'] = link.link
         maps_link = MapsLink.objects.filter(is_active=True).first()
         if maps_link:
             context['maps_link'] = maps_link.link
