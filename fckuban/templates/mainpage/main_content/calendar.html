@@ -13,13 +13,13 @@
                 <h4 class="when-where">{{ match.start_time|date:"l" }}{% if not match.time_invisible %} {{ match.start_time|date:"H:i" }}{% endif %},<br>{% if match.stadium %}{{ match.stadium }}{% endif %}</h4>
                 <div class="game-result">
                     <div class="team">
-                        <span>
                             {% thumbnail match.home_team.logo "80x80" crop="center" as im %}
                                 <img src="{{ im.url }}">
                             {% endthumbnail %}
                             <br>
-                            {{ match.home_team }}
-                        </span>
+                            {{ match.home_team.name.strip }}
+                            <br>
+                            <span class="team-city">({{ match.home_team.location.strip }})</span>
                     </div>
                     <div class="{% if match.is_finished and match.home_goals %}score{% else %}versus{% endif %}">
                         {% if match.is_finished and match.home_goals %}
@@ -34,7 +34,9 @@
                                 <img src="{{ im.url }}">
                             {% endthumbnail %}
                             <br>
-                            {{ match.guest_team }}
+                            {{ match.guest_team.name.strip }}
+                            <br>
+                            <span class="team-city">({{ match.guest_team.location.strip }})</span>
                         </span>
                     </div>
                 </div>
