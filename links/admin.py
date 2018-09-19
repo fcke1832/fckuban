@@ -18,6 +18,6 @@ class SocialNetworkLinkAdmin(admin.ModelAdmin):
 
 @admin.register(MapsLink)
 class MapsLinkAdmin(admin.ModelAdmin):
-    list_display = ('name', 'link', 'is_active',)
-    list_editable = ('link', 'is_active',)
-    list_filter = ('name', 'link', 'is_active',)
+    list_display = ('name', 'iframe', 'is_active',)
+    list_editable = ('iframe', 'is_active',)
+    list_filter = ('name', 'iframe', 'is_active',)
