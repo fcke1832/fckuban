@@ -6,8 +6,8 @@
     <div class="news-item">
         <a href="{{ video_link.link }}">
             <div class="top-caption">
-                <span class="news-item-date">4:53,5июля2018</span>
-                <span class="more-info">подробнее</span>
+                <span class="news-item-date"></span>
+                <span class="more-info"></span>
             </div>
             <div class="news-video-wrap">
                 <div class="news-video">
@@ -18,11 +18,15 @@
         </a>
     </div>
     {% endfor %}
+
+    {% comment %}
     <div class="social-nets">
         <a href="{{ vk_link }}"><img src="{% static 'images/vk-g-logo.png' %}"></a>
         <a href="{{ facebook_link }}"><img src="{% static 'images/facebook-g-logo.png' %}"></a>
         <a href="{{ instagram_link }}"><img src="{% static 'images/instagram-g-logo.png' %}"></a>
     </div>
+    {% endcomment %}
+
     <div class="button-wrap">
         <a href="{{ youtube_channel }}" class="another-news-button">Перейти в видеоблог</a>
     </div>
