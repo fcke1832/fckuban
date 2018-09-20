@@ -4,13 +4,13 @@
 
 {% block content %}
     <section class="publications-wrap">
-		<h4 class="publication-title opened-title">{{ news.title|title }}</h4>
+		<h4 class="publication-title opened-title">{{ news.title|upper }}</h4>
 		<div class="opened-publication">
 			<div class="introduction">
              {% thumbnail news.image "700x400" crop="center" as im %}
 			    <img src="{{ im.url }} " class="introduction-img">
              {% endthumbnail %}
-			<p>{{ news.title|title }}</p>
+			<p>{{ news.title|upper }}</p>
 			<div class="social-nets">
 				<a href=""><img src="{% static 'images/vk-g-logo.png' %}" alt="VK"></a>
 				<a href=""><img src="{% static 'images/facebook-g-logo.png' %}" alt="Facebook"></a>
@@ -29,7 +29,7 @@
 			        <img src="{{ im.url }} ">
                 {% endthumbnail %}
 				<div class="publication-description">
-					<p class="publication-p">{{ news_item.title|title }}<br>
+					<p class="publication-p">{{ news_item.title|upper }}<br>
 					</p>
 					<span class="publication-date">{{ news_item.date_pub|date:"SHORT_DATE_FORMAT" }}</span>
 					<span class="read-more">Читать далее</span>
