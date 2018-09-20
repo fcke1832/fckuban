@@ -7,7 +7,7 @@
             <h3>Новости</h3>
             <ul>
                 {% for simple_news in news_qs %}
-                    <li><a href="">{{ simple_news.date_pub|date:"SHORT_DATE_FORMAT" }}</span><span>{{ simple_news.title }}</a>
+                    <li><a href="{% url 'news:news_detail' simple_news.slug %}">{{ simple_news.date_pub|date:"SHORT_DATE_FORMAT" }}</span><span>{{ simple_news.title }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -16,7 +16,7 @@
         <div class="main-slider">
             {% for slider_news in news_qs %}
                 <div class="slide">
-                    <a href="">
+                    <a href="{% url 'news:news_detail' slider_news.slug %}">
                         {% thumbnail slider_news.image "700x400" crop="center" as im %}
                             <img src="{{ im.url }}"">
                         {% endthumbnail %}
