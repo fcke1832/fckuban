@@ -3,5 +3,39 @@
 {% load thumbnail %}
 
 {% block content %}
- <h1>HHHHHHHHHH</h1>s
+    <section class="publications-wrap">
+		<h4 class="publication-title opened-title">{{ news.title|title }}</h4>
+		<div class="opened-publication">
+			<div class="introduction">
+             {% thumbnail news.image "700x400" crop="center" as im %}
+			    <img src="{{ im.url }} " class="introduction-img">
+             {% endthumbnail %}
+			<p>{{ news.title|title }}</p>
+			<div class="social-nets">
+				<a href=""><img src="{% static 'images/vk-g-logo.png' %}" alt="VK"></a>
+				<a href=""><img src="{% static 'images/facebook-g-logo.png' %}" alt="Facebook"></a>
+				<a href=""><img src="{% static 'images/instagram-g-logo.png' %}" alt="Instagram"></a>
+			</div>
+			</div>
+			<div class="publication-text">
+				{{ news.news_text }}
+		</div>
+		</div>
+		<div class="publications-items">
+			<h3 class="similar-publications">ПО ТЕМЕ</h3>
+            {% for news_item in another_news %}
+			<a href="" class="publication">
+				{% thumbnail news_item.image "700x400" crop="center" as im %}
+			        <img src="{{ im.url }} ">
+                {% endthumbnail %}
+				<div class="publication-description">
+					<p class="publication-p">{{ news_item.title|title }}<br>
+					</p>
+					<span class="publication-date">{{ news_item.date_pub|date:"SHORT_DATE_FORMAT" }}</span>
+					<span class="read-more">Читать далее</span>
+				</div>
+			</a>
+            {% endfor %}
+		</div>
+	</section>
 {% endblock %}
