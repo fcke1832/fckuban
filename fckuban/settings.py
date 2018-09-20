@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'links',
     'news',
     'calendar_matches',
+    'tickets',
     'tournaments',
 ]
 
