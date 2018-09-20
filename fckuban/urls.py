@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.MainView.as_view(), name='index'),
     path('admin/', admin.site.urls),
     path('news/', include('news.urls', namespace='news')),
+    path('tickets/', include('tickets.urls', namespace='tickets')),
 ]
 
 if settings.DEBUG is True:
