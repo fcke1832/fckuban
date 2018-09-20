@@ -2,8 +2,8 @@
 <nav class="main-menu">
     <div class="menu-icon"><img src="{% static 'images/menu-icon.png' %}" alt="Меню"></div>
     <ul class="header-menu">
-        <li><a href="" title="Главная">Главная</a></li>
-        <li><a href="" title="Новости">Новости</a></li>
+        <li><a href="{% url 'index' %}" title="Главная">Главная</a></li>
+        <li><a href="{% url 'news:news_list' %}" title="Новости">Новости</a></li>
         <li><a href="" title="Купить билет">Купить билет</a></li>
         <li><a href="" title="Команда">Команда</a></li>
         <li><a href="" title="Медиа">Медиа</a></li>
