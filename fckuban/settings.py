@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'embed_video',
 
     # apps
+    'banner',
     'fckuban',
     'links',
     'news',
