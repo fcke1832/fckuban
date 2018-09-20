@@ -7,7 +7,7 @@
 		<h3>НОВОСТИ</h3>
 		<div class="publications-items">
 			{% for news in news_list %}
-			<a href="" class="publication">
+			<a href="{% url 'news:news_detail' news.slug %}" class="publication">
 				<h4 class="publication-title">ВСЕ НА ВЫЕЗД</h4>
 				{% thumbnail news.image "700x400" crop="center" as im %}
 					<img src="{{ im.url }}">
