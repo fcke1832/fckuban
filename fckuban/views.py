@@ -1,6 +1,7 @@
 from itertools import chain
 
 from django.views.generic import ListView, View, TemplateView
+from banner.models import Banner
 from news.models import  News
 from tournaments.models import Tournament, Team
 from links.models import YoutubeLink, SocialNetworkLink, MapsLink
@@ -47,4 +48,6 @@ class MainView(TemplateView):
         context['guest_matches'] = guest_matches
         fcke_matches_list = sorted(chain(home_matches, guest_matches), key=lambda instance: instance.start_time)
         context['fcke_matches_list'] = fcke_matches_list
+        banner = Banner.objects.filter(published=True).order_by('-id').first()
+        context['banner'] = banner if banner else None
         return context

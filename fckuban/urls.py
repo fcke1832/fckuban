@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('news/', include('news.urls', namespace='news')),
     path('tickets/', include('tickets.urls', namespace='tickets')),
+    path('team/', include('team.urls', namespace='team')),
 ]
 
 if settings.DEBUG is True:

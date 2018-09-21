@@ -15,7 +15,7 @@ class News(models.Model):
     news_text = models.TextField('Полный текст', null=True)
     published = models.BooleanField('Опубликовать', default=False)
     image = ImageField('Фото', default='', null=None, blank=False, upload_to='media/news_upload')
-    slug = models.SlugField('Ссылка', max_length=200, null=True)
+    slug = models.SlugField('Ссылка', max_length=200, null=True, blank=True)
 
     def __str__(self):
         return self.title

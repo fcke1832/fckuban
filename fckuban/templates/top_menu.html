@@ -5,9 +5,9 @@
         <li><a href="{% url 'index' %}" title="Главная">Главная</a></li>
         <li><a href="{% url 'news:news_list' %}" title="Новости">Новости</a></li>
         <li><a href="{% url 'tickets:ticket_sale' %}" title="Купить билет">Купить билет</a></li>
-        <li><a href="" title="Команда">Команда</a></li>
-        <li><a href="" title="Медиа">Медиа</a></li>
+        <li><a href="{% url 'team:all_team' %}" title="Команда">Команда</a></li>
+        <li><a href="{% url 'team:all_team' %}" title="Медиа">Медиа</a></li>
     </ul>
     <div class="search"></div>
 </nav>
-<input type="search" class="search-field">
+<input type="search" class="search-field" placeholder="Функционал поиска пока находится в разработке...">

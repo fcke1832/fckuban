@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load thumbnail %}
 
 {% block content %}
 
@@ -21,14 +22,16 @@
         {% include "mainpage/main_content/calendar.html" %}
         {% comment %}
         {% include "mainpage/main_content/vk-widget.html" %}
-        {% endcomment %}
         {% include "mainpage/main_content/events.html" %}
+        {% endcomment %}
     </div>
 </section>
 <section class="info">
     <div>
         <h3>ИНФО</h3>
-        <img src="{% static 'images/banner.jpg' %}" class="info-banner">
+        {% thumbnail banner.image "960x790" crop="center" upscale=True as im %}
+            <img src="{{ im.url }}" height="100%" width="100%">
+        {% endthumbnail %}
     </div>
 
     {% comment %}
