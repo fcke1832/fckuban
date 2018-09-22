@@ -8,6 +8,11 @@
         <li><a href="{% url 'team:all_team' %}" title="Команда">Команда</a></li>
         <li><a href="{% url 'team:all_team' %}" title="Медиа">Медиа</a></li>
     </ul>
+    <div class="main-menu-social-nets">
+        <a href="{{ youtube_link }}"><img src="{% static 'images/youtube.png' %}"></a>
+        <a href="{{ telegram_channel }}"><img src="{% static 'images/telegram.png' %}"></a>
+        <a href="{{ instagram_link }}"><img src="{% static 'images/instagram.png' %}"></a>
+    </div>
     <div class="search"></div>
 </nav>
 <input type="search" class="search-field" placeholder="Функционал поиска пока находится в разработке...">
