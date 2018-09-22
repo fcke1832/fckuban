@@ -8,7 +8,7 @@
 		<div class="publications-items">
 			{% for news in news_list %}
 			<a href="{% url 'news:news_detail' news.slug %}" class="publication">
-				<h4 class="publication-title">ВСЕ НА ВЫЕЗД</h4>
+				<h4 class="publication-title"></h4>
 				{% thumbnail news.image "700x400" crop="center" as im %}
 					<img src="{{ im.url }}">
 				{% endthumbnail %}
@@ -16,12 +16,12 @@
 					<p class="publication-p">
 						{{ news.title }}
 					</p>
-					<span class="publication-date">{{ news.date_pub|date:"SHORT_DATE_FORMAT" }}</span>
-					<span class="read-more">Читать далее</span>
 				</div>
+				<div class="publication-date">{{ news.date_pub|date:"SHORT_DATE_FORMAT" }}</div>
 			</a>
 			{% endfor %}
 		</div>
+		{% comment %}
 		<ul>
 			<li><a href="">1</a></li>
 			<li><a href="">2</a></li>
@@ -31,5 +31,6 @@
 			<li><a href="">6</a></li>
 			<li><a href="">>></a></li>
 		</ul>
+		{% endcomment %}
 	</section>
 {% endblock %}
