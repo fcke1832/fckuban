@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # libs
+    'ckeditor',
+    'ckeditor_uploader',
     'sorl.thumbnail',
     'embed_video',
 
@@ -136,6 +138,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+
+
+# -------------------------------------------------------------------------------------------
+# CKEDITOR
+# -------------------------------------------------------------------------------------------
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}
 
 try:
     from .local_settings import *

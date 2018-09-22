@@ -26,6 +26,7 @@ urlpatterns = [
     path('news/', include('news.urls', namespace='news')),
     path('tickets/', include('tickets.urls', namespace='tickets')),
     path('team/', include('team.urls', namespace='team')),
+    path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 if settings.DEBUG is True:
