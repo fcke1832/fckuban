@@ -17,7 +17,7 @@
             {% for slider_news in news_qs %}
                 <div class="slide">
                     <a href="{% url 'news:news_detail' slider_news.slug %}">
-                        {% thumbnail slider_news.image "700x400" crop="center" as im %}
+                        {% thumbnail slider_news.image "786x450" crop="center" upscale=True as im %}
                             <img src="{{ im.url }}"">
                         {% endthumbnail %}
                         <div class="slide-description">
