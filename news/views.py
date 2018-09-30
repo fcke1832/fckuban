@@ -9,7 +9,7 @@ class NewsListView(ListView):
     context_object_name = 'news_list'
 
     def get_queryset(self):
-        return News.objects.filter(published=True).order_by('-date_pub')[:6]
+        return News.objects.filter(published=True).order_by('-date_pub')[:8]
 
 
 class NewsDetailView(DetailView):
