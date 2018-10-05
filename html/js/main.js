@@ -6,9 +6,32 @@ $('.publication-p').each(function(index, element) {
     $clamp(element, { clamp: 5});
 });
 
+var timer = new Timer();
+$('#chronometre .startButton').click(function () {
+    timer.start();
+});
+$('#chronometre .pauseButton').click(function () {
+    timer.pause();
+});
+$('#chronometre .stopButton').click(function () {
+    timer.stop();
+});
+$('#chronometre .resetButton').click(function () {
+    timer.reset();
+});
+timer.addEventListener('secondsUpdated', function (e) {
+    $('#chronometre .values').html(timer.getTimeValues().toString());
+});
+timer.addEventListener('started', function (e) {
+    $('#chronometre .values').html(timer.getTimeValues().toString());
+});
+timer.addEventListener('reset', function (e) {
+    $('#chronometre .values').html(timer.getTimeValues().toString());
+});
+
 // sript for Header Menu on resize
 window.addEventListener("resize", function() {
-  if ($(this).width() >= 850) {
+  if ($(this).width() >= 960) {
    $(".header-menu").css('display' , 'block'); 
  }else {
   $('.header-menu').css('display' , 'none'); 
