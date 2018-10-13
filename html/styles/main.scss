@@ -995,6 +995,16 @@
 				align-items: center;
 				border-top: 1.5px solid lightgray;
 				padding: 1em;
+				.radio-wrap {
+					height: 100px;
+					overflow: auto;
+					text-align: left;
+					margin: 1em;
+					border: 1px solid lightgray;
+				}
+				p {
+					margin: .1em;
+				}
 				.event-description {
 					resize: none;
 					width: 50%;
