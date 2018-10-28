@@ -45,10 +45,11 @@ INSTALLED_APPS = [
 
     # apps
     'banner',
+    'calendar_matches',
     'fckuban',
     'links',
     'news',
-    'calendar_matches',
+    'seo',
     'tickets',
     'team',
     'translation',

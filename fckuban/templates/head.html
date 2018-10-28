@@ -6,5 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8">
-<title>ФК 'Кубань'</title>
+<meta name="keywords" content="{{ seo.keywords }}">
+<meta name="description" content="{{ seo.description }}">
+<title>{% if seo.title %}{{ seo.title }}{% else %}ФК 'Кубань'{% endif %}</title>
 
