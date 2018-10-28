@@ -1,19 +1,32 @@
 from itertools import chain
 
-from django.views.generic import ListView, View, TemplateView
+from django.views.generic import TemplateView
 from banner.models import Banner
-from news.models import  News
+from news.models import News
 from tournaments.models import Tournament, Team
 from links.models import YoutubeLink, SocialNetworkLink, MapsLink
 from calendar_matches.models import Match
+from seo.models import SeoData
+
 
 class MainView(TemplateView):
     template_name = "main.html"
 
+    def _seo_data(self):
+        seo_data = SeoData.objects.last()
+        return seo_data
+
+    def _get_news(self):
+        return News.objects.filter(published=True).order_by('-date_pub')[:6]
+
+    def _get_tournament(self):
+        return Tournament.objects.filter(on_main=True).first()
+
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['news_qs'] = News.objects.filter(published=True).order_by('-date_pub')[:6]
-        current_tournament = Tournament.objects.filter(on_main=True).first()
+        context['news_qs'] = self._get_news()
+        current_tournament = self._get_tournament()
         if current_tournament:
             context['current_tournament'] = current_tournament
             is_position_teams = current_tournament.team.filter(is_active=True).exclude(position_number=None).order_by('position_number')
@@ -44,12 +57,16 @@ class MainView(TemplateView):
             context['maps_link'] = maps_link.iframe
 
         fcke_team = Team.objects.filter(is_fcke=True).first()
+
         home_matches = Match.objects.filter(tournament=current_tournament, home_team=fcke_team).exclude(start_time=None)
         guest_matches = Match.objects.filter(tournament=current_tournament, guest_team=fcke_team).exclude(start_time=None)
         context['home_matches'] = home_matches
         context['guest_matches'] = guest_matches
+
         fcke_matches_list = sorted(chain(home_matches, guest_matches), key=lambda instance: instance.start_time)
         context['fcke_matches_list'] = fcke_matches_list
+
         banner = Banner.objects.filter(published=True).order_by('-id').first()
         context['banner'] = banner if banner else None
+        context['seo'] = self._seo_data()
         return context
