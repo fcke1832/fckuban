@@ -27,7 +27,7 @@
 
 	body {
 		width: 100%;
-		background-color: rgb(42,62,51);
+		background-color: #068e44;
 		font-family: 'Exo 2',sans-serif;
 		@include BaseColor;
 		font-size: 18px;
@@ -726,6 +726,7 @@
 			}
 			.instagram-link {
 				width: 100%;
+				border: .18vw solid white;
 				display: block;
 				box-sizing: border-box;
 				color: white;
@@ -856,6 +857,9 @@
 		.publication-text {
 			clear: both;
 			padding-bottom: 2em;
+			a {
+				color: #0000ee;
+			}
 			p {
 				margin: 0;
 			}
@@ -898,7 +902,7 @@
 		}
 		&:hover {
 			transition: all 1s;
-			background: $BaseGreen;
+			background: #2a3e33;
 			.publication-description {
 				color: white;
 			}
