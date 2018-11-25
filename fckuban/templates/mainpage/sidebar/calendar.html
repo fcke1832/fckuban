@@ -1,0 +1,48 @@
+{% load static %}
+{% load thumbnail %}
+<div class="game-calendar">
+    <h3>КАЛЕНДАРЬ</h3>
+    <div class="calendar-nav">
+        {% for match in fcke_matches_list %}
+            <div><span class="day">{{ match.start_time|date:"j" }}</span><br>{{ match.start_time|date:"b" }}</div>
+        {% endfor %}
+    </div>
+    <div class="calendar-info">
+        {% for match in fcke_matches_list %}
+            <div class="game-info">
+                <h4 class="when-where">{{ match.start_time|date:"l" }}{% if not match.time_invisible %} {{ match.start_time|date:"H:i" }}{% endif %} <br>{% if match.stadium %}{{ match.stadium }}{% endif %}</h4>
+                <div class="game-result">
+                    <div class="team">
+                            {% thumbnail match.home_team.logo "80x80" crop="center" as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                            <br>
+                            {{ match.home_team.name.strip }}
+                            <br>
+                            <span class="team-city">({{ match.home_team.location.strip }})</span>
+                    </div>
+                    <div class="{% if match.is_finished and match.home_goals %}score{% else %}versus{% endif %}">
+                        {% if match.is_finished and match.home_goals %}
+                            {{ match.home_goals }}:{{ match.guest_goals }}
+                        {% else %}
+                            VS
+                        {% endif %}
+                    </div>
+                    <div class="team">
+                        <span>
+                            {% thumbnail match.guest_team.logo "80x80" crop="center" as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                            <br>
+                            {{ match.guest_team.name.strip }}
+                            <br>
+                            <span class="team-city">({{ match.guest_team.location.strip }})</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="tournament">{% if match.tournament %}{{ match.tournament }}{% endif %}<br>{% if match.tour %}{{ match.tour }}{% endif %}</div>
+                <div class="buy-tickets"></div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
