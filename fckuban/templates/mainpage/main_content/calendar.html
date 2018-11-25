@@ -10,7 +10,7 @@
     <div class="calendar-info">
         {% for match in fcke_matches_list %}
             <div class="game-info">
-                <h4 class="when-where">{{ match.start_time|date:"l" }}{% if not match.time_invisible %} {{ match.start_time|date:"H:i" }}{% endif %},<br>{% if match.stadium %}{{ match.stadium }}{% endif %}</h4>
+                <h4 class="when-where">{{ match.start_time|date:"l" }}{% if not match.time_invisible %} {{ match.start_time|date:"H:i" }}{% endif %} <br>{% if match.stadium %}{{ match.stadium }}{% endif %}</h4>
                 <div class="game-result">
                     <div class="team">
                             {% thumbnail match.home_team.logo "80x80" crop="center" as im %}

@@ -28,3 +28,11 @@ class MapsLink(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Hashtag(models.Model):
+    name = models.CharField('Хэштег на главной', max_length=30)
+    is_active = models.BooleanField('Активный', default=False)
+
+    def __str__(self):
+        return self.name

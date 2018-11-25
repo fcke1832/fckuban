@@ -9,9 +9,7 @@
                 <h2>Футбольного клуба «Кубань»</h2>
             </div>
         </div>
-        <div class="underbanner">
-            <div class="hashtag">#КУБАНЬЖИВА</div>
-        </div>
+
         <div class='scoretable'>
             <nav class="scoretable-trigger">Турнирная Таблица</nav>
             <div class="scoretable-items" id='scoretable'>
@@ -35,5 +33,10 @@
             </table>
             </div>
         </div>
+
+        <div class="underbanner">
+            <div class="hashtag">{% if hashtag %}#{{ hashtag|upper }}{% endif %}</div>
+        </div>
+
     </div>
 </section>

@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from banner.models import Banner
 from news.models import News
 from tournaments.models import Tournament, Team
-from links.models import YoutubeLink, SocialNetworkLink, MapsLink
+from links.models import YoutubeLink, SocialNetworkLink, MapsLink, Hashtag
 from calendar_matches.models import Match
 from seo.models import SeoData
 
@@ -67,6 +67,8 @@ class MainView(TemplateView):
         context['fcke_matches_list'] = fcke_matches_list
 
         banner = Banner.objects.filter(published=True).order_by('-id').first()
+        hashtag = Hashtag.objects.filter(is_active=True).order_by('-id').first()
         context['banner'] = banner if banner else None
+        context['hashtag'] = hashtag if hashtag else None
         context['seo'] = self._seo_data()
         return context
