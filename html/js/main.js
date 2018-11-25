@@ -31,19 +31,20 @@ timer.addEventListener('reset', function (e) {
 
 // sript for Header Menu on resize
 window.addEventListener("resize", function() {
-  if ($(this).width() >= 960) {
-   $(".header-menu").css('display' , 'block'); 
+  if ($(this).width() >= 956) {
+   $(".header-menu").css('display' , 'block');
+  $('.scoretable-items').css("display", "block");
  }else {
   $('.header-menu').css('display' , 'none'); 
+  $('.scoretable-items').css("display", "none");
 }
 });
 // sript for Scoretable on resize
 $('.scoretable-trigger').on("click", function() {
-  if (win.width() <= 820) {
+  if (win.width() <= 956) {
     $('.scoretable-items').slideToggle();       
-  }
+  };
 });
-
 $(window).on('orientationchange', function() {
   $('.scoretable-items').css("display", "");
 });
