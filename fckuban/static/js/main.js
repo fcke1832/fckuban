@@ -6,8 +6,6 @@ $('.publication-p').each(function(index, element) {
     $clamp(element, { clamp: 5});
 });
 
-// var Timer = require('easytimer');
-
 var timer = new Timer();
 $('#chronometre .startButton').click(function () {
     timer.start();
@@ -98,6 +96,7 @@ $('.calendar-info').slick({
 $('.calendar-nav').slick({
   slidesToShow: 5,
   slidesToScroll: 1,
+  initialSlide: 8,
   asNavFor: '.calendar-info',
   dots: false,
   centerMode: true,
