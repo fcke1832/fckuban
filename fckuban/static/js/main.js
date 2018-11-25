@@ -6,21 +6,47 @@ $('.publication-p').each(function(index, element) {
     $clamp(element, { clamp: 5});
 });
 
+// var Timer = require('easytimer');
+
+var timer = new Timer();
+$('#chronometre .startButton').click(function () {
+    timer.start();
+});
+$('#chronometre .pauseButton').click(function () {
+    timer.pause();
+});
+$('#chronometre .stopButton').click(function () {
+    timer.stop();
+});
+$('#chronometre .resetButton').click(function () {
+    timer.reset();
+});
+timer.addEventListener('secondsUpdated', function (e) {
+    $('#chronometre .values').html(timer.getTimeValues().toString());
+});
+timer.addEventListener('started', function (e) {
+    $('#chronometre .values').html(timer.getTimeValues().toString());
+});
+timer.addEventListener('reset', function (e) {
+    $('#chronometre .values').html(timer.getTimeValues().toString());
+});
+
 // sript for Header Menu on resize
 window.addEventListener("resize", function() {
-  if ($(this).width() >= 850) {
-   $(".header-menu").css('display' , 'block'); 
+  if ($(this).width() >= 956) {
+   $(".header-menu").css('display' , 'block');
+  $('.scoretable-items').css("display", "block");
  }else {
   $('.header-menu').css('display' , 'none'); 
+  $('.scoretable-items').css("display", "none");
 }
 });
 // sript for Scoretable on resize
 $('.scoretable-trigger').on("click", function() {
-  if (win.width() <= 820) {
+  if (win.width() <= 956) {
     $('.scoretable-items').slideToggle();       
-  }
+  };
 });
-
 $(window).on('orientationchange', function() {
   $('.scoretable-items').css("display", "");
 });
