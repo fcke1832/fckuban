@@ -19,20 +19,25 @@
         </div>
     </div>
     <div class="side-bar">
-        {% include "mainpage/main_content/calendar.html" %}
+        {% include "mainpage/sidebar/calendar.html" %}
         {% comment %}
-        {% include "mainpage/main_content/vk-widget.html" %}
-        {% include "mainpage/main_content/events.html" %}
+        {% include "mainpage/sidebar/translation-mini.html" %}
+        {% include "mainpage/sidebar/birthdays.html" %}
+        {% include "mainpage/sidebar/instagram-widget.html" %}
+        {% include "mainpage/sidebar/vk-widget.html" %}
+        {% include "mainpage/sidebar/events.html" %}
         {% endcomment %}
     </div>
 </section>
 <section class="info">
+    {% if banner %}
     <div>
         <h3>ИНФО</h3>
         {% thumbnail banner.image "960x790" crop="center" upscale=True as im %}
             <img src="{{ im.url }}" height="100%" width="100%">
         {% endthumbnail %}
     </div>
+    {% endif %}
 
     {% comment %}
     <div class="our-support">
