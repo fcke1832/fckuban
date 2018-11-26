@@ -4,21 +4,19 @@
 
 {% block content %}
     <section class="publications-wrap">
-		<h4 class="publication-title opened-title">{{ news.title|upper }}</h4>
 		<div class="opened-publication">
-			<div class="introduction">
-             {% thumbnail news.image "700x400" crop="center" as im %}
-			    <img src="{{ im.url }} " class="introduction-img">
+			<h4 class="publication-title opened-title">{{ news.title|upper }}</h4>
+             {% thumbnail news.image "750x400" crop="center" upscale=True as im %}
+			    <img src="{{ im.url }}" class="introduction-img" height="100%" width="100%">
              {% endthumbnail %}
-			<p>{{ news.title|upper }}</p>
 				{% comment %}
+			<p>{{ news.title|upper }}</p>
 			<div class="social-nets">
 				<a href=""><img src="{% static 'images/vk-g-logo.png' %}" alt="VK"></a>
 				<a href=""><img src="{% static 'images/facebook-g-logo.png' %}" alt="Facebook"></a>
 				<a href=""><img src="{% static 'images/instagram-g-logo.png' %}" alt="Instagram"></a>
 			</div>
 				{% endcomment %}
-			</div>
 			<div class="publication-text">
 				{{ news.news_text|safe }}
 		</div>
