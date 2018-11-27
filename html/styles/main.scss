@@ -1196,11 +1196,12 @@
 			}
 		}
 		footer {
-			background: #262626;
+			background: $BaseYellow;
 			padding: 2em;
 			margin-top: 50px;
 			text-align: center;
 			position: relative;
+			color: black;
 
 			.footer-wrap {
 				.footer-social-links {
@@ -1208,6 +1209,7 @@
 					img {
 						margin-right: 10px;
 						margin-bottom: 30px;
+						width: 50px;
 					}
 				}
 				p {
