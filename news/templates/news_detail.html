@@ -24,7 +24,7 @@
 		<h3 class="similar-publications">ПО ТЕМЕ</h3>
 		<div class="publications-items">
             {% for news_item in another_news %}
-			<a href="" class="publication">
+			<a href="{% url 'news:news_detail' news_item.slug %}" class="publication">
 				{% thumbnail news_item.image "700x400" crop="center" as im %}
 			        <img src="{{ im.url }} ">
                 {% endthumbnail %}
