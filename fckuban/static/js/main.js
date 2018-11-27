@@ -96,7 +96,7 @@ $('.calendar-info').slick({
 $('.calendar-nav').slick({
   slidesToShow: 5,
   slidesToScroll: 1,
-  // initialSlide: 2,
+  initialSlide: 2,
   asNavFor: '.calendar-info',
   dots: false,
   centerMode: true,

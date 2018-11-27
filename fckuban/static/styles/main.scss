@@ -1196,11 +1196,12 @@
 			}
 		}
 		footer {
-			background: #262626;
+			background: $BaseYellow;
 			padding: 2em;
 			margin-top: 50px;
 			text-align: center;
 			position: relative;
+			color: black;
 
 			.footer-wrap {
 				.footer-social-links {
@@ -1208,6 +1209,7 @@
 					img {
 						margin-right: 10px;
 						margin-bottom: 30px;
+						width: 50px;
 					}
 				}
 				p {
@@ -2119,6 +2121,11 @@
 			}
 		}
 		@media screen and  (min-width: 2300px) and (min-height: 1080px) {
+			.birthdays {
+				ul {
+					max-height: 900px;
+				}
+			}
 			footer {
 				.footer-wrap {
 					padding-top: 36vh;
