@@ -1,6 +1,7 @@
 from itertools import chain
 
 from django.views.generic import TemplateView
+from django.utils import timezone
 from banner.models import Banner
 from news.models import News
 from tournaments.models import Tournament, Team
@@ -22,9 +23,26 @@ class MainView(TemplateView):
     def _get_tournament(self):
         return Tournament.objects.filter(on_main=True).first()
 
+    def _get_periodic_news(self):
+        return News.objects.filter(published=False, is_periodic=True)
+
+    def check_news_time(self, news):
+        """
+        Принимает кверисет news с отложенными по публикации новостями
+        Если время публикации настало - переводим новость в публикуемые
+        """
+        now = timezone.now()
+        for news_item in news:
+            if news_item.date_pub < now:
+                news_item.published = True
+                news_item.is_periodic = False
+                news_item.save()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        periodic_news = self._get_periodic_news()
+        if periodic_news:
+            self.check_news_time(periodic_news)
         context['news_qs'] = self._get_news()
         current_tournament = self._get_tournament()
         if current_tournament:
