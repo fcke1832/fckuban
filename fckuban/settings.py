@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # apps
     'banner',
+    'birthdays',
     'calendar_matches',
     'fckuban',
     'links',
