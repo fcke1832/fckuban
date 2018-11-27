@@ -14,6 +14,7 @@ class News(models.Model):
     date_pub = models.DateTimeField('Дата публикации')
     news_text = RichTextField('Полный текст', null=True)
     published = models.BooleanField('Опубликовать', default=False)
+    is_periodic = models.BooleanField('Опубликовать по времени', default=False)
     image = ImageField('Фото', default='', null=None, blank=False, upload_to='media/news_upload', help_text='Размер фото 750x400')
     slug = models.SlugField('Ссылка', max_length=200, null=True, blank=True)
 
