@@ -148,6 +148,7 @@
 		left: 0;
 		z-index: -1000;
 		background: url(../images/green-background.jpg) no-repeat top center / cover;
+		box-sizing: border-box;
 	}
 	input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
 	input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
@@ -1206,7 +1207,6 @@
 		}
 		footer {
 			background: url(../images/yellow-background.jpg) no-repeat top center /cover;
-			width: 100%;
 			padding: 2em;
 			margin-top: 50px;
 			text-align: center;
@@ -1540,9 +1540,9 @@
 					}
 				}
 			}
-				.footer-wrap {
-					font-size: .7em;
-				}
+			.footer-wrap {
+				font-size: .7em;
+			}
 		}
 		@media screen and (max-width: 972px) {
 			.main-menu {
@@ -1717,6 +1717,15 @@
 							}
 						}
 					}
+				}
+			}
+			.birthdays-inner {
+				width: 50%;
+			}
+			.birthdays {
+				min-height: 0;
+				ul {
+					max-height: 340px;
 				}
 			}
 			.publications-wrap {
@@ -1899,6 +1908,15 @@
 						}
 					}
 				}
+				.birthdays-inner {
+					width: 50%;
+				}
+				.birthdays {
+					min-height: 0;
+					ul {
+						max-height: 360px;
+					}
+				}
 				.side-bar {
 					flex-direction: row;
 					width: 100%;
@@ -2002,12 +2020,6 @@
 					iframe {
 						height: 50vh;
 					}
-				}
-			}
-			footer {
-				height: 35vh;
-				.footer-wrap {
-					padding-top: 25vh;
 				}
 			}
 		}
@@ -2134,11 +2146,6 @@
 			.birthdays {
 				ul {
 					max-height: 900px;
-				}
-			}
-			footer {
-				.footer-wrap {
-					padding-top: 36vh;
 				}
 			}
 		}
