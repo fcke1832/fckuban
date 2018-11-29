@@ -88,6 +88,7 @@ $('.main-slider').slick({
 $('.calendar-info').slick({
   slidesToShow: 1,
   slidesToScroll: 1,
+  initialSlide: 2,
   arrows: false,
   asNavFor: '.calendar-nav',
   draggable: false,
