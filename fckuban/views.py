@@ -18,7 +18,7 @@ class MainView(TemplateView):
         return seo_data
 
     def _get_news(self):
-        return News.objects.filter(published=True).order_by('-date_pub')[:6]
+        return News.objects.filter(published=True).order_by('-date_pub')[:5]
 
     def _get_tournament(self):
         return Tournament.objects.filter(on_main=True).first()

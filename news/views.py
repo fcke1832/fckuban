@@ -1,5 +1,7 @@
+from django.shortcuts import redirect, render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
+from django.urls import reverse
 from links.models import YoutubeLink, SocialNetworkLink
 from .models import News
 
@@ -11,6 +13,17 @@ class NewsListView(ListView):
 
     def get_queryset(self):
         return News.objects.filter(published=True).order_by('-date_pub')[:8]
+
+
+def news_list_preview(request):
+    user = request.user
+    if not user.is_authenticated and not user.is_superuser and not user.is_staff:
+        return redirect(reverse('index'))
+    preview_news = News.objects.filter(published=False).order_by('-date_pub')[:8]
+    template = 'news_list_preview.html'
+    return render(request, template, {
+        'preview_news': preview_news,
+    })
 
 
 class NewsDetailView(DetailView):
