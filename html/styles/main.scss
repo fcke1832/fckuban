@@ -361,8 +361,8 @@
 		.slide {
 			background-size: cover;
 			overflow: hidden;
-			height: 54vh;
-			min-height: 50vh;
+			height: 100%;
+			min-height: 100%;
 
 			img {
 				width: 100%;
@@ -544,6 +544,15 @@
 						}
 					}
 				}	
+			}
+		}
+		.banner {
+			order: 3;
+			h3 {
+				margin: 1em 0;
+			}
+			img {
+				width: 100%;
 			}
 		}
 		.side-bar {
@@ -1401,7 +1410,7 @@
 								padding-top: 20px;
 
 								h3 {
-									font-size: 90%;
+									font-size: 80%;
 								} 
 							}
 						}
