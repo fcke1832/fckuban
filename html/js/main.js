@@ -61,9 +61,9 @@ var galleryFeed = new Instafeed({
 });
 galleryFeed.run();
 
-new SimpleBar(document.getElementById('scoretable'), { 
-  autoHide: false,
-});
+// new SimpleBar(document.getElementById('scoretable'), { 
+//   autoHide: false,
+// });
 
 // sliders
 $('.main-slider').slick({
@@ -88,7 +88,6 @@ $('.main-slider').slick({
 $('.calendar-info').slick({
   slidesToShow: 1,
   slidesToScroll: 1,
-  initialSlide: 2,
   arrows: false,
   asNavFor: '.calendar-nav',
   draggable: false,
@@ -97,7 +96,6 @@ $('.calendar-info').slick({
 $('.calendar-nav').slick({
   slidesToShow: 5,
   slidesToScroll: 1,
-  initialSlide: 2,
   asNavFor: '.calendar-info',
   dots: false,
   centerMode: true,
