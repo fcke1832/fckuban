@@ -70,6 +70,8 @@ class MainView(TemplateView):
                     context['youtube_channel'] = link.link
                 elif 'https://t.me/' in link.link:
                     context['telegram_channel'] = link.link
+                elif 'https://twitter.com/' in link.link:
+                    context['twitter_link'] = link.link
         maps_link = MapsLink.objects.filter(is_active=True).first()
         if maps_link:
             context['maps_link'] = maps_link.iframe
