@@ -210,25 +210,31 @@
 					}
 				}
 			}
-			.underbanner {
-				/*background: url(../images/field.jpg) no-repeat  top center / cover;*/
-				/*height: 100vh;*/
+/*			.underbanner {
 				position: relative;
 				z-index: 1;
 				display: flex;
 				justify-content: flex-start;
-				align-items: center;
-				/*padding-left: 6%;*/
-				img {
-					width: 100%;
-					height: auto;
-					display: block;
-				}
-/*			.hashtag {
+				align-items: center;*/
+				.underbanner {
+					background: url(../images/field.jpg) no-repeat  top center / cover;
+					height: 100vh;
+					position: relative;
+					z-index: 1;
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					padding-left: 6%;
+					img {
+						width: 100%;
+						height: auto;
+						display: block;
+					}
+			.hashtag {
 				@include ExtraBoldFont;
 				font-size: 7vw;
 				letter-spacing: 0;
-				}*/
+				}
 				.underbanner-description {
 					width: 100%;
 					position: absolute;
@@ -1621,7 +1627,7 @@
 			}
 			.main-banner {
 				.underbanner {
-					/*					height: 50vh;*/
+					height: 50vh;
 					justify-content: center;
 					padding-left: 0;
 					.underbanner-description {
@@ -2023,18 +2029,18 @@
 				}
 			}
 			@media screen and (min-width: 821px) and (max-width: 1100px) and (orientation: portrait){
-/*				.main-banner {
+				.main-banner {
 					.underbanner {
-						height: 50vh;
+						height: 45vh;
 						padding-left: 10%;
 					}
-				.scoretable {
+/*				.scoretable {
 					top: 15vw;
 					.scoretable-items {
 						height: 40vh;
 					}
-					}
 					}*/
+					}
 					.news {
 						.main-slider {
 							.slide {
