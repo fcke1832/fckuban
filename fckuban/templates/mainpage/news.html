@@ -7,7 +7,7 @@
             <h3>Новости</h3>
             <ul>
                 {% for simple_news in news_qs %}
-                    <li><a href="{% url 'news:news_detail' simple_news.slug %}">{{ simple_news.date_pub|date:"SHORT_DATE_FORMAT" }}</span><span>{{ simple_news.title }}</a>
+                    <li><a href="{% url 'news:news_detail' simple_news.slug %}">{{ simple_news.date_pub|date:"SHORT_DATE_FORMAT" }}</span><span>{{ simple_news.title|upper }}</a>
                     </li>
                 {% endfor %}
             </ul>
