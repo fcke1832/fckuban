@@ -12,14 +12,14 @@ class NewsListView(ListView):
     context_object_name = 'news_list'
 
     def get_queryset(self):
-        return News.objects.filter(published=True).order_by('-date_pub')[:8]
+        return News.objects.filter(published=True).order_by('-date_pub')
 
 
 def news_list_preview(request):
     user = request.user
     if not user.is_authenticated and not user.is_superuser and not user.is_staff:
         return redirect(reverse('index'))
-    preview_news = News.objects.filter(published=False).order_by('-date_pub')[:8]
+    preview_news = News.objects.filter(published=False).order_by('-date_pub')
     template = 'news_list_preview.html'
     return render(request, template, {
         'preview_news': preview_news,

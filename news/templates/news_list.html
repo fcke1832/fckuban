@@ -14,7 +14,7 @@
 				{% endthumbnail %}
 				<div class="publication-description">
 					<p class="publication-p">
-						{{ news.title }}
+						{{ news.title|upper }}
 					</p>
 				</div>
 				<div class="publication-date">{{ news.date_pub|date:"SHORT_DATE_FORMAT" }}</div>
