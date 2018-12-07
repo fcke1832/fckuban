@@ -115,6 +115,10 @@ $('.menu-icon').on('click',function() {
 $('.search').on('click',function() {
  $(".search-field").slideToggle();
 });
+$('.team-button').on('click',function() {
+  $('.team-button').not(this).removeClass('active-button');
+  $(this).toggleClass('active-button');
+});
 
 // size for calendar navigation items
 ($('div.calendar-nav').find("div.slick-slide").children().addClass('game-date').width($('.calendar-nav').width() * 0.17));
