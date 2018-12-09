@@ -117,7 +117,7 @@ $('.search').on('click',function() {
 });
 $('.team-button').on('click',function() {
   $('.team-button').not(this).removeClass('active-button');
-  $(this).toggleClass('active-button');
+  $(this).addClass('active-button');
 });
 
 // size for calendar navigation items
