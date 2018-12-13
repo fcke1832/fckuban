@@ -23,8 +23,7 @@ class Team(models.Model):
     is_active = models.BooleanField('Активная', default=True)
     is_fcke = models.BooleanField('Наша команда', default=False)
     logo = ImageField('Логотип', default='', null=True, blank=True, upload_to='media/logo')
-    position_number = models.PositiveSmallIntegerField('Занимаемое место', unique=True, blank=True, null=True)
-
+    position_number = models.PositiveSmallIntegerField('Занимаемое место', blank=True, null=True)
 
     def __str__(self):
         return '{}({})'.format(self.name, self.location)
