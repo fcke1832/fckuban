@@ -4,7 +4,8 @@ from sorl.thumbnail import ImageField
 
 class Tournament(models.Model):
     title = models.CharField('Название турнира', max_length=200)
-    on_main = models.BooleanField('На главной', default=False)
+    on_main = models.BooleanField('В таблице', default=False)
+    in_calendar = models.BooleanField('В календаре', default=False)
 
     def __str__(self):
         return self.title

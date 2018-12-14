@@ -3,12 +3,12 @@
 <div class="game-calendar">
     <h3>КАЛЕНДАРЬ</h3>
     <div class="calendar-nav">
-        {% for match in fcke_matches_list %}
+        {% for match in calendar_matches %}
             <div><span class="day">{{ match.start_time|date:"j" }}</span><br>{{ match.start_time|date:"b" }}</div>
         {% endfor %}
     </div>
     <div class="calendar-info">
-        {% for match in fcke_matches_list %}
+        {% for match in calendar_matches %}
             <div class="game-info">
                 <h4 class="when-where">{{ match.start_time|date:"l" }}{% if not match.time_invisible %} {{ match.start_time|date:"H:i" }}{% endif %} <br>{% if match.stadium %}{{ match.stadium }}{% endif %}</h4>
                 <div class="game-result">
