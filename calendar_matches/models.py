@@ -1,7 +1,9 @@
 from django.db import models
 from tournaments.models import Team, Tournament
 
+
 class Match(models.Model):
+    is_active = models.BooleanField('В календаре на главной', default=False)
     home_team = models.ForeignKey(Team, models.CASCADE, verbose_name='Хозяева', related_name='home_match')
     guest_team = models.ForeignKey(Team, models.CASCADE, verbose_name='Гости', related_name='guest_match')
     tournament = models.ForeignKey(Tournament, models.CASCADE, verbose_name='Турнир', related_name='match')

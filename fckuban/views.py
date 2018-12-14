@@ -1,7 +1,9 @@
 from itertools import chain
 
+from django.db.models import Prefetch
 from django.views.generic import TemplateView
 from django.utils import timezone
+
 from banner.models import Banner
 from news.models import News
 from tournaments.models import Tournament, Team
@@ -21,10 +23,21 @@ class MainView(TemplateView):
         return News.objects.filter(published=True).order_by('-date_pub')[:5]
 
     def _get_tournament(self):
-        return Tournament.objects.filter(on_main=True).first()
+        try:
+            return Tournament.objects.filter(on_main=True)[0]
+        except:
+            return None
 
     def _get_periodic_news(self):
         return News.objects.filter(published=False, is_periodic=True)
+
+    def _get_calendar(self):
+        """
+        Получаем турниры для календаря и связанные с ними матчи
+        """
+        return Tournament.objects.filter(in_calendar=True).prefetch_related(
+            Prefetch('match', queryset=Match.objects.filter(is_active=True))
+        )
 
     def check_news_time(self, news):
         """
@@ -41,17 +54,23 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         periodic_news = self._get_periodic_news()
+
         if periodic_news:
             self.check_news_time(periodic_news)
         context['news_qs'] = self._get_news()
         current_tournament = self._get_tournament()
+        calendar_tournaments = self._get_calendar()
+
         if current_tournament:
             context['current_tournament'] = current_tournament
             is_position_teams = current_tournament.team.filter(is_active=True).exclude(position_number=None).order_by('position_number')
             zero_position_teams = current_tournament.team.filter(is_active=True, position_number=None)
             context['teams'] = list(chain(is_position_teams, zero_position_teams))
 
-        youtube_link = YoutubeLink.objects.filter(on_main=True).first()
+        try:
+            youtube_link = YoutubeLink.objects.filter(on_main=True)[0]
+        except:
+            youtube_link = None
         if youtube_link:
             context['youtube_link'] = youtube_link
         youtube_blog = YoutubeLink.objects.exclude(id=youtube_link.id).order_by('-id')[:6]
@@ -72,23 +91,43 @@ class MainView(TemplateView):
                     context['telegram_channel'] = link.link
                 elif 'https://twitter.com/' in link.link:
                     context['twitter_link'] = link.link
-        maps_link = MapsLink.objects.filter(is_active=True).first()
+        try:
+            maps_link = MapsLink.objects.filter(is_active=True)[0]
+        except:
+            maps_link = None
         if maps_link:
             context['maps_link'] = maps_link.iframe
 
-        fcke_team = Team.objects.filter(is_fcke=True).first()
+        try:
+            fcke_team = Team.objects.filter(is_fcke=True)[0]
+        except:
+            fcke_team = None
 
-        home_matches = Match.objects.filter(tournament=current_tournament, home_team=fcke_team).exclude(start_time=None)
-        guest_matches = Match.objects.filter(tournament=current_tournament, guest_team=fcke_team).exclude(start_time=None)
-        context['home_matches'] = home_matches
-        context['guest_matches'] = guest_matches
+        # home_matches = Match.objects.filter(tournament=current_tournament, home_team=fcke_team).exclude(start_time=None)
+        # guest_matches = Match.objects.filter(tournament=current_tournament, guest_team=fcke_team).exclude(start_time=None)
+        # context['home_matches'] = home_matches
+        # context['guest_matches'] = guest_matches
+        context['calendar_tournaments'] = calendar_tournaments
+        calendar_matches = []
+        for tournament in calendar_tournaments:
+            for match in tournament.match.all().order_by('-start_time'):
+                if match not in calendar_matches:
+                    calendar_matches.append(match)
+        context['calendar_matches'] = sorted(calendar_matches, key=lambda instance: instance.start_time)
 
-        fcke_matches_list = sorted(chain(home_matches, guest_matches), key=lambda instance: instance.start_time)
-        context['fcke_matches_list'] = fcke_matches_list
+        # fcke_matches_list = sorted(chain(home_matches, guest_matches), key=lambda instance: instance.start_time)
+        # context['fcke_matches_list'] = fcke_matches_list
 
-        banner = Banner.objects.filter(published=True).order_by('-id').first()
-        hashtag = Hashtag.objects.filter(is_active=True).order_by('-id').first()
-        context['banner'] = banner if banner else None
-        context['hashtag'] = hashtag if hashtag else None
+        try:
+            banner = Banner.objects.filter(published=True).order_by('-id')[0]
+        except:
+            banner = None
+
+        try:
+            hashtag = Hashtag.objects.filter(is_active=True).order_by('-id')[0]
+        except:
+            hashtag = None
+        context['banner'] = banner
+        context['hashtag'] = hashtag
         context['seo'] = self._seo_data()
         return context
