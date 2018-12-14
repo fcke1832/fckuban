@@ -302,7 +302,9 @@
 					.simplebar-content {
 						margin-right: 0 !important;
 					}
-
+					.simplebar {
+						height: calc(100% - 154px);	
+					}
 					.simplebar-scrollbar:before {
 						background:$BaseGreen;
 						opacity: 1;
@@ -1335,7 +1337,7 @@ padding: .5em;
 					@media screen and  (max-width: 1600px) {
 				.main-banner-wrap {
 					.kuban-logo {
-						width: 220px;
+						width: 15vw;
 					}
 					.banner {
 						padding-left: 20px;
@@ -2231,6 +2233,13 @@ padding: .5em;
 						}
 					}
 				}
+				.scoretable {
+					.scoretable-items {
+						.simplebar {
+							height: calc(100% - 138px);
+						}
+					}
+				}
 			}
 			@media screen and  (min-width: 2300px)  {
 				body {
@@ -2287,7 +2296,20 @@ padding: .5em;
 							max-height: 900px;
 						}
 					}
+				.opened-publication {
+					font-size: 28px;
 				}
+				.publications-wrap {
+					.publication:nth-child(n) {
+						width: 15%;
+						margin-right: calc((100% - 90%) / 5);
+						margin-bottom: calc((100vw - 11vw) * 0.1 / 5);
+					} 
+					.publication:nth-child(6n) {
+						margin-right: 0;
+					}
+				}
+			}
 				/*IE 10,11 and Mcrosoft Edge*/ 
 				_:-ms-lang(x),.opened-translation {
 					.opened-translation-inner {
