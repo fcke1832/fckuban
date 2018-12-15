@@ -28,15 +28,18 @@ timer.addEventListener('started', function (e) {
 timer.addEventListener('reset', function (e) {
     $('#chronometre .values').html(timer.getTimeValues().toString());
 });
-
-// sript for Header Menu on resize
+// scotetable table height
+ $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
+// sript for Header Menu and scoretable on resize
 window.addEventListener("resize", function() {
   if ($(this).width() >= 956) {
    $(".header-menu").css('display' , 'block');
   $('.scoretable-items').css("display", "block");
+  $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
  }else {
   $('.header-menu').css('display' , 'none'); 
   $('.scoretable-items').css("display", "none");
+  $('.scrollbar').css('height' , '100%');
 }
 });
 // sript for Scoretable on resize
@@ -114,6 +117,10 @@ $('.menu-icon').on('click',function() {
 });
 $('.search').on('click',function() {
  $(".search-field").slideToggle();
+});
+$('.team-button').on('click',function() {
+  $('.team-button').not(this).removeClass('active-button');
+  $(this).addClass('active-button');
 });
 
 // size for calendar navigation items
