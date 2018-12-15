@@ -1,40 +1,53 @@
 {% load static %}
 <section class="head-banner">
-    <div class="main-banner">
+    <div class="main-banner-wrap">
         <img src="{% static 'images/fc_kuban_logo.png' %}" class="kuban-logo">
         <div class="yellow-line"></div>
         <div class='green-line'>
             <div class="main-title">
-                <h1>Официальный сайт</h1>
-                <h2>Футбольного клуба «Кубань»</h2>
+                <h2>Официальный сайт</h2>
+                <h1>ФК «Кубань»</h1>
             </div>
         </div>
 
         <div class='scoretable'>
             <nav class="scoretable-trigger">Турнирная Таблица</nav>
             <div class="scoretable-items" id='scoretable'>
-            <table>
-                <tbody>
-                    <thead>
-                        <th class="number">№</th>
-                        <th>Команда</th>
-                        <th>И</th>
-                        <th>О</th>
-                    </thead>
-                    {% for team in teams %}
-                        <tr class='{% if team.is_fcke %}special{% endif %}'>
-                            <td class="number">{{ forloop.counter }}</td>
-                            <td title="{{ team }}">{{ team.name }}</td>
-                            <td>{{ team.matches }}</td>
-                            <td>{{ team.points }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            </div>
+                <div class="team-select">
+                    <nav class="teams">
+                        {% comment %}
+                        <button class="team-button active-button">Кубань 1</button>
+                        <button class="team-button">Кубань 2</button>
+                        {% endcomment %}
+                    </nav>
+                    <div class="tournament-name">{{ current_tournament }}</div>     
+                </div>
+                
+                <div data-simplebar class="scrollbar">  
+                <table>
+                    <tbody>
+                        <thead>
+                            <th class="number">№</th>
+                            <th>Команда</th>
+                            <th>И</th>
+                            <th>О</th>
+                        </thead>
+                        {% for team in teams %}
+                            <tr class='{% if team.is_fcke %}special{% endif %}'>
+                                <td class="number">{{ forloop.counter }}</td>
+                                <td title="{{ team }}">{{ team.name }}</td>
+                                <td>{{ team.matches }}</td>
+                                <td>{{ team.points }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+                </div>
         </div>
 
-        <div class="underbanner">
+        <div class="banner">
+            <div class="overlay"></div>
             <div class="hashtag">{% if hashtag %}#{{ hashtag|upper }}{% endif %}</div>
         </div>
 
