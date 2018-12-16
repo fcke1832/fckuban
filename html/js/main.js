@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
   var gamedate = $("div.calendar-nav").find("div.slick-slide").children();
   var win = $(this);
@@ -75,10 +76,6 @@ var galleryFeed = new Instafeed({
 });
 galleryFeed.run();
 
-// new SimpleBar(document.getElementById('scoretable'), { 
-//   autoHide: false,
-// });
-
 // sliders
 $('.main-slider').slick({
  dots: true,
@@ -98,30 +95,35 @@ $('.main-slider').slick({
 ]
 });
 
+var initial = $('#current-slide').index();
 
-$('.calendar-info').slick({
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: false,
-  asNavFor: '.calendar-nav',
-  draggable: false,
-  swipe: false
-});
-$('.calendar-nav').slick({
-  slidesToShow: 5,
-  slidesToScroll: 1,
-  asNavFor: '.calendar-info',
-  dots: false,
-  centerMode: true,
-  centerPadding: 0,
-  arrows: false,
-  focusOnSelect: true,
-  infinite: false,
-  variableWidth: true,
-  draggable:false,
-  swipe: false
-});
-
+  $('.calendar-nav').slick({
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    asNavFor: '.calendar-info',
+    dots: false,
+    centerMode: true,
+    centerPadding: '0px',
+    arrows: false,
+    focusOnSelect: true,
+    infinite: false,
+    initialSlide: initial,
+    variableWidth: true,
+    draggable:false,
+    swipe: false
+  });
+    $('.calendar-info').slick({
+    infinite: false,
+    dots: false,
+    arrows: false, 
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    asNavFor: '.calendar-nav',
+    draggable: false,
+    swipe: false,
+    initialSlide: initial,
+  });
 // header menu and searchfield slide
 $('.menu-icon').on('click',function() {
  $(".header-menu").slideToggle();
@@ -133,9 +135,8 @@ $('.team-button').on('click',function() {
   $('.team-button').not(this).removeClass('active-button');
   $(this).addClass('active-button');
 });
-
 // size for calendar navigation items
-($('div.calendar-nav').find("div.slick-slide").children().addClass('game-date').width($('.calendar-nav').width() * 0.17));
+$('div.calendar-nav').find("div.slick-slide").children().addClass('game-date').width($('.calendar-nav').width() * 0.17);
 $('div.slick-current').find("div.game-date").addClass('current').width($('.calendar-nav').width() * 0.32);
 $('.game-date').on('click', function() {
   $('.game-date').not(this).removeClass('current').width($('.calendar-nav').width() * 0.17);
