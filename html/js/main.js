@@ -42,6 +42,17 @@ window.addEventListener("resize", function() {
   $('.scrollbar').css('height' , '100%');
 }
 });
+// scrollbar height on wide screen
+if ($(this).width() >= 2560){
+$('.scrollbar').height($('.scoretable').height() - 70 - $('.team-select').height());
+};
+window.addEventListener("resize", function() {
+  if ($(this).width() >= 2560) {
+  $('.scrollbar').height($('.scoretable').height() - 70 - $('.team-select').height());
+ }else {
+  $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
+}
+});
 // sript for Scoretable on resize
 $('.scoretable-trigger').on("click", function() {
   if (win.width() <= 956) {
