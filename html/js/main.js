@@ -30,26 +30,38 @@ timer.addEventListener('reset', function (e) {
     $('#chronometre .values').html(timer.getTimeValues().toString());
 });
 // scotetable table height
- $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
+ if ($(this).width() <= 955) {
+  $('.scrollbar').css('height' , '100%');
+};
+if ($(this).width() >= 956) {
+  $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
+};
+ // scrollbar height on wide screen
+if ($(this).width() >= 2560){
+$('.scrollbar').height($('.scoretable') - 70 - $('.team-select').height());
+};
 // sript for Header Menu and scoretable on resize
 window.addEventListener("resize", function() {
   if ($(this).width() >= 956) {
-   $(".header-menu").css('display' , 'block');
+  $(".header-menu").css('display' , 'block');
   $('.scoretable-items').css("display", "block");
   $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
  }else {
   $('.header-menu').css('display' , 'none'); 
   $('.scoretable-items').css("display", "none");
-  $('.scrollbar').css('height' , '100%');
 }
 });
-// scrollbar height on wide screen
-if ($(this).width() >= 2560){
-$('.scrollbar').height($('.scoretable').height() - 70 - $('.team-select').height());
-};
+// sript  scrollbar on resize
 window.addEventListener("resize", function() {
   if ($(this).width() >= 2560) {
   $('.scrollbar').height($('.scoretable').height() - 70 - $('.team-select').height());
+ }else {
+  $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
+}
+});
+window.addEventListener("resize", function() {
+  if ($(this).width() <= 955) {
+   $('.scrollbar').css('height' , '100%');
  }else {
   $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
 }
