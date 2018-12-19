@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.utils import timezone
+from .models import BirthdayItem
 
-# Create your views here.
+
+def current_month_birtdays():
+    """
+    Получаем именниников в текущем месяце
+    """
+    now = timezone.now()
+    birthdays = BirthdayItem.objects.all()
+    return birthdays

@@ -1,3 +1,4 @@
+from sorl.thumbnail import ImageField
 from django.db import models
 
 
@@ -5,11 +6,13 @@ class BirthdayItem(models.Model):
     """
     Модель для именинников
     """
-    name = models.CharField("Имя и фамилия", max_length=200)
+    name = models.CharField("Имя", max_length=50)
+    second_name = models.CharField("Фамилия", max_length=50, default="")
     date_of_birth = models.DateField(blank=True, null=True, verbose_name="Дата рождения")
+    image = ImageField('Фото', default='', null=True, blank=True, upload_to='media/birthdays_upload', help_text='Размер фото 92x92')
 
     def __str__(self):
-        return self.name
+        return "{} {}".format(self.name, self.second_name)
 
     class Meta:
         verbose_name = 'Именинник'
