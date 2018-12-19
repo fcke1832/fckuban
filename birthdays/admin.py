@@ -4,6 +4,6 @@ from .models import BirthdayItem
 
 @admin.register(BirthdayItem)
 class BirthdayItemAdmin(admin.ModelAdmin):
-    list_display = ('name', 'date_of_birth',)
-    list_filter = ('name', 'date_of_birth',)
-    list_editable = ('date_of_birth',)
+    list_display = ('name', 'second_name', 'date_of_birth',)
+    list_filter = ('name', 'second_name', 'date_of_birth',)
+    # list_editable = ('name', 'second_name','date_of_birth',)
