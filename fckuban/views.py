@@ -106,6 +106,7 @@ class MainView(TemplateView):
             maps_link = None
         if maps_link:
             context['maps_link'] = maps_link.iframe
+            context['maps_title'] = maps_link.title
 
         try:
             fcke_team = Team.objects.filter(is_fcke=True)[0]

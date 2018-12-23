@@ -24,6 +24,7 @@ class SocialNetworkLink(models.Model):
 class MapsLink(models.Model):
     name = models.CharField('Название', max_length=30)
     iframe = models.TextField('Ссылка', default='', validators=[URLValidator()])
+    title = models.CharField('Заголовок раздела', max_length=100, default='')
     is_active = models.BooleanField('На главной', default=False)
 
     def __str__(self):

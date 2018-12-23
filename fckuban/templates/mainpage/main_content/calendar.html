@@ -4,7 +4,7 @@
     <h3>КАЛЕНДАРЬ</h3>
     <div class="calendar-nav">
         {% for match in fcke_matches_list %}
-            <div><span class="day">{{ match.start_time|date:"j" }}</span><br>{{ match.start_time|date:"b" }}</div>
+            <span><span class="day">{{ match.start_time|date:"j" }}</span><br>{{ match.start_time|date:"b" }}</span>
         {% endfor %}
     </div>
     <div class="calendar-info">
