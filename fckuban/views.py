@@ -42,7 +42,7 @@ class MainView(TemplateView):
 
     def _check_now(self):
         now = timezone.now()
-        return now
+        return now.date()
 
     def check_news_time(self, news):
         """
@@ -55,9 +55,6 @@ class MainView(TemplateView):
                 news_item.published = True
                 news_item.is_periodic = False
                 news_item.save()
-
-    def check_future_match(self):
-        pass
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -113,30 +110,22 @@ class MainView(TemplateView):
         except:
             fcke_team = None
 
-        # home_matches = Match.objects.filter(tournament=current_tournament, home_team=fcke_team).exclude(start_time=None)
-        # guest_matches = Match.objects.filter(tournament=current_tournament, guest_team=fcke_team).exclude(start_time=None)
-        # context['home_matches'] = home_matches
-        # context['guest_matches'] = guest_matches
         context['calendar_tournaments'] = calendar_tournaments
         now = self._check_now()
         calendar_matches = []
         futured_calendar_matches = []
         for tournament in calendar_tournaments:
             for match in tournament.match.all().order_by('-start_time'):
-                # from IPython import embed; embed()
                 if match not in calendar_matches:
                     calendar_matches.append(match)
-                    if match.start_time < now:
+                    if match.start_time.date() >= now:
                         futured_calendar_matches.append(match)
+
         context['calendar_matches'] = sorted(calendar_matches, key=lambda instance: instance.start_time)
         try:
             context['future_match'] = (sorted(futured_calendar_matches, key=lambda instance: instance.start_time))[0]
         except IndexError:
             context['future_match'] = None
-
-        # fcke_matches_list = sorted(chain(home_matches, guest_matches), key=lambda instance: instance.start_time)
-        # context['fcke_matches_list'] = fcke_matches_list
-
 
         try:
             banner = Banner.objects.filter(published=True).order_by('-id')[0]
@@ -154,4 +143,5 @@ class MainView(TemplateView):
         context['banner'] = banner
         context['hashtag'] = hashtag
         context['seo'] = self._seo_data()
+
         return context
