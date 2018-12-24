@@ -106,11 +106,11 @@ $('.main-slider').slick({
 }
 ]
 });
-
-var initial = $('#current-slide').index();
+var SlidesCount = $('.day').closest('span').length - 1;
+var Initial = $('#current-slide').index();
 
   $('.calendar-nav').slick({
-    slidesToShow: 5,
+    slidesToShow: SlidesCount,
     slidesToScroll: 1,
     asNavFor: '.calendar-info',
     dots: false,
@@ -119,7 +119,7 @@ var initial = $('#current-slide').index();
     arrows: false,
     focusOnSelect: true,
     infinite: false,
-    initialSlide: initial,
+    initialSlide: Initial,
     variableWidth: true,
     draggable:false,
     swipe: false
@@ -134,7 +134,7 @@ var initial = $('#current-slide').index();
     asNavFor: '.calendar-nav',
     draggable: false,
     swipe: false,
-    initialSlide: initial,
+    initialSlide: Initial,
   });
 // header menu and searchfield slide
 $('.menu-icon').on('click',function() {
