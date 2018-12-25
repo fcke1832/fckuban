@@ -13,12 +13,21 @@ from seo.models import SeoData
 from birthdays.views import current_month_birtdays
 
 
+def get_hashtag():
+    try:
+        hashtag = Hashtag.objects.filter(is_active=True).order_by('-id')[0]
+    except:
+        hashtag = None
+    return hashtag
+
+
+def seo_data():
+    seo_data = SeoData.objects.last()
+    return seo_data
+
+
 class MainView(TemplateView):
     template_name = "main.html"
-
-    def _seo_data(self):
-        seo_data = SeoData.objects.last()
-        return seo_data
 
     def _get_news(self):
         return News.objects.filter(published=True).order_by('-date_pub')[:5]
@@ -43,6 +52,13 @@ class MainView(TemplateView):
     def _check_now(self):
         now = timezone.now()
         return now.date()
+
+    def _get_banner(self):
+        try:
+            banner = Banner.objects.filter(published=True).order_by('-id')[0]
+        except:
+            banner = None
+        return banner
 
     def check_news_time(self, news):
         """
@@ -127,21 +143,9 @@ class MainView(TemplateView):
         except IndexError:
             context['future_match'] = None
 
-        try:
-            banner = Banner.objects.filter(published=True).order_by('-id')[0]
-        except:
-            banner = None
-
-        try:
-            hashtag = Hashtag.objects.filter(is_active=True).order_by('-id')[0]
-        except:
-            hashtag = None
-
-        birthdays = current_month_birtdays()
-
-        context['birthdays'] = birthdays
-        context['banner'] = banner
-        context['hashtag'] = hashtag
-        context['seo'] = self._seo_data()
+        context['birthdays'] = current_month_birtdays()
+        context['banner'] = self._get_banner()
+        context['hashtag'] = get_hashtag()
+        context['seo'] = seo_data()
 
         return context
