@@ -2,6 +2,7 @@ from itertools import chain
 
 from django.views.generic.base import TemplateView
 from tournaments.models import Tournament, Team
+from fckuban.views import get_hashtag
 
 
 class TeamView(TemplateView):
@@ -15,4 +16,5 @@ class TeamView(TemplateView):
             is_position_teams = current_tournament.team.filter(is_active=True).exclude(position_number=None).order_by('position_number')
             zero_position_teams = current_tournament.team.filter(is_active=True, position_number=None)
             context['teams'] = list(chain(is_position_teams, zero_position_teams))
+        context['hashtag'] = get_hashtag()
         return context
