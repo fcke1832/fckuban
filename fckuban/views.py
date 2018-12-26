@@ -51,7 +51,7 @@ class MainView(TemplateView):
 
     def _check_now(self):
         now = timezone.now()
-        return now.date()
+        return now
 
     def _get_banner(self):
         try:
@@ -127,7 +127,7 @@ class MainView(TemplateView):
             fcke_team = None
 
         context['calendar_tournaments'] = calendar_tournaments
-        now = self._check_now()
+        now = self._check_now().date()
         calendar_matches = []
         futured_calendar_matches = []
         for tournament in calendar_tournaments:
