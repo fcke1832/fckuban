@@ -48,6 +48,10 @@ window.addEventListener("resize", function() {
   $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
  }else {
   $('.header-menu').css('display' , 'none'); 
+<<<<<<< HEAD
+=======
+  $('.scoretable-items').css("display", "none");
+>>>>>>> 417fcc368c4781cb69f056a12c8a9589943a4633
 }
 });
 // sript  scrollbar on resize
@@ -107,6 +111,10 @@ $('.main-slider').slick({
 });
 var SlidesCount = $('.day').closest('span').length - 1;
 var Initial = $('#current-slide').index();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 417fcc368c4781cb69f056a12c8a9589943a4633
   $('.calendar-nav').slick({
     slidesToShow: SlidesCount,
     slidesToScroll: 1,
@@ -128,11 +136,16 @@ var Initial = $('#current-slide').index();
     arrows: false, 
     slidesToShow: 1,
     slidesToScroll: 1,
+<<<<<<< HEAD
+=======
+    arrows: false,
+>>>>>>> 417fcc368c4781cb69f056a12c8a9589943a4633
     asNavFor: '.calendar-nav',
     draggable: false,
     swipe: false,
     initialSlide: Initial,
   });
+<<<<<<< HEAD
         $('.open-publication-slider').slick({
     infinite: true,
     dots: true,
@@ -140,6 +153,8 @@ var Initial = $('#current-slide').index();
     slidesToShow: 1,
     slidesToScroll: 1,
   });
+=======
+>>>>>>> 417fcc368c4781cb69f056a12c8a9589943a4633
 // header menu and searchfield slide
 $('.menu-icon').on('click',function() {
  $(".header-menu").slideToggle();

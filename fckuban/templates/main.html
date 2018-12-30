@@ -17,12 +17,22 @@
         <div class="video">
             {% include "mainpage/main_content/video.html" %}
         </div>
+
+        {% if banner %}
+            <div class="banner">
+                <h3>ИНФО</h3>
+                {% thumbnail banner.image "960x790" crop="center" upscale=True as im %}
+                    <a href="http://ookuban.com/"><img src="{{ im.url }}" height="100%" width="100%"></a>
+                {% endthumbnail %}
+            </div>
+        {% endif %}
+
     </div>
     <div class="side-bar">
         {% include "mainpage/sidebar/calendar.html" %}
         {% comment %}
-        {% include "mainpage/sidebar/translation-mini.html" %}
         {% include "mainpage/sidebar/birthdays.html" %}
+        {% include "mainpage/sidebar/translation-mini.html" %}
         {% include "mainpage/sidebar/instagram-widget.html" %}
         {% include "mainpage/sidebar/vk-widget.html" %}
         {% include "mainpage/sidebar/events.html" %}
@@ -30,15 +40,6 @@
     </div>
 </section>
 <section class="info">
-    {% if banner %}
-    <div>
-        <h3>ИНФО</h3>
-        {% thumbnail banner.image "960x790" crop="center" upscale=True as im %}
-            <img src="{{ im.url }}" height="100%" width="100%">
-        {% endthumbnail %}
-    </div>
-    {% endif %}
-
     {% comment %}
     <div class="our-support">
         {% include "mainpage/our_support.html" %}
@@ -49,4 +50,21 @@
         {% include "mainpage/map.html" %}
     </div>
 </section>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(51593291, "init", {
+        id:51593291,
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/51593291" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 {% endblock %}

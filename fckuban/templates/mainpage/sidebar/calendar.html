@@ -4,7 +4,9 @@
     <h3>КАЛЕНДАРЬ</h3>
     <div class="calendar-nav">
         {% for match in calendar_matches %}
-            <div><span class="day">{{ match.start_time|date:"j" }}</span><br>{{ match.start_time|date:"b" }}</div>
+            <span {% if match == future_match %}id="current-slide"{% endif %}>
+                <span class="day">{{ match.start_time|date:"j" }}</span><br>{{ match.start_time|date:"b" }}
+            </span>
         {% endfor %}
     </div>
     <div class="calendar-info">

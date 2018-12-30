@@ -4,16 +4,16 @@
     <h3>КАЛЕНДАРЬ</h3>
     <div class="calendar-nav">
         {% for match in fcke_matches_list %}
-            <div><span class="day">{{ match.start_time|date:"j" }}</span><br>{{ match.start_time|date:"b" }}</div>
+            <span><span class="day">{{ match.start_time|date:"j" }}</span><br>{{ match.start_time|date:"b" }}</span>
         {% endfor %}
     </div>
     <div class="calendar-info">
         {% for match in fcke_matches_list %}
-            <div class="game-info">
+            <div class="game-info {{ if match == future_match }}current{{ endif }}">
                 <h4 class="when-where">{{ match.start_time|date:"l" }}{% if not match.time_invisible %} {{ match.start_time|date:"H:i" }}{% endif %} <br>{% if match.stadium %}{{ match.stadium }}{% endif %}</h4>
                 <div class="game-result">
                     <div class="team">
-                            {% thumbnail match.home_team.logo "80x80" crop="center" as im %}
+                            {% thumbnail match.home_team.logo "80x80" crop="center" upscale=True as im %}
                                 <img src="{{ im.url }}">
                             {% endthumbnail %}
                             <br>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="team">
                         <span>
-                            {% thumbnail match.guest_team.logo "80x80" crop="center" as im %}
+                            {% thumbnail match.guest_team.logo "80x80" crop="center" upscale=True as im %}
                                 <img src="{{ im.url }}">
                             {% endthumbnail %}
                             <br>

@@ -1,68 +1,26 @@
+{% load static %}
+{% load thumbnail %}
 <div class="birthdays-inner">
     <h3>ДНИ РОЖДЕНИЯ</h3>
     <div class="birthdays">
         <div class="birthday-month"><span>декабрь</span></div>
         <ul data-simplebar>
+            {% for birthday in birthdays %}
             <li>
                 <span class="birthday-photo">
-                            <img src="images/player-photo.jpg">
-                        </span>
+                    {% thumbnail birthday.image "92x92" crop="center" upscale=True as im %}
+                        <img src="{{ im.url }}">
+                    {% empty %}
+                        <img src="{% static 'images/default_logo.jpg' %}" width="80" height="80">
+                    {% endthumbnail %}
+                </span>
                 <span class="birthday-name">
-                                Иван <br>
-                                <strong>Иванов</strong>
-                            </span>
-                <span class="birthday-date">01 декабря</span>
+                    {{ birthday.name }} <br>
+                    <strong>{{ birthday.second_name }}</strong>
+                </span>
+                <span class="birthday-date">{{ birthday.date_of_birth }}</span>
             </li>
-            <li>
-                <span class="birthday-photo">
-                            <img src="images/player-photo.jpg">
-                        </span>
-                <span class="birthday-name">
-                                Иван <br>
-                                <strong>Иванов</strong>
-                            </span>
-                <span class="birthday-date">01 декабря</span>
-            </li>
-            <li>
-                <span class="birthday-photo">
-                            <img src="images/player-photo.jpg">
-                        </span>
-                <span class="birthday-name">
-                                Иван <br>
-                                <strong>Иванов</strong>
-                            </span>
-                <span class="birthday-date">01 декабря</span>
-            </li>
-            <li>
-                <span class="birthday-photo">
-                            <img src="images/player-photo.jpg">
-                        </span>
-                <span class="birthday-name">
-                                Иван <br>
-                                <strong>Иванов</strong>
-                            </span>
-                <span class="birthday-date">01 декабря</span>
-            </li>
-            <li>
-                <span class="birthday-photo">
-                            <img src="images/player-photo.jpg">
-                        </span>
-                <span class="birthday-name">
-                                Иван <br>
-                                <strong>Иванов</strong>
-                            </span>
-                <span class="birthday-date">01 декабря</span>
-            </li>
-            <li>
-                <span class="birthday-photo">
-                            <img src="images/player-photo.jpg">
-                        </span>
-                <span class="birthday-name">
-                                Иван <br>
-                                <strong>Иванов</strong>
-                            </span>
-                <span class="birthday-date">01 декабря</span>
-            </li>
+            {% endfor %}
         </ul>
     </div>
 </div>

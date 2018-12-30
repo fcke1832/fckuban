@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
   var gamedate = $("div.calendar-nav").find("div.slick-slide").children();
   var win = $(this);
@@ -29,26 +30,38 @@ timer.addEventListener('reset', function (e) {
     $('#chronometre .values').html(timer.getTimeValues().toString());
 });
 // scotetable table height
- $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
+ if ($(this).width() <= 955) {
+  $('.scrollbar').css('height' , '100%');
+};
+if ($(this).width() >= 956) {
+  $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
+};
+ // scrollbar height on wide screen
+if ($(this).width() >= 2560){
+$('.scrollbar').height($('.scoretable') - 70 - $('.team-select').height());
+};
 // sript for Header Menu and scoretable on resize
 window.addEventListener("resize", function() {
   if ($(this).width() >= 956) {
-   $(".header-menu").css('display' , 'block');
+  $(".header-menu").css('display' , 'block');
   $('.scoretable-items').css("display", "block");
   $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
  }else {
   $('.header-menu').css('display' , 'none'); 
   $('.scoretable-items').css("display", "none");
-  $('.scrollbar').css('height' , '100%');
 }
 });
-// scrollbar height on wide screen
-if ($(this).width() >= 2560){
-$('.scrollbar').height($('.scoretable').height() - 70 - $('.team-select').height());
-};
+// sript  scrollbar on resize
 window.addEventListener("resize", function() {
   if ($(this).width() >= 2560) {
   $('.scrollbar').height($('.scoretable').height() - 70 - $('.team-select').height());
+ }else {
+  $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
+}
+});
+window.addEventListener("resize", function() {
+  if ($(this).width() <= 955) {
+   $('.scrollbar').css('height' , '100%');
  }else {
   $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
 }
@@ -75,10 +88,6 @@ var galleryFeed = new Instafeed({
 });
 galleryFeed.run();
 
-// new SimpleBar(document.getElementById('scoretable'), { 
-//   autoHide: false,
-// });
-
 // sliders
 $('.main-slider').slick({
  dots: true,
@@ -97,31 +106,36 @@ $('.main-slider').slick({
 }
 ]
 });
+var SlidesCount = $('.day').closest('span').length - 1;
+var Initial = $('#current-slide').index();
 
-
-$('.calendar-info').slick({
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: false,
-  asNavFor: '.calendar-nav',
-  draggable: false,
-  swipe: false
-});
-$('.calendar-nav').slick({
-  slidesToShow: 5,
-  slidesToScroll: 1,
-  asNavFor: '.calendar-info',
-  dots: false,
-  centerMode: true,
-  centerPadding: 0,
-  arrows: false,
-  focusOnSelect: true,
-  infinite: false,
-  variableWidth: true,
-  draggable:false,
-  swipe: false
-});
-
+  $('.calendar-nav').slick({
+    slidesToShow: SlidesCount,
+    slidesToScroll: 1,
+    asNavFor: '.calendar-info',
+    dots: false,
+    centerMode: true,
+    centerPadding: '0px',
+    arrows: false,
+    focusOnSelect: true,
+    infinite: false,
+    initialSlide: Initial,
+    variableWidth: true,
+    draggable:false,
+    swipe: false
+  });
+    $('.calendar-info').slick({
+    infinite: false,
+    dots: false,
+    arrows: false, 
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    asNavFor: '.calendar-nav',
+    draggable: false,
+    swipe: false,
+    initialSlide: Initial,
+  });
 // header menu and searchfield slide
 $('.menu-icon').on('click',function() {
  $(".header-menu").slideToggle();
@@ -133,9 +147,8 @@ $('.team-button').on('click',function() {
   $('.team-button').not(this).removeClass('active-button');
   $(this).addClass('active-button');
 });
-
 // size for calendar navigation items
-($('div.calendar-nav').find("div.slick-slide").children().addClass('game-date').width($('.calendar-nav').width() * 0.17));
+$('div.calendar-nav').find("div.slick-slide").children().addClass('game-date').width($('.calendar-nav').width() * 0.17);
 $('div.slick-current').find("div.game-date").addClass('current').width($('.calendar-nav').width() * 0.32);
 $('.game-date').on('click', function() {
   $('.game-date').not(this).removeClass('current').width($('.calendar-nav').width() * 0.17);

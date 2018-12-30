@@ -10,14 +10,24 @@ from tournaments.models import Tournament, Team
 from links.models import YoutubeLink, SocialNetworkLink, MapsLink, Hashtag
 from calendar_matches.models import Match
 from seo.models import SeoData
+from birthdays.views import current_month_birtdays
+
+
+def get_hashtag():
+    try:
+        hashtag = Hashtag.objects.filter(is_active=True).order_by('-id')[0]
+    except:
+        hashtag = None
+    return hashtag
+
+
+def seo_data():
+    seo_data = SeoData.objects.last()
+    return seo_data
 
 
 class MainView(TemplateView):
     template_name = "main.html"
-
-    def _seo_data(self):
-        seo_data = SeoData.objects.last()
-        return seo_data
 
     def _get_news(self):
         return News.objects.filter(published=True).order_by('-date_pub')[:5]
@@ -39,12 +49,23 @@ class MainView(TemplateView):
             Prefetch('match', queryset=Match.objects.filter(is_active=True))
         )
 
+    def _check_now(self):
+        now = timezone.now()
+        return now
+
+    def _get_banner(self):
+        try:
+            banner = Banner.objects.filter(published=True).order_by('-id')[0]
+        except:
+            banner = None
+        return banner
+
     def check_news_time(self, news):
         """
         Принимает кверисет news с отложенными по публикации новостями
         Если время публикации настало - переводим новость в публикуемые
         """
-        now = timezone.now()
+        now = self._check_now()
         for news_item in news:
             if news_item.date_pub < now:
                 news_item.published = True
@@ -58,6 +79,7 @@ class MainView(TemplateView):
         if periodic_news:
             self.check_news_time(periodic_news)
         context['news_qs'] = self._get_news()
+
         current_tournament = self._get_tournament()
         calendar_tournaments = self._get_calendar()
 
@@ -97,37 +119,33 @@ class MainView(TemplateView):
             maps_link = None
         if maps_link:
             context['maps_link'] = maps_link.iframe
+            context['maps_title'] = maps_link.title
 
         try:
             fcke_team = Team.objects.filter(is_fcke=True)[0]
         except:
             fcke_team = None
 
-        # home_matches = Match.objects.filter(tournament=current_tournament, home_team=fcke_team).exclude(start_time=None)
-        # guest_matches = Match.objects.filter(tournament=current_tournament, guest_team=fcke_team).exclude(start_time=None)
-        # context['home_matches'] = home_matches
-        # context['guest_matches'] = guest_matches
         context['calendar_tournaments'] = calendar_tournaments
+        now = self._check_now().date()
         calendar_matches = []
+        futured_calendar_matches = []
         for tournament in calendar_tournaments:
             for match in tournament.match.all().order_by('-start_time'):
                 if match not in calendar_matches:
                     calendar_matches.append(match)
+                    if match.start_time.date() >= now:
+                        futured_calendar_matches.append(match)
+
         context['calendar_matches'] = sorted(calendar_matches, key=lambda instance: instance.start_time)
-
-        # fcke_matches_list = sorted(chain(home_matches, guest_matches), key=lambda instance: instance.start_time)
-        # context['fcke_matches_list'] = fcke_matches_list
-
         try:
-            banner = Banner.objects.filter(published=True).order_by('-id')[0]
-        except:
-            banner = None
+            context['future_match'] = (sorted(futured_calendar_matches, key=lambda instance: instance.start_time))[0]
+        except IndexError:
+            context['future_match'] = None
 
-        try:
-            hashtag = Hashtag.objects.filter(is_active=True).order_by('-id')[0]
-        except:
-            hashtag = None
-        context['banner'] = banner
-        context['hashtag'] = hashtag
-        context['seo'] = self._seo_data()
+        context['birthdays'] = current_month_birtdays()
+        context['banner'] = self._get_banner()
+        context['hashtag'] = get_hashtag()
+        context['seo'] = seo_data()
+
         return context
