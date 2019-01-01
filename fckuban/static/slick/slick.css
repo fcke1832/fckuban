@@ -34,7 +34,7 @@
 }
 .slick-track {
   height: 100%;
-  /*position: relative;*/
+  position: relative;
   left: 0;
   top: 0;
   display: block;
