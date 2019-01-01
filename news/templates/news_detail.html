@@ -6,7 +6,7 @@
     <section class="publications-wrap">
 		<div class="opened-publication">
 			<h4 class="publication-title opened-title">{{ news.title|upper }}</h4>
-             {% thumbnail news.image "750x400" crop="center" upscale=True as im %}
+             {% thumbnail news.image "1800x1200" crop="center" upscale=True as im %}
 			    <img src="{{ im.url }}" height="100%" width="100%">
              {% endthumbnail %}
 				{% comment %}
@@ -20,13 +20,22 @@
 			<div class="publication-text">
 				{{ news.news_text|safe }}
 		</div>
+		<div class="open-publication-slider">
+			{% for slider_image in slider_images %}
+				<div>
+					{% thumbnail slider_image.slider_image "1800x1200" crop="center" upscale=True as im %}
+						<img src="{{ im.url }}">
+					{% endthumbnail %}
+				</div>
+			{% endfor %}
+ 		</div>
 		</div>
 		<h3 class="similar-publications">ПО ТЕМЕ</h3>
 		<div class="publications-items">
             {% for news_item in another_news %}
 			<a href="{% url 'news:news_detail' news_item.slug %}" class="publication">
 				{% thumbnail news_item.image "700x400" crop="center" as im %}
-			        <img src="{{ im.url }} ">
+			        <img src="{{ im.url }}">
                 {% endthumbnail %}
 				<div class="publication-description">
 					<p class="publication-p">{{ news_item.title|upper }}<br>

@@ -3,7 +3,7 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.urls import reverse
 from links.models import YoutubeLink, SocialNetworkLink
-from .models import News
+from .models import News, NewsImage
 
 
 class NewsListView(ListView):
@@ -33,6 +33,7 @@ class NewsDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(NewsDetailView, self).get_context_data(**kwargs)
+        context['slider_images'] = NewsImage.objects.filter(image_news=self.object)
         context['another_news'] = News.objects.filter(published=True).exclude(id=self.object.id).order_by('-date_pub')[:3]
         social_networks_links = SocialNetworkLink.objects.all()
         if social_networks_links:

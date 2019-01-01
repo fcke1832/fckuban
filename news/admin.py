@@ -3,7 +3,12 @@ from sorl.thumbnail import get_thumbnail
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import News
+from .models import News, NewsImage
+
+
+class NewsImageInline(admin.TabularInline):
+    model = NewsImage
+    extra = 1
 
 
 @admin.register(News)
@@ -16,6 +21,7 @@ class NewsAdmin(admin.ModelAdmin):
         'published', 'is_periodic', 'date_pub', 'news_text'
     )
     readonly_fields = ('photo_thumbnail',)
+    inlines = [NewsImageInline]
 
     def photo_thumbnail(self, obj):
         if obj.image:
