@@ -6,7 +6,7 @@
     <section class="publications-wrap">
 		<div class="opened-publication">
 			<h4 class="publication-title opened-title">{{ news.title|upper }}</h4>
-             {% thumbnail news.image "1800x1200" crop="center" upscale=True as im %}
+             {% thumbnail news.image "1500x800" crop="center" upscale=True as im %}
 			    <img src="{{ im.url }}" height="100%" width="100%">
              {% endthumbnail %}
 				{% comment %}
