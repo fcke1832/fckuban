@@ -57,3 +57,4 @@ local.py
 /media/
 /cache/
 /fckuban/static/images/publication-img.jpg
+/fckuban/static/images/test*
