@@ -17,9 +17,19 @@
             {% for slider_news in news_qs %}
                 <div class="slide">
                     <a href="{% url 'news:news_detail' slider_news.slug %}">
-                        {% thumbnail slider_news.image "786x450" crop="center" upscale=True as im %}
-                            <img src="{{ im.url }}"">
-                        {% endthumbnail %}
+                        {% if slider_news.crop_image == slider_news.CENTER %}
+                            {% thumbnail slider_news.image "786x450" crop="center" upscale=True as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                        {% elif slider_news.crop_image == slider_news.RIGHT %}
+                            {% thumbnail slider_news.image "786x450" crop="right" upscale=True as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                        {% else %}
+                            {% thumbnail slider_news.image "786x450" crop="left" upscale=True as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                        {% endif %}
                         <div class="slide-description">
                             <h3>"{{ slider_news.title }}"</h3>
                         </div>
