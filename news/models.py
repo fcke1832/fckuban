@@ -6,17 +6,24 @@ from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
 
-
 from fckuban.utils import image_path
 
 
 class News(models.Model):
+    CENTER, LEFT, RIGHT = 0, 1, 2
+    CROP_CHOICES = (
+        (CENTER, 'По центру'),
+        (LEFT, 'Слева'),
+        (RIGHT, 'Справа')
+    )
+
     title = models.CharField('Заголовок', max_length=200)
     date_pub = models.DateTimeField('Дата публикации')
     news_text = RichTextField('Полный текст', null=True)
     published = models.BooleanField('Опубликовать', default=False)
     image = ImageField('Фото', default='', null=None, blank=False, upload_to='media/news_upload')
     slug = models.SlugField('Ссылка', max_length=200, null=True, blank=True)
+    crop_image = models.PositiveSmallIntegerField('Фокус на главном фото', choices=CROP_CHOICES, default=CENTER)
 
     def __str__(self):
         return self.title
