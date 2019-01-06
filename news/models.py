@@ -10,6 +10,13 @@ from fckuban.utils import image_path
 
 
 class News(models.Model):
+    CENTER, LEFT, RIGHT = 0, 1, 2
+    CROP_CHOICES = (
+        (CENTER, 'По центру'),
+        (LEFT, 'Слева'),
+        (RIGHT, 'Справа')
+    )
+
     title = models.CharField('Заголовок', max_length=200)
     date_pub = models.DateTimeField('Дата публикации')
     news_text = RichTextField('Полный текст', null=True)
@@ -17,6 +24,7 @@ class News(models.Model):
     is_periodic = models.BooleanField('Опубликовать по времени', default=False)
     image = ImageField('Загрузить главное фото', default='', null=None, blank=False, upload_to='media/news_upload', help_text='Размер фото 750x400')
     slug = models.SlugField('Ссылка', max_length=200, null=True, blank=True)
+    crop_image = models.PositiveSmallIntegerField('Фокус на главном фото', choices=CROP_CHOICES, default=CENTER)
 
     def __str__(self):
         return self.title
