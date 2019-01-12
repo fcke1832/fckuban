@@ -34,7 +34,7 @@ class NewsDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(NewsDetailView, self).get_context_data(**kwargs)
         context['slider_images'] = NewsImage.objects.filter(image_news=self.object)
-        context['another_news'] = News.objects.filter(published=True).exclude(id=self.object.id).order_by('-date_pub')[:3]
+        context['another_news'] = News.objects.filter(published=True).exclude(id=self.object.id).order_by('-date_pub')[:4]
         social_networks_links = SocialNetworkLink.objects.all()
         if social_networks_links:
             for link in social_networks_links:
