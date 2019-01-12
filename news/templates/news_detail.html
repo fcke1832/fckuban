@@ -19,16 +19,19 @@
 				{% endcomment %}
 			<div class="publication-text">
 				{{ news.news_text|safe }}
-		</div>
-		<div class="open-publication-slider">
-			{% for slider_image in slider_images %}
-				<div>
-					{% thumbnail slider_image.slider_image "1800x1200" crop="center" upscale=True as im %}
-						<img src="{{ im.url }}">
-					{% endthumbnail %}
-				</div>
-			{% endfor %}
- 		</div>
+			</div>
+			{% if slider_images %}
+			<div class="open-publication-slider">
+				{% for slider_image in slider_images %}
+					<div class="img-wrap">
+						<div class="img-blur"></div>
+						{% thumbnail slider_image.slider_image "1800x1200" upscale=True as im %}
+							<img src="{{ im.url }}">
+						{% endthumbnail %}
+					</div>
+				{% endfor %}
+ 			</div>
+ 			{% endif %}
 		</div>
 		<h3 class="similar-publications">ПО ТЕМЕ</h3>
 		<div class="publications-items">
