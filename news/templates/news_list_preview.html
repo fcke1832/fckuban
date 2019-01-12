@@ -4,6 +4,44 @@
 
 {% block content %}
 {% if request.user.is_superuser or request.user.is_staff %}
+<section class="news">
+    <div class="main-news">
+        <div class="main-news-window">
+            <h3>НЕОПУБЛИКОВАННЫЕ НОВОСТИ</h3>
+            <ul>
+                {% for simple_news in preview_news %}
+                    <li><a href="{% url 'news:news_detail' simple_news.slug %}">{{ simple_news.date_pub|date:"SHORT_DATE_FORMAT" }}</span><span>{{ simple_news.title|upper }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'news:news_list' %}" class="all-news-button">Перейти в раздел</a>
+        </div>
+        <div class="main-slider">
+            {% for slider_news in preview_news %}
+                <div class="slide">
+                    <a href="{% url 'news:news_detail' slider_news.slug %}">
+                        {% if slider_news.crop_image == slider_news.CENTER %}
+                            {% thumbnail slider_news.image "1200x800" crop="center" upscale=True as im %}
+                                <img src="{{ im.url }}" height="100%" width="100%">
+                            {% endthumbnail %}
+                        {% elif slider_news.crop_image == slider_news.RIGHT %}
+                            {% thumbnail slider_news.image "1200x800" crop="right" upscale=True as im %}
+                                <img src="{{ im.url }}" height="100%" width="100%">
+                            {% endthumbnail %}
+                        {% else %}
+                            {% thumbnail slider_news.image "1200x800" crop="left" upscale=True as im %}
+                                <img src="{{ im.url }}" height="100%" width="100%">
+                            {% endthumbnail %}
+                        {% endif %}
+                        <div class="slide-description">
+                            <h3>"{{ slider_news.title|upper }}"</h3>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 <section class="publications-wrap">
         <h3>ПРЕДПРОСМОТР НЕОПУБЛИКОВАННЫХ НОВОСТЕЙ</h3>
         <div class="publications-items">
