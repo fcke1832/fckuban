@@ -10,7 +10,7 @@ from tournaments.models import Tournament, Team
 from links.models import YoutubeLink, SocialNetworkLink, MapsLink, Hashtag
 from calendar_matches.models import Match
 from seo.models import SeoData
-from birthdays.views import current_month_birtdays
+from birthdays.views import current_month_birtdays, current_month_name
 
 
 def get_hashtag():
@@ -95,9 +95,14 @@ class MainView(TemplateView):
             youtube_link = None
         if youtube_link:
             context['youtube_link'] = youtube_link
-        youtube_blog = YoutubeLink.objects.exclude(id=youtube_link.id).order_by('-id')[:6]
+
+        try:
+            youtube_blog = YoutubeLink.objects.exclude(id=youtube_link.id).order_by('-id')[:6]
+        except AttributeError:
+            youtube_blog = None
         if youtube_blog:
             context['youtube_blog'] = youtube_blog
+
         social_networks_links = SocialNetworkLink.objects.all()
         if social_networks_links:
             for link in social_networks_links:
@@ -144,6 +149,7 @@ class MainView(TemplateView):
             context['future_match'] = None
 
         context['birthdays'] = current_month_birtdays()
+        context['current_month'] = current_month_name()
         context['banner'] = self._get_banner()
         context['hashtag'] = get_hashtag()
         context['seo'] = seo_data()
