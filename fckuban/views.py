@@ -26,32 +26,48 @@ def seo_data():
     return seo_data
 
 
+def get_tournament():
+    try:
+        return Tournament.objects.filter(on_main=True)[0]
+    except:
+        return None
+
+
+def get_calendar_matches(calendar_tournaments):
+    now = check_now().date()
+    calendar_matches = []
+    futured_calendar_matches = []
+    for tournament in calendar_tournaments:
+        for match in tournament.match.all().order_by('-start_time'):
+            if match not in calendar_matches:
+                calendar_matches.append(match)
+                if match.start_time.date() >= now:
+                    futured_calendar_matches.append(match)
+    return calendar_matches, futured_calendar_matches
+
+
+def get_calendar():
+    """
+    Получаем турниры для календаря и связанные с ними матчи
+    """
+    return Tournament.objects.filter(in_calendar=True).prefetch_related(
+        Prefetch('match', queryset=Match.objects.filter(is_active=True))
+    )
+
+
+def check_now():
+    now = timezone.now()
+    return now
+
+
 class MainView(TemplateView):
     template_name = "main.html"
 
     def _get_news(self):
         return News.objects.filter(published=True).order_by('-date_pub')[:5]
 
-    def _get_tournament(self):
-        try:
-            return Tournament.objects.filter(on_main=True)[0]
-        except:
-            return None
-
     def _get_periodic_news(self):
         return News.objects.filter(published=False, is_periodic=True)
-
-    def _get_calendar(self):
-        """
-        Получаем турниры для календаря и связанные с ними матчи
-        """
-        return Tournament.objects.filter(in_calendar=True).prefetch_related(
-            Prefetch('match', queryset=Match.objects.filter(is_active=True))
-        )
-
-    def _check_now(self):
-        now = timezone.now()
-        return now
 
     def _get_banner(self):
         try:
@@ -65,7 +81,7 @@ class MainView(TemplateView):
         Принимает кверисет news с отложенными по публикации новостями
         Если время публикации настало - переводим новость в публикуемые
         """
-        now = self._check_now()
+        now = check_now()
         for news_item in news:
             if news_item.date_pub < now:
                 news_item.published = True
@@ -80,8 +96,8 @@ class MainView(TemplateView):
             self.check_news_time(periodic_news)
         context['news_qs'] = self._get_news()
 
-        current_tournament = self._get_tournament()
-        calendar_tournaments = self._get_calendar()
+        current_tournament = get_tournament()
+        calendar_tournaments = get_calendar()
 
         if current_tournament:
             context['current_tournament'] = current_tournament
@@ -132,16 +148,7 @@ class MainView(TemplateView):
             fcke_team = None
 
         context['calendar_tournaments'] = calendar_tournaments
-        now = self._check_now().date()
-        calendar_matches = []
-        futured_calendar_matches = []
-        for tournament in calendar_tournaments:
-            for match in tournament.match.all().order_by('-start_time'):
-                if match not in calendar_matches:
-                    calendar_matches.append(match)
-                    if match.start_time.date() >= now:
-                        futured_calendar_matches.append(match)
-
+        calendar_matches, futured_calendar_matches = get_calendar_matches(calendar_tournaments)
         context['calendar_matches'] = sorted(calendar_matches, key=lambda instance: instance.start_time)
         try:
             context['future_match'] = (sorted(futured_calendar_matches, key=lambda instance: instance.start_time))[0]
