@@ -2,7 +2,8 @@ from django.shortcuts import redirect, render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.urls import reverse
-from links.models import YoutubeLink, SocialNetworkLink
+from links.models import SocialNetworkLink
+from fckuban.views import get_calendar, get_calendar_matches
 from .models import News, NewsImage
 
 
@@ -35,6 +36,13 @@ class NewsDetailView(DetailView):
         context = super(NewsDetailView, self).get_context_data(**kwargs)
         context['slider_images'] = NewsImage.objects.filter(image_news=self.object)
         context['another_news'] = News.objects.filter(published=True).exclude(id=self.object.id).order_by('-date_pub')[:4]
+        calendar_tournaments = get_calendar()
+        calendar_matches, futured_calendar_matches = get_calendar_matches(calendar_tournaments)
+        context['calendar_matches'] = sorted(calendar_matches, key=lambda instance: instance.start_time)
+        try:
+            context['future_match'] = (sorted(futured_calendar_matches, key=lambda instance: instance.start_time))[0]
+        except IndexError:
+            context['future_match'] = None
         social_networks_links = SocialNetworkLink.objects.all()
         if social_networks_links:
             for link in social_networks_links:
