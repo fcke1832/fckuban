@@ -42,12 +42,14 @@
         </div>
     </div>
 </section>
-<section class="publications-wrap">
-        <h3>ПРЕДПРОСМОТР НЕОПУБЛИКОВАННЫХ НОВОСТЕЙ</h3>
+
+<div class="main-wrap">
+    <main>
+    <section class="publications-wrap">
+        <h2>ПРЕДПРОСМОТР НЕОПУБЛИКОВАННЫХ НОВОСТЕЙ</h2>
         <div class="publications-items">
             {% for news in preview_news %}
             <a href="{% url 'news:news_detail' news.slug %}" class="publication">
-                <h4 class="publication-title"></h4>
                 {% thumbnail news.image "393x225" crop="center" upscale=True as im %}
                     <img src="{{ im.url }}">
                 {% endthumbnail %}
@@ -61,5 +63,7 @@
             {% endfor %}
         </div>
     </section>
+    </main>
+</div>
 {% endif %}
 {% endblock %}

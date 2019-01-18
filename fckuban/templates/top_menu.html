@@ -4,9 +4,12 @@
     <ul class="header-menu">
         <li><a href="{% url 'index' %}" title="Главная">Главная</a></li>
         <li><a href="{% url 'news:news_list' %}" title="Новости">Новости</a></li>
+        {% comment %}
         <li><a href="{% url 'tickets:ticket_sale' %}" title="Купить билет">Купить билет</a></li>
         <li><a href="{% url 'team:all_team' %}" title="Команда">Команда</a></li>
+        {% endcomment %}
         <li><a href="http://ookuban.com/" target="_blank" title="КРОО">Организация</a></li>
+        <li><a href="">СМИ о нас</a></li>
         {% if request.user.is_superuser or request.user.is_staff %}
         <li><a href="{% url 'news:news_list_preview' %}" title="Предпросмотр новостей">Предпросмотр</a></li>
         {% endif %}
