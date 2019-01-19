@@ -1,7 +1,12 @@
 {% load static %}
 {% load thumbnail %}
+{% url 'index' as main_url %}
 <div class="game-calendar">
-    <!-- <h2>КАЛЕНДАРЬ</h2>  -->
+
+    {% if request.get_full_path == main_url %}
+        <h2>КАЛЕНДАРЬ</h2>
+    {% endif %}
+
     <div class="calendar-nav">
         {% for match in calendar_matches %}
             <span {% if match == future_match %}id="current-slide"{% endif %}>
