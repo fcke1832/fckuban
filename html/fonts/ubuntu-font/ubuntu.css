@@ -46,12 +46,12 @@
     font-weight: 700;
     font-style: italic;
 }
-@font-face {
+/*@font-face {
     font-family: 'Gotham XNarrow Black';
     src: local('Gotham XNarrow Black'), url('Gotham XNarrow Black.ttf') format('truetype');
     font-weight: 700;
     font-style: italic;
-}
+}*/
 @font-face {
     font-family: 'ProximaNovaExCn-Extrabld';
     src: local('ProximaNovaExCn-Extrabld'), local('ProximaNovaExCn-Extrabld'), url('ProximaNovaExCn-Extrabld.woff') format('woff'), url('ProximaNovaExCn-Extrabld.ttf') format('truetype');
