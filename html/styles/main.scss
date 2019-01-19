@@ -593,7 +593,9 @@
 					flex-wrap: wrap;
 					position: relative;
 					justify-content: space-between;
-
+					a {
+						color: black;
+					}
 					.social-nets {
 						display: flex;
 						flex-direction: column;
