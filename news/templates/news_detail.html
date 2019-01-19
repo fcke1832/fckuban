@@ -3,19 +3,24 @@
 {% load thumbnail %}
 
 {% block content %}
+<div class="main-wrap white-bg-side-bar">
+	<main>
     <section class="publications-wrap">
 		<div class="opened-publication">
-			<h4 class="publication-title opened-title">{{ news.title|upper }}</h4>
-             {% thumbnail news.image "1500x800" crop="center" upscale=True as im %}
-			    <img src="{{ im.url }}" height="100%" width="100%">
-             {% endthumbnail %}
+			<div class="news-date">{{ news.date_pub }}</div>
+			<h1 class="publication-title opened-title">{{ news.title|upper }}</h1>
+			<div class="opened-publication-img-wrap">
+                {% thumbnail news.image "1500x800" crop="center" upscale=True as im %}
+			    	<img src="{{ im.url }}" height="100%" width="100%">
+                {% endthumbnail %}
+            </div>
 				{% comment %}
-			<p>{{ news.title|upper }}</p>
-			<div class="social-nets">
-				<a href=""><img src="{% static 'images/vk-g-logo.png' %}" alt="VK"></a>
-				<a href=""><img src="{% static 'images/facebook-g-logo.png' %}" alt="Facebook"></a>
-				<a href=""><img src="{% static 'images/instagram-g-logo.png' %}" alt="Instagram"></a>
-			</div>
+					<p>{{ news.title|upper }}</p>
+					<div class="social-nets">
+						<a href=""><img src="{% static 'images/vk-g-logo.png' %}" alt="VK"></a>
+						<a href=""><img src="{% static 'images/facebook-g-logo.png' %}" alt="Facebook"></a>
+						<a href=""><img src="{% static 'images/instagram-g-logo.png' %}" alt="Instagram"></a>
+					</div>
 				{% endcomment %}
 			<div class="publication-text">
 				{{ news.news_text|safe }}
@@ -24,7 +29,6 @@
 			<div class="open-publication-slider">
 				{% for slider_image in slider_images %}
 					<div class="img-wrap">
-						<div class="img-blur"></div>
 						{% thumbnail slider_image.slider_image "1800x1200" upscale=True as im %}
 							<img src="{{ im.url }}">
 						{% endthumbnail %}
@@ -33,8 +37,26 @@
  			</div>
  			{% endif %}
 		</div>
-		<h3 class="similar-publications">ПО ТЕМЕ</h3>
-		<div class="publications-items">
+	</section>
+	</main>
+
+	<div class="side-bar">
+    	{% include "mainpage/sidebar/calendar.html" %}
+    	{% if request.user.is_superuser %}
+        	{% include "mainpage/sidebar/birthdays.html" %}
+    	{% endif %}
+        {% comment %}
+        {% include "mainpage/sidebar/translation-mini.html" %}
+        {% include "mainpage/sidebar/instagram-widget.html" %}
+        {% include "mainpage/sidebar/vk-widget.html" %}
+        {% include "mainpage/sidebar/events.html" %}
+        {% endcomment %}
+	</div>
+</div>
+
+	<div class="main-wrap">
+		<h2 class="similar-publications">ПО ТЕМЕ</h2>
+		<div class="publications-items similar-publications-items">
             {% for news_item in another_news %}
 			<a href="{% url 'news:news_detail' news_item.slug %}" class="publication">
 				{% thumbnail news_item.image "700x400" crop="center" as im %}
@@ -48,5 +70,5 @@
 			</a>
             {% endfor %}
 		</div>
-	</section>
+
 {% endblock %}

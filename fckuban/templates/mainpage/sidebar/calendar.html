@@ -1,7 +1,7 @@
 {% load static %}
 {% load thumbnail %}
 <div class="game-calendar">
-    <h3>КАЛЕНДАРЬ</h3>
+    <!-- <h2>КАЛЕНДАРЬ</h2>  -->
     <div class="calendar-nav">
         {% for match in calendar_matches %}
             <span {% if match == future_match %}id="current-slide"{% endif %}>

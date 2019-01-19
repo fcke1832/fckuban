@@ -20,7 +20,7 @@
 
         {% if banner %}
             <div class="banner">
-                <h3>ИНФО</h3>
+                <h2>ИНФО</h2>
                 {% thumbnail banner.image "960x790" crop="center" upscale=True as im %}
                     <a href="http://ookuban.com/"><img src="{{ im.url }}" height="100%" width="100%"></a>
                 {% endthumbnail %}
@@ -49,7 +49,13 @@
     {% endcomment %}
 
     <div class="map">
+        <h2>СХЕМА ПРОЕЗДА К {{ maps_title|upper }}</h2>
         {% include "mainpage/map.html" %}
+    </div>
+
+    <div>
+        <h2>ПОЛЕЗНЫЕ ССЫЛКИ</h2>
+        {% include "mainpage/another_links.html" %}
     </div>
 </section>
 
