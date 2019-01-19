@@ -7,7 +7,7 @@
 	<main>
     <section class="publications-wrap">
 		<div class="opened-publication">
-			<div class="news-date">16 января 2019, среда 13:00.</div>
+			<div class="news-date">{{ news.date_pub }}</div>
 			<h1 class="publication-title opened-title">{{ news.title|upper }}</h1>
 			<div class="opened-publication-img-wrap">
                 {% thumbnail news.image "1500x800" crop="center" upscale=True as im %}
