@@ -1,7 +1,7 @@
 {% load static %}
 {% load thumbnail %}
 <div class="game-calendar">
-    <h3>КАЛЕНДАРЬ</h3>
+    <h2>КАЛЕНДАРЬ</h2>
     <div class="calendar-nav">
         {% for match in calendar_matches %}
             <span {% if match == future_match %}id="current-slide"{% endif %}>
@@ -12,7 +12,14 @@
     <div class="calendar-info">
         {% for match in calendar_matches %}
             <div class="game-info">
-                <h4 class="when-where">{{ match.start_time|date:"l" }}{% if not match.time_invisible %} {{ match.start_time|date:"H:i" }}{% endif %} <br>{% if match.stadium %}{{ match.stadium }}{% endif %}</h4>
+                <h4 class="when-where">
+                    {{ match.start_time|date:"l" }}{% if not match.time_invisible %} 
+                    {{ match.start_time|date:"H:i" }}{% endif %} 
+                    <br>
+                    {% if match.stadium %}
+                        {{ match.stadium }}
+                    {% endif %}
+                </h4>
                 <div class="game-result">
                     <div class="team">
                             {% thumbnail match.home_team.logo "80x80" crop="center" as im %}
@@ -25,9 +32,11 @@
                             <br>
                             <span class="team-city">({{ match.home_team.location.strip }})</span>
                     </div>
-                    <div class="{% if match.is_finished and match.home_goals %}score{% else %}versus{% endif %}">
-                        {% if match.is_finished and match.home_goals %}
+                    <div class="{% if match.is_finished %}score{% else %}versus{% endif %}">
+                        {% if match.is_finished and match.home_goals or match.guest_goals  %}
                             {{ match.home_goals }}:{{ match.guest_goals }}
+                        {% elif match.is_finished and not match.home_goals and not match.guest_goals %}
+                            0:0
                         {% else %}
                             VS
                         {% endif %}
