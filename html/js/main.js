@@ -142,7 +142,7 @@ $('.open-publication-slider').slick({
   slidesToScroll: 1,
 });
 var PublicationSlidesLenght = $('.open-publication-slider').find($('li')).length
-if (PublicationSlidesLenght > 24) {
+if (PublicationSlidesLenght > 9) {
   $('.open-publication-slider').addClass('margin-for-dots');
 }
 // header menu and searchfield slide
