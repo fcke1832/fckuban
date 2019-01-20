@@ -141,6 +141,10 @@ $('.open-publication-slider').slick({
   slidesToShow: 1,
   slidesToScroll: 1,
 });
+var PublicationSlidesLenght = $('.open-publication-slider').find($('li')).length
+if (PublicationSlidesLenght > 24) {
+  $('.open-publication-slider').addClass('margin-for-dots');
+}
 // header menu and searchfield slide
 $('.menu-icon').on('click',function() {
  $(".header-menu").slideToggle();
