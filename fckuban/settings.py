@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'fckuban',
     'links',
     'news',
+    'medialinks',
     'seo',
     'tickets',
     'team',
