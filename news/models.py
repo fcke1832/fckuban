@@ -25,11 +25,13 @@ class BaseNews(models.Model):
 
 
 class News(BaseNews):
-    CENTER, LEFT, RIGHT = 0, 1, 2
+    CENTER, LEFT, RIGHT, TOP, BOTTOM = range(5)
     CROP_CHOICES = (
         (CENTER, 'По центру'),
         (LEFT, 'Слева'),
-        (RIGHT, 'Справа')
+        (RIGHT, 'Справа'),
+        (TOP, 'Сверху'),
+        (BOTTOM, 'Снизу')
     )
 
     is_periodic = models.BooleanField('Опубликовать по времени', default=False)
