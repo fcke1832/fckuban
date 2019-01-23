@@ -152,7 +152,27 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'full',
+        'toolbar': 'custom',
+        'toolbar_custom': [
+            ['Undo', 'Redo', 'Youtube',
+             '-', 'Bold', 'Italic', 'Underline', 'smiley',
+             '-', 'Link', 'Unlink', 'Anchor',
+             '-', 'Format',
+             '-', 'Maximize',
+             '-', 'Table',
+             '-', 'Image',
+             '-', 'Source',
+             '-', 'NumberedList', 'BulletedList',
+             '-', 'Preview', 'CreateDiv', 'Templates'
+             ],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+             '-', 'FontSize', 'TextColor',
+             '-', 'Outdent', 'Indent',
+             '-', 'HorizontalRule',
+             '-', 'Blockquote'
+             ],
+        ],
+        'extraPlugins': 'youtube',
     },
 }
 
