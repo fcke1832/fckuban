@@ -25,8 +25,16 @@
                             {% thumbnail slider_news.image "1200x800" crop="right" upscale=True as im %}
                                 <img src="{{ im.url }}" height="100%" width="100%">
                             {% endthumbnail %}
-                        {% else %}
+                        {% elif slider_news.crop_image == slider_news.LEFT %}
                             {% thumbnail slider_news.image "1200x800" crop="left" upscale=True as im %}
+                                <img src="{{ im.url }}" height="100%" width="100%">
+                            {% endthumbnail %}
+                        {% elif slider_news.crop_image == slider_news.TOP %}
+                            {% thumbnail slider_news.image "1200x800" crop="top" upscale=True as im %}
+                                <img src="{{ im.url }}" height="100%" width="100%">
+                            {% endthumbnail %}
+                        {% else %}
+                            {% thumbnail slider_news.image "1200x800" crop="bottom" upscale=True as im %}
                                 <img src="{{ im.url }}" height="100%" width="100%">
                             {% endthumbnail %}
                         {% endif %}

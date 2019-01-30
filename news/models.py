@@ -1,6 +1,6 @@
 from sorl.thumbnail import ImageField
 from transliterate import translit
-from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 from django.db import models
 from django.utils.text import slugify
@@ -12,7 +12,16 @@ class BaseNews(models.Model):
     """
     title = models.CharField('Заголовок', max_length=200)
     date_pub = models.DateTimeField('Дата публикации')
-    news_text = RichTextField('Полный текст', null=True)
+    news_text = RichTextUploadingField('Полный текст',
+                                        blank=True,
+                                        null=True,
+                                        config_name='default',
+                                        external_plugin_resources=[(
+                                            'youtube',
+                                            '/static/ckeditor_plugins/youtube/youtube/',
+                                            'plugin.js',
+                                        )],
+                                        )
     published = models.BooleanField('Опубликовать', default=False)
     slug = models.SlugField('Ссылка', max_length=200, null=True, blank=True)
 
@@ -25,11 +34,13 @@ class BaseNews(models.Model):
 
 
 class News(BaseNews):
-    CENTER, LEFT, RIGHT = 0, 1, 2
+    CENTER, LEFT, RIGHT, TOP, BOTTOM = range(5)
     CROP_CHOICES = (
         (CENTER, 'По центру'),
         (LEFT, 'Слева'),
-        (RIGHT, 'Справа')
+        (RIGHT, 'Справа'),
+        (TOP, 'Сверху'),
+        (BOTTOM, 'Снизу')
     )
 
     is_periodic = models.BooleanField('Опубликовать по времени', default=False)
