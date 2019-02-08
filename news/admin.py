@@ -3,11 +3,22 @@ from sorl.thumbnail import get_thumbnail
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import News, NewsImage
+from .models import News, NewsImage, NewsHashTag
+
+
+@admin.register(NewsHashTag)
+class NewsHashTagAdmin(admin.ModelAdmin):
+    list_display = ('text',)
+    list_filter = ('text',)
 
 
 class NewsImageInline(admin.TabularInline):
     model = NewsImage
+    extra = 1
+
+
+class NewsHashTagInline(admin.TabularInline):
+    model = News.hashtags.through
     extra = 1
 
 
@@ -21,7 +32,7 @@ class NewsAdmin(admin.ModelAdmin):
         'published', 'is_periodic', 'date_pub', 'news_text'
     )
     readonly_fields = ('photo_thumbnail',)
-    inlines = [NewsImageInline]
+    inlines = [NewsImageInline, NewsHashTagInline]
 
     def photo_thumbnail(self, obj):
         if obj.image:

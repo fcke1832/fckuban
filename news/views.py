@@ -33,10 +33,16 @@ class NewsDetailView(DetailView):
     template_name = 'news_detail.html'
     context_object_name = 'news'
 
+    def get_another_news(self):
+        hashtags_qs = self.object.hashtags.all()
+        news = News.objects.filter(published=True, hashtags__in=hashtags_qs).exclude(id=self.object.id).order_by('?')[:4]
+        return news
+
     def get_context_data(self, **kwargs):
         context = super(NewsDetailView, self).get_context_data(**kwargs)
         context['slider_images'] = NewsImage.objects.filter(image_news=self.object)
         context['another_news'] = News.objects.filter(published=True).exclude(id=self.object.id).order_by('-date_pub')[:4]
+        context['another_news_admin'] = self.get_another_news()
         calendar_tournaments = get_calendar()
         calendar_matches, futured_calendar_matches = get_calendar_matches(calendar_tournaments)
         context['calendar_matches'] = sorted(calendar_matches, key=lambda instance: instance.start_time)
