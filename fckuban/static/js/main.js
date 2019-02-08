@@ -142,9 +142,26 @@ $('.open-publication-slider').slick({
   slidesToScroll: 1,
 });
 var PublicationSlidesLenght = $('.open-publication-slider').find($('li')).length
-if (PublicationSlidesLenght > 24) {
+if (PublicationSlidesLenght > 9) {
   $('.open-publication-slider').addClass('margin-for-dots');
 }
+//popup image in slider
+$(".popup").click(function(){
+    var img = $(this);
+    var src = img.attr('src');
+    $("body").append("<div class='popup-wrap'>"+ 
+             "<div class='popup-bg'>"+ 
+             "<img src='"+src+"' class='popup-img'/>"+ 
+             "</div>"+
+             "</div>"); 
+    $(".popup-wrap").fadeIn(800); 
+    $(".popup-bg").click(function(){    
+      $(".popup-wrap").fadeOut(800); 
+      setTimeout(function() { 
+        $(".popup-wrap").remove(); 
+      }, 800);
+    });
+});
 // header menu and searchfield slide
 $('.menu-icon').on('click',function() {
  $(".header-menu").slideToggle();
