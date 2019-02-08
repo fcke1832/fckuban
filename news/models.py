@@ -23,7 +23,7 @@ class BaseNews(models.Model):
                                         )],
                                         )
     published = models.BooleanField('Опубликовать', default=False)
-    slug = models.SlugField('Ссылка', max_length=200, null=True, blank=True)
+    slug = models.SlugField('Ссылка', max_length=200, null=True, blank=True, unique=True)
 
     class Meta:
         abstract = True
@@ -31,6 +31,20 @@ class BaseNews(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class NewsHashTag(models.Model):
+    """Модель хештэга для новости"""
+    text = models.CharField('Хештэг', max_length=20)
+    # news = models.ManyToManyField(News, null=True, blank=True)
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        verbose_name = 'Хештэг для новости'
+        verbose_name_plural = 'Хештэги для новостей'
+        ordering = ('text',)
 
 
 class News(BaseNews):
@@ -44,8 +58,16 @@ class News(BaseNews):
     )
 
     is_periodic = models.BooleanField('Опубликовать по времени', default=False)
-    image = ImageField('Загрузить главное фото', default='', null=None, blank=False, upload_to='media/news_upload', help_text='Размер фото 750x400')
+    image = ImageField(
+        'Загрузить главное фото',
+        default='',
+        null=None,
+        blank=False,
+        upload_to='media/news_upload',
+        help_text='Размер фото 750x400'
+    )
     crop_image = models.PositiveSmallIntegerField('Фокус на главном фото', choices=CROP_CHOICES, default=CENTER)
+    hashtags = models.ManyToManyField(NewsHashTag, verbose_name='Хештэги', null=True, blank=True,  related_name='news')
 
     def __str__(self):
         return self.title

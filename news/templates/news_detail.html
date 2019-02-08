@@ -24,6 +24,11 @@
 				{% endcomment %}
 			<div class="publication-text">
 				{{ news.news_text|safe }}
+				{% if request.user.is_superuser %}
+				{% for hashtag in news.hashtags.all %}
+					<a href="#" class="hashtag-link">#{{ hashtag.text }}</a>
+				{% endfor %}
+				{% endif %}
 			</div>
 			{% if slider_images %}
 			<div class="open-publication-slider">
@@ -57,18 +62,33 @@
 	<div class="main-wrap">
 		<h2 class="similar-publications">ПО ТЕМЕ</h2>
 		<div class="publications-items similar-publications-items">
-            {% for news_item in another_news %}
-			<a href="{% url 'news:news_detail' news_item.slug %}" class="publication">
-				{% thumbnail news_item.image "700x400" crop="center" as im %}
-			        <img src="{{ im.url }}">
-                {% endthumbnail %}
-				<div class="publication-description">
-					<p class="publication-p">{{ news_item.title|upper }}<br>
-					</p>
-				</div>
-				<div class="publication-date">{{ news_item.date_pub|date:"SHORT_DATE_FORMAT" }}</div>
-			</a>
-            {% endfor %}
+			{% if request.user.is_superuser %}
+				{% for news_item in another_news_admin %}
+					<a href="{% url 'news:news_detail' news_item.slug %}" class="publication">
+						{% thumbnail news_item.image "700x400" crop="center" as im %}
+			        		<img src="{{ im.url }}">
+                		{% endthumbnail %}
+						<div class="publication-description">
+							<p class="publication-p">{{ news_item.title|upper }}<br>
+							</p>
+						</div>
+						<div class="publication-date">{{ news_item.date_pub|date:"SHORT_DATE_FORMAT" }}</div>
+					</a>
+            	{% endfor %}
+			{% else %}
+            	{% for news_item in another_news %}
+					<a href="{% url 'news:news_detail' news_item.slug %}" class="publication">
+						{% thumbnail news_item.image "700x400" crop="center" as im %}
+			        		<img src="{{ im.url }}">
+                		{% endthumbnail %}
+						<div class="publication-description">
+							<p class="publication-p">{{ news_item.title|upper }}<br>
+							</p>
+						</div>
+						<div class="publication-date">{{ news_item.date_pub|date:"SHORT_DATE_FORMAT" }}</div>
+					</a>
+            	{% endfor %}
+            {% endif %}
 		</div>
 
 {% endblock %}
