@@ -35,7 +35,7 @@
 				{% for slider_image in slider_images %}
 					<div class="img-wrap">
 						{% thumbnail slider_image.slider_image "1800x1200" upscale=True as im %}
-							<img src="{{ im.url }}">
+							<img src="{{ im.url }}" class="popup">
 						{% endthumbnail %}
 					</div>
 				{% endfor %}
