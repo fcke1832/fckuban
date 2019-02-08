@@ -8,7 +8,7 @@
     <section class="publications-wrap">
 		<div class="opened-publication">
 			<div class="news-date">{{ news.date_pub }}</div>
-			<h2 class="publication-title opened-title">{{ news.title|upper }}</h2>
+			<h1 class="publication-title opened-title">{{ news.title|upper }}</h1>
 			<div class="opened-publication-img-wrap">
                 {% thumbnail news.image "1500x800" crop="center" upscale=True as im %}
 			    	<img src="{{ im.url }}" height="100%" width="100%">
