@@ -94,7 +94,7 @@ $('.main-slider').slick({
  fade: true,
  cssEase: 'linear',
  autoplay: true,
- autoplaySpeed: 3000,
+ autoplaySpeed: 5000,
  responsive: [
  {
   breakpoint: 850,
