@@ -1,9 +1,9 @@
 {% load static %}
 {% load thumbnail %}
 <div class="birthdays-inner">
-    <h2>ДНИ РОЖДЕНИЯ</h2>
+    <h2>СЕГОДНЯ РОДИЛИСЬ</h2>
     <div class="birthdays">
-        <div class="birthday-month"><span>{{ current_month }}</span></div>
+        <div class="birthday-month"><span>{{ today_date }}</span></div>
         <ul data-simplebar>
             {% for birthday in birthdays %}
             <li>
@@ -11,7 +11,7 @@
                     {% thumbnail birthday.image "92x92" crop="center" upscale=True as im %}
                         <img src="{{ im.url }}">
                     {% empty %}
-                        <img src="{% static 'images/default_logo.jpg' %}" width="80" height="80">
+                        <img src="{% static 'images/empty_profile.jpg' %}" width="92" height="92">
                     {% endthumbnail %}
                 </span>
                 <span class="birthday-name">

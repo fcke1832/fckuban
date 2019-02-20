@@ -30,9 +30,7 @@
     </div>
     <div class="side-bar">
         {% include "mainpage/sidebar/calendar.html" %}
-        {% if request.user.is_superuser %}
-            {% include "mainpage/sidebar/birthdays.html" %}
-        {% endif %}
+        {% include "mainpage/sidebar/birthdays.html" %}
         {% comment %}
         {% include "mainpage/sidebar/translation-mini.html" %}
         {% include "mainpage/sidebar/instagram-widget.html" %}
