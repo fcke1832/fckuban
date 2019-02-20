@@ -10,7 +10,7 @@ from tournaments.models import Tournament, Team
 from links.models import YoutubeLink, SocialNetworkLink, MapsLink, Hashtag
 from calendar_matches.models import Match
 from seo.models import SeoData
-from birthdays.views import current_month_birtdays, current_month_name
+from birthdays.views import today_birtdays, check_today
 
 
 def get_hashtag():
@@ -154,9 +154,8 @@ class MainView(TemplateView):
             context['future_match'] = (sorted(futured_calendar_matches, key=lambda instance: instance.start_time))[0]
         except IndexError:
             context['future_match'] = None
-
-        context['birthdays'] = current_month_birtdays()
-        context['current_month'] = current_month_name()
+        context['birthdays'] = today_birtdays()
+        context['today_date'] = check_today()
         context['banner'] = self._get_banner()
         context['hashtag'] = get_hashtag()
         context['seo'] = seo_data()
