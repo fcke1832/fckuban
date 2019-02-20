@@ -28,7 +28,7 @@ class NewsAdmin(admin.ModelAdmin):
     list_filter = ('date_pub', 'published')
     list_editable = ('published', 'is_periodic')
     fields = (
-        'title',  'image', 'photo_thumbnail', 'crop_image',
+        'title',  'image', 'photo_thumbnail', 'crop_image', 'crop_image_detail_page',
         'published', 'is_periodic', 'date_pub', 'news_text'
     )
     readonly_fields = ('photo_thumbnail',)

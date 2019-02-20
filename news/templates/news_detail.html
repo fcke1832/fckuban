@@ -10,9 +10,29 @@
 			<div class="news-date">{{ news.date_pub }}</div>
 			<h1 class="publication-title opened-title">{{ news.title|upper }}</h1>
 			<div class="opened-publication-img-wrap">
-                {% thumbnail news.image "1500x800" crop="center" upscale=True as im %}
-			    	<img src="{{ im.url }}" height="100%" width="100%">
-                {% endthumbnail %}
+
+                {% if news.crop_image_detail_page == news.CENTER %}
+                    {% thumbnail news.image "1500x800" crop="center" upscale=True as im %}
+                        <img src="{{ im.url }}" height="100%" width="100%">
+                    {% endthumbnail %}
+                {% elif news.crop_image_detail_page == news.RIGHT %}
+                    {% thumbnail news.image "1500x800" crop="right" upscale=True as im %}
+                        <img src="{{ im.url }}" height="100%" width="100%">
+                    {% endthumbnail %}
+                {% elif news.crop_image_detail_page == news.LEFT %}
+                    {% thumbnail news.image "1500x800" crop="left" upscale=True as im %}
+                        <img src="{{ im.url }}" height="100%" width="100%">
+                    {% endthumbnail %}
+                {% elif news.crop_image_detail_page == news.TOP %}
+                    {% thumbnail news.image "1500x800" crop="top" upscale=True as im %}
+                        <img src="{{ im.url }}" height="100%" width="100%">
+                    {% endthumbnail %}
+                {% else %}
+                    {% thumbnail news.image "1500x800" crop="bottom" upscale=True as im %}
+                        <img src="{{ im.url }}" height="100%" width="100%">
+                    {% endthumbnail %}
+                {% endif %}
+
             </div>
 				{% comment %}
 					<p>{{ news.title|upper }}</p>
