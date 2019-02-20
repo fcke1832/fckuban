@@ -66,7 +66,8 @@ class News(BaseNews):
         upload_to='media/news_upload',
         help_text='Размер фото 750x400'
     )
-    crop_image = models.PositiveSmallIntegerField('Фокус на главном фото', choices=CROP_CHOICES, default=CENTER)
+    crop_image = models.PositiveSmallIntegerField('Выравнивание фото в слайдере на главной странице', choices=CROP_CHOICES, default=CENTER)
+    crop_image_detail_page = models.PositiveSmallIntegerField('Выравнивание фото на детальной странице новости', choices=CROP_CHOICES, default=CENTER)
     hashtags = models.ManyToManyField(NewsHashTag, verbose_name='Хештэги', null=True, blank=True,  related_name='news')
 
     def __str__(self):
