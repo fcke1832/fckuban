@@ -8,8 +8,10 @@
             {% for birthday in birthdays %}
             <li>
                 <span class="birthday-photo">
-
-                    {% if birthday.crop_image == birthday.CENTER %}
+                    
+                    {% if not birthday.crop_image %}
+                        <img src="{% static 'images/empty_profile.jpg' %}" width="92" height="92">
+                    {% elif birthday.crop_image == birthday.CENTER %}
                         {% thumbnail birthday.image "92x92" crop="center" upscale=True as im %}
                             <img src="{{ im.url }}">
                         {% endthumbnail %}
