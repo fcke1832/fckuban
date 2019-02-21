@@ -9,7 +9,7 @@
             <li>
                 <span class="birthday-photo">
                     
-                    {% if not birthday.crop_image %}
+                    {% if not birthday.image %}
                         <img src="{% static 'images/empty_profile.jpg' %}" width="92" height="92">
                     {% elif birthday.crop_image == birthday.CENTER %}
                         {% thumbnail birthday.image "92x92" crop="center" upscale=True as im %}
