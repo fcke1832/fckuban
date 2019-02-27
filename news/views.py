@@ -4,7 +4,7 @@ from django.views.generic.detail import DetailView
 from django.urls import reverse
 from links.models import SocialNetworkLink
 from fckuban.views import get_calendar, get_calendar_matches
-from birthdays.views import current_month_birtdays, current_month_name
+from birthdays.views import today_birtdays, check_today
 from .models import News, NewsImage
 
 
@@ -33,15 +33,21 @@ class NewsDetailView(DetailView):
     template_name = 'news_detail.html'
     context_object_name = 'news'
 
+    def get_another_news(self):
+        hashtags_qs = self.object.hashtags.all()
+        news = News.objects.filter(published=True, hashtags__in=hashtags_qs).exclude(id=self.object.id).order_by('?')[:4]
+        return news
+
     def get_context_data(self, **kwargs):
         context = super(NewsDetailView, self).get_context_data(**kwargs)
         context['slider_images'] = NewsImage.objects.filter(image_news=self.object)
         context['another_news'] = News.objects.filter(published=True).exclude(id=self.object.id).order_by('-date_pub')[:4]
+        context['another_news_admin'] = self.get_another_news()
         calendar_tournaments = get_calendar()
         calendar_matches, futured_calendar_matches = get_calendar_matches(calendar_tournaments)
         context['calendar_matches'] = sorted(calendar_matches, key=lambda instance: instance.start_time)
-        context['birthdays'] = current_month_birtdays()
-        context['current_month'] = current_month_name()
+        context['birthdays'] = today_birtdays()
+        context['today_date'] = check_today()
         try:
             context['future_match'] = (sorted(futured_calendar_matches, key=lambda instance: instance.start_time))[0]
         except IndexError:
