@@ -683,6 +683,7 @@
 			}
 			img {
 				width: 100%;
+				height: auto;
 			}
 		}
 	}
@@ -1096,7 +1097,6 @@
 		}
 	}
 	.hashtag-link {
-		text-transform: uppercase;
 		font-weight: 600;
 		display: inline-block;
 		padding-top: 5px;
