@@ -1,16 +1,12 @@
 import calendar
 import locale
-from django.utils import timezone
+from fckuban.utils import check_now
 from .models import BirthdayItem
-
-
-def check_now():
-    return timezone.now()
 
 
 def today_birtdays():
     """
-    Получаем именниников в текущем месяце
+    Получаем именниников в текущем дне
     """
     now = check_now()
     birthdays = BirthdayItem.objects.filter(date_of_birth__month=now.month, date_of_birth__day=now.day)

@@ -2,8 +2,8 @@ from itertools import chain
 
 from django.db.models import Prefetch
 from django.views.generic import TemplateView
-from django.utils import timezone
 
+from fckuban.utils import check_now
 from banner.models import Banner
 from news.models import News
 from tournaments.models import Tournament, Team
@@ -53,11 +53,6 @@ def get_calendar():
     return Tournament.objects.filter(in_calendar=True).prefetch_related(
         Prefetch('match', queryset=Match.objects.filter(is_active=True))
     )
-
-
-def check_now():
-    now = timezone.now()
-    return now
 
 
 class MainView(TemplateView):
