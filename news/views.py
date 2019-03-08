@@ -51,7 +51,7 @@ class NewsDetailView(DetailView):
         try:
             context['future_match'] = (sorted(futured_calendar_matches, key=lambda instance: instance.start_time))[0]
         except IndexError:
-            context['future_match'] = None
+            context['future_match'] = context['calendar_matches'][-1]
         social_networks_links = SocialNetworkLink.objects.all()
         if social_networks_links:
             for link in social_networks_links:
