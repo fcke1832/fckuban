@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     # libs
     'ckeditor',
     'ckeditor_uploader',
-    'sorl.thumbnail',
     'embed_video',
+    'sorl.thumbnail',
 
     # apps
     'banner',
