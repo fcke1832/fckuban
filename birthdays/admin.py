@@ -6,4 +6,4 @@ from .models import BirthdayItem
 class BirthdayItemAdmin(admin.ModelAdmin):
     list_display = ('name', 'second_name', 'date_of_birth',)
     list_filter = ('name', 'second_name', 'date_of_birth',)
-    # list_editable = ('name', 'second_name','date_of_birth',)
+    date_hierarchy = 'date_of_birth'
