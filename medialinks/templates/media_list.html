@@ -5,7 +5,7 @@
 {% block content %}
 {% if request.user.is_superuser %}
     <div class="main-wrap">
-        <h1>Медиа</h1>
+        <h1>СМИ о нас</h1>
         <section class="mass-media-news-wrap white-bg-side-bar">
             <main>
                 
@@ -16,17 +16,20 @@
                             <img src="{{ im.url }}">
                         {% endthumbnail %}
                         <div class="description-wrap">
-                            <a href="mass-media-publication-open.html">
+                            <a href="{% url 'medialinks:article_detail' article.slug %}">
                                 <h2>{{ article.title|upper }}</h2> 
                             </a>
                             <div class="news-date">{{ article.date_pub|date:"SHORT_DATE_FORMAT" }}</div>
+                            {% if article.sourse %}
                             <a href="{{ article.sourse }}" class="mass-media-link">
                                 К источнику
-                            </a>                            
+                            </a>
+                            {% endif %}
                         </div>
                     </div>
                 </article>
                 {% endfor %}
+
                 {% comment %}
                 <ul class="pagination">
                     <li><a href="#" class="news-current-page">1</a></li>

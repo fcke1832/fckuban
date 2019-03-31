@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{% block content %}
+{% if request.user.is_superuser %}
+    <div class="main-wrap white-bg-side-bar">
+        <main>
+            <section class="publications-wrap">
+                <div class="opened-publication">
+                    <div class="news-date">{{ article.date_pub }}</div>
+                    <span>Источник: <a href="{{ article.sourse }}">{{ article.sourse_name }}</a></span>
+                    <h1 class="publication-title opened-title">{{ article.title|upper }}</h1>
+                    <div class="opened-publication-img-wrap">
+                        {% thumbnail article.image "1500x800" crop="center" upscale=True as im %}
+                            <img src="{{ im.url }}" height="100%" width="100%">
+                        {% endthumbnail %}                  
+                    </div>
+                    <div class="publication-text">
+                        {{ article.news_text|safe }}
+                        {% comment %}
+                        <a href="#" class="hashtag-link">#времяверных</a>
+                        {% endcomment %}
+                    </div>
+                    {% comment %}
+                    <div class="open-publication-slider">
+                        <div class="img-wrap">              
+                            <img src="images/photo-1.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-2.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-3.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-4.jpg">
+                        </div>
+                        <div class="img-wrap">                  
+                            <img src="images/vertical.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-1.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-2.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-3.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-4.jpg">
+                        </div>
+                        <div class="img-wrap">                  
+                            <img src="images/vertical.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-1.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-2.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-3.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-4.jpg">
+                        </div>
+                        <div class="img-wrap">                  
+                            <img src="images/vertical.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-1.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-2.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-3.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-4.jpg">
+                        </div>
+                        <div class="img-wrap">                  
+                            <img src="images/vertical.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-1.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-2.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-3.jpg">
+                        </div>
+                        <div class="img-wrap">              
+                            <img src="images/photo-4.jpg">
+                        </div>
+                        <div class="img-wrap">                  
+                            <img src="images/vertical.jpg">
+                        </div>                                                              
+                    </div>
+                    {% endcomment %}
+                </div>
+            </section>          
+        </main>
+        <div class="side-bar">
+            {% include "mainpage/sidebar/calendar.html" %}
+            {% include "mainpage/sidebar/birthdays.html" %}
+        </div>          
+    </div>
+{% endif %}
+{% endblock %}
