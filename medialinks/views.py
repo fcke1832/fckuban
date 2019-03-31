@@ -1,7 +1,6 @@
-from django.shortcuts import render
 from links.models import SocialNetworkLink
 from fckuban.views import get_calendar, get_calendar_matches
-from birthdays.views import current_month_birtdays, current_month_name
+from birthdays.views import today_birtdays, check_today
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 
@@ -28,12 +27,12 @@ class ArticleDetailView(DetailView):
         calendar_tournaments = get_calendar()
         calendar_matches, futured_calendar_matches = get_calendar_matches(calendar_tournaments)
         context['calendar_matches'] = sorted(calendar_matches, key=lambda instance: instance.start_time)
-        context['birthdays'] = current_month_birtdays()
-        context['current_month'] = current_month_name()
+        context['birthdays'] = today_birtdays()
+        context['today_date'] = check_today()
         try:
             context['future_match'] = (sorted(futured_calendar_matches, key=lambda instance: instance.start_time))[0]
         except IndexError:
-            context['future_match'] = None
+            context['future_match'] = context['calendar_matches'][-1]
         social_networks_links = SocialNetworkLink.objects.all()
         if social_networks_links:
             for link in social_networks_links:
