@@ -26,10 +26,12 @@
                     {% endif %}
 
                 </span>
-                <span class="birthday-name">
-                    {{ birthday.name }} <br>
-                    <strong>{{ birthday.second_name }}</strong>
-                </span>
+                <div class="birthday-info">
+                    <span class="birthday-name">
+                        {{ birthday.name }} <br>
+                        <strong>{{ birthday.second_name }}</strong>
+                    </span>
+                </div>
                 <span class="birthday-date">{{ birthday.date_of_birth|date:'Y' }} г.р.</span>
             </li>
             {% endfor %}
