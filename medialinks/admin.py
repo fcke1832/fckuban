@@ -8,5 +8,6 @@ class ArticleAdmin(admin.ModelAdmin):
     list_filter = ('date_pub', 'published')
     list_editable = ('published', )
     fields = (
-        'title',  'image', 'published', 'date_pub', 'news_text'
+        'title', 'sourse_name', 'sourse',
+        'image', 'published', 'date_pub', 'news_text'
     )
