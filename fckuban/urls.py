@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.MainView.as_view(), name='index'),
     path('admin/', admin.site.urls),
     path('news/', include('news.urls', namespace='news')),
+    path('media/', include('medialinks.urls', namespace='medialinks')),
     path('tickets/', include('tickets.urls', namespace='tickets')),
     path('team/', include('team.urls', namespace='team')),
     path(r'^ckeditor/', include('ckeditor_uploader.urls')),

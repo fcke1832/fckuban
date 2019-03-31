@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{% block content %}
+{% if request.user.is_superuser %}
+    <div class="main-wrap">
+        <h1>Медиа</h1>
+        <section class="mass-media-news-wrap white-bg-side-bar">
+            <main>
+                
+                {% for article in articles_list %}
+                <article class="mass-media-publication-wrap">
+                    <div href="#" class="mass-media-publication">
+                        {% thumbnail article.image "393x225" upscale=True as im %}
+                            <img src="{{ im.url }}">
+                        {% endthumbnail %}
+                        <div class="description-wrap">
+                            <a href="mass-media-publication-open.html">
+                                <h2>{{ article.title|upper }}</h2> 
+                            </a>
+                            <div class="news-date">{{ article.date_pub|date:"SHORT_DATE_FORMAT" }}</div>
+                            <a href="{{ article.sourse }}" class="mass-media-link">
+                                К источнику
+                            </a>                            
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+                {% comment %}
+                <ul class="pagination">
+                    <li><a href="#" class="news-current-page">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">>></a></li>         
+                </ul>
+                {% endcomment %}     
+            </main>
+            <div class="side-bar">
+                {% include "mainpage/sidebar/calendar.html" %}
+                {% include "mainpage/sidebar/birthdays.html" %}
+            </div>  
+        </section>
+    </div>
+{% endif %}
+{% endblock %}   
