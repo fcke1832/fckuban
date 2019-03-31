@@ -13,7 +13,6 @@ class ArticlesListView(ListView):
     context_object_name = 'articles_list'
 
     def get_queryset(self):
-        print(Article.objects.filter(published=True))
         return Article.objects.filter(published=True).order_by('-date_pub')
 
 
