@@ -973,24 +973,28 @@
 		}
 		li {
 			min-height: 92px;
-			padding-left: 112px;
 			position: relative;
 			margin-bottom: 1em;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
 			&:last-child {
 				margin-bottom: 0;
 			}
-			.birthday-photo {
-				width: 92px;
-				height: 92px;
-				position: absolute;
-				top: 0;
-				left: 0;
-				img {
-					width: 100%;
-					height: 100%;
-					display: block;
-				}
-			}
+		}
+	}
+	.birthday-info {
+		width: calc(100% - 100px);
+	}
+	.birthday-photo {
+		width: 92px;
+		height: 92px;
+		margin-right: 5px;
+		img {
+			width: 100%;
+			height: 100%;
+			display: block;
 		}
 	}
 	.birthday-month {
@@ -1018,7 +1022,7 @@
 	}
 	.birthday-name {
 		display: inline-block;
-		margin-bottom: .5em;
+		margin-bottom: .2em;
 		line-height: 24px;
 		strong {
 			font-size: 120%;
@@ -1033,6 +1037,9 @@
 
 	.publications-wrap {
 		text-align: center;
+		display: flex;
+		align-items: stretch;
+		min-height: 100%;
 		h3 {
 			padding: 1em 0;
 		}
@@ -1132,6 +1139,7 @@
 		text-align: left;
 		padding: 20px;
 		box-sizing: border-box;
+		width: 100%;
 		.news-date {
 			color: lightgray;
 			margin-bottom: 5px;
