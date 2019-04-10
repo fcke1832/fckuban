@@ -3,7 +3,6 @@
 {% load thumbnail %}
 
 {% block content %}
-{% if request.user.is_superuser %}
     <div class="main-wrap">
         <h1>СМИ о нас</h1>
         <section class="mass-media-news-wrap white-bg-side-bar">
@@ -22,7 +21,7 @@
                             <div class="news-date">{{ article.date_pub|date:"SHORT_DATE_FORMAT" }}</div>
                             {% if article.sourse %}
                             <a href="{{ article.sourse }}" class="mass-media-link">
-                                К источнику
+                                {{ article.sourse_name }}
                             </a>
                             {% endif %}
                         </div>
@@ -48,5 +47,4 @@
             </div>  
         </section>
     </div>
-{% endif %}
 {% endblock %}   
