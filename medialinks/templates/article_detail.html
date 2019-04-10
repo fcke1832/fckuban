@@ -3,7 +3,6 @@
 {% load thumbnail %}
 
 {% block content %}
-{% if request.user.is_superuser %}
     <div class="main-wrap white-bg-side-bar">
         <main>
             <section class="publications-wrap">
@@ -22,85 +21,6 @@
                         <a href="#" class="hashtag-link">#времяверных</a>
                         {% endcomment %}
                     </div>
-                    {% comment %}
-                    <div class="open-publication-slider">
-                        <div class="img-wrap">              
-                            <img src="images/photo-1.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-2.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-3.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-4.jpg">
-                        </div>
-                        <div class="img-wrap">                  
-                            <img src="images/vertical.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-1.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-2.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-3.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-4.jpg">
-                        </div>
-                        <div class="img-wrap">                  
-                            <img src="images/vertical.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-1.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-2.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-3.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-4.jpg">
-                        </div>
-                        <div class="img-wrap">                  
-                            <img src="images/vertical.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-1.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-2.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-3.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-4.jpg">
-                        </div>
-                        <div class="img-wrap">                  
-                            <img src="images/vertical.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-1.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-2.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-3.jpg">
-                        </div>
-                        <div class="img-wrap">              
-                            <img src="images/photo-4.jpg">
-                        </div>
-                        <div class="img-wrap">                  
-                            <img src="images/vertical.jpg">
-                        </div>                                                              
-                    </div>
-                    {% endcomment %}
                 </div>
             </section>          
         </main>
@@ -109,5 +29,4 @@
             {% include "mainpage/sidebar/birthdays.html" %}
         </div>          
     </div>
-{% endif %}
 {% endblock %}
