@@ -1,9 +1,18 @@
+from sorl.thumbnail import ImageField
 from django.db import models
 
 
 class BaseTeamMember(models.Model):
     full_name = models.CharField('ФИО', max_length=200)
     birthday = models.DateField('Дата рождения')
+    image = ImageField(
+        'Фото',
+        default='',
+        null=None,
+        blank=False,
+        upload_to='media/team_upload',
+        help_text='Размер фото 150x250'
+    )
 
 
 class Player(BaseTeamMember):
@@ -26,4 +35,3 @@ class Player(BaseTeamMember):
 
     def __str__(self):
         return self.full_name
-    
