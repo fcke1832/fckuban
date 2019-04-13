@@ -1,3 +1,29 @@
 from django.db import models
 
-# Create your models here.
+
+class BaseTeamMember(models.Model):
+    full_name = models.CharField('ФИО', max_length=200)
+    birthday = models.DateField('Дата рождения')
+
+
+class Player(BaseTeamMember):
+    GOALKEEPER, DEFENDER, MIDFIELDER, FORWARD = range(4)
+    POSITION_CHOICES = (
+        (GOALKEEPER, 'Вратарь'),
+        (DEFENDER, 'Защитник'),
+        (MIDFIELDER, 'Полузащитник'),
+        (FORWARD, 'Нападающий'),
+    )
+
+    position = models.PositiveSmallIntegerField('Амплуа', choices=POSITION_CHOICES, default=GOALKEEPER)
+    weight = models.PositiveSmallIntegerField('Вес(кг)', default=0)
+    growth = models.PositiveSmallIntegerField('Рост(см)', default=0)
+    number = models.PositiveSmallIntegerField('Номер', default=0)
+
+    class Meta:
+        verbose_name = "Игрок"
+        verbose_name_plural = "Игроки"
+
+    def __str__(self):
+        return self.full_name
+    

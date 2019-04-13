@@ -11,7 +11,7 @@
         {% endcomment %}
         <li><a href="{% url 'medialinks:articles_list' %}" title="СМИ о нас">СМИ о нас</a></li>
         {% if request.user.is_superuser or request.user.is_staff %}
-        <li><a href="{% url 'news:news_list_preview' %}" title="Предпросмотр новостей">Предпросмотр</a></li>
+        <li><a href="{% url 'news:news_list_preview' %}" rel="nofollow">Предпросмотр</a></li>
         {% endif %}
     </ul>
 
