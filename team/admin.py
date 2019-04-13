@@ -10,7 +10,7 @@ class PlayerAdmin(admin.ModelAdmin):
     list_display = ('full_name',)
     list_filter = ('full_name',)
     fields = (
-        'full_name', 'photo_thumbnail', 'number',
+        'full_name', 'image', 'photo_thumbnail', 'number',
         'birthday', 'position', 'weight', 'growth',
     )
     readonly_fields = ('photo_thumbnail',)
