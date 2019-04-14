@@ -71,4 +71,5 @@ class ArticleDetailView(DetailView):
                     context['youtube_channel'] = link.link
                 elif 'https://t.me/' in link.link:
                     context['telegram_channel'] = link.link
+        context['is_article'] = True
         return context
