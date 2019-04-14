@@ -35,3 +35,21 @@ class Player(BaseTeamMember):
 
     def __str__(self):
         return self.full_name
+
+
+class Coach(BaseTeamMember):
+    MANAGER, ASSISTANT_COACH, GOALKEEPER_COACH = range(3)
+    POSITION_CHOICES = (
+        (MANAGER, 'Главный тренер'),
+        (ASSISTANT_COACH, 'Старший тренер'),
+        (GOALKEEPER_COACH, 'Тренер вратарей'),
+    )
+
+    position = models.PositiveSmallIntegerField('Должность', choices=POSITION_CHOICES, default=ASSISTANT_COACH)
+
+    class Meta:
+        verbose_name = "Тренер"
+        verbose_name_plural = "Тренерский штаб"
+
+    def __str__(self):
+        return self.full_name
