@@ -8,8 +8,8 @@ class BaseTeamMember(models.Model):
     image = ImageField(
         'Фото',
         default='',
-        null=None,
-        blank=False,
+        null=True,
+        blank=True,
         upload_to='media/team_upload',
         help_text='Размер фото 150x250'
     )
