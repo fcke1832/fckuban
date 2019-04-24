@@ -1617,6 +1617,260 @@
 				}
 			}
 		}
+		.standings {
+			width: 100%;
+			border-collapse: collapse;
+			border-spacing: 0;
+			text-align: center;
+			background: white;
+			margin-top: 20px;
+			color: black;
+			th {
+				background: $BaseGreen;
+				padding: 10px 0;
+				text-align: center;
+				color: white;
+			}
+			td {
+				padding: 10px 0;
+				vertical-align: middle;
+			}
+			th:nth-child(2) ,
+			td:nth-child(2) {
+				text-align: left;
+			}
+			tr:nth-child(odd) {
+				background: #edf8f2;
+			}
+			tr:hover {
+				background: $BaseYellow;
+			}
+		}
+		.team-logo {
+			max-height: 40px;
+			width: auto;
+			margin-right: 15px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.no-side-bar {
+			main {
+				width: 100% !important;
+			}
+		}
+		.player-cards-wrap {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			width: 100%;
+		} 
+		.player-card {
+			width: 18%;
+			position: relative;
+			display: block;
+			margin: 0 2.5% 2.5% 0;
+			&:nth-child(5n) {
+				margin-right: 0;
+			}
+			.player-number {
+				background: $BaseGreen;
+				padding: 10px;
+				display: inline-block;
+			}
+			.player-info {
+				background: lightgray;
+			}
+			.player-name {
+				padding: 10px;
+				padding-right: 5;
+				color: black;
+				font-size: 16px;
+				text-align: center;
+				display: inline-block;
+			}
+		}
+		.picturefield {
+			width: 100%; 
+			img {
+				display: block;
+				width: 100%;
+			}
+			img:last-child {
+				display: none;
+			}
+			&:hover img:last-child {
+				display: block;
+			}
+			&:hover img:first-child {
+				display: none;
+			}
+		}
+		.about-player {
+			width: 100%;
+			background: url(../images/green-background.jpg) no-repeat top center / cover;
+			position: relative;
+			.player-img {
+				height: 100%;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%); 
+			}
+			h1 {
+				font-size: 3em;
+				margin: 0;
+			}
+			h2 {
+				color: white;
+				.number {
+					font-size: 5em;
+					display: block;
+				}
+			}
+			.info {
+				padding: 20px;
+				margin: 0 auto 0 0;
+				position: relative;
+			}
+			.position {
+				position: absolute;
+				top: 0;
+				right: 0;
+				padding: 20px;
+				text-align: center;
+				height: 100%;
+				box-sizing: border-box;
+				img {
+					width: 150px;
+					height: auto;
+				}
+				.position-name {
+					display: block;
+					font-weight: bold;
+					margin-top: 30px;
+				}
+			}
+		}
+		.player-bio {
+			background: white;
+			color: black;
+			margin-top: 20px;
+			padding: 10px;
+			box-shadow: 0 0 5px lightgray;
+		}
+		.other-players {
+			position: absolute;
+			right: 20px;
+			bottom: 20px;
+			font-weight: 300;
+			font-size: 15px;
+			&::after {
+				content: '';
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				background: url(../images/arrow-2.png) top center no-repeat / contain;
+				margin-left: 10px;
+				margin-bottom: -10px
+			}
+		}
+		.other-players-slider {
+			width: 70%;
+			margin: 0 auto;
+			img {
+				width: 100%;
+				padding:5px 10px;
+				box-sizing: border-box;
+			}
+			.slick-next {
+				right: -20px;
+			}
+			.slick-prev {
+				left: -20px;
+			}
+			.slick-prev:before, 
+			.slick-next:before {
+				color: $BaseGreen;
+			}
+		}
+		.sponsors-wrap {
+			color: black;
+			h1 {
+				margin-top: 0;
+			}
+		}
+		.sponsor {
+			color: black;
+			display: flex;
+			align-items: center;
+			img {
+				width: 70px;
+				height: auto;
+			}
+			.about-sponsor {
+				display: inline-block;
+				margin-left: 10px;
+				span {
+					display: block;
+				}
+			}
+			.name {
+				font-weight: bold;
+				font-size: 1.2em;
+				text-transform: uppercase;
+				color: #084621;
+			}
+			.description {
+				font-weight: bold;
+				text-transform: uppercase;
+				font-size: 15px;
+				color: $BaseGreen;
+			}
+			.link {
+				text-decoration: underline;
+				font-size: 13px;
+				color: $BaseGreen;
+				margin-top: 5px;
+			}
+		}
+		.ticket-map {
+			width: 100%;
+			margin-top: 20px;
+		}
+		.tickets-table {
+			background: white;
+			color: #084621;
+			border-collapse: collapse;
+			border-spacing: 0;
+			width: 70%;
+			overflow: auto;
+			margin: 0 auto;
+			text-align: center;
+			font-size: 18px;
+			border: 1px solid $BaseGreen;
+			th {
+				background: $BaseGreen;
+				color: white;
+				padding: 5px;
+			}
+			td {
+				border: 1px solid $BaseGreen;
+				padding: 10px;
+			}
+		}
+		.abbreviations {
+			margin-top: 20px;
+		}
+		.min-abbreviation {
+			font-weight: bold;
+			color: $BaseGreen;
+		}
+		.full-abbreviation {
+			color: black;
+			font-weight: 300;
+		}
 		footer {
 			background: url(../images/yellow-background.jpg) no-repeat top center /cover;
 			padding: 2em;
@@ -1685,7 +1939,34 @@
 			#publication-video {
 				width: 544px;
 				height: 306px;
-			}						
+			}
+			.player-card {
+				width: 23%;
+				&:nth-child(n) {
+					margin:0 2.6% 2.6% 0;
+				}
+				&:nth-child(4n) {
+					margin-right: 0;
+				}				
+			}
+			.about-player {
+				.player-img {
+					width: 65%;
+					height: auto;
+					top: 0;
+					left: 70%;
+				}
+				.info {
+					padding: 0;
+				}
+				.info-text {
+					padding: 20px;
+				}
+				.position {
+					position: relative;
+					background: $BaseGreen;
+				}
+			}					
 		}
 		@media screen and (max-width: 972px) {
 			.main-menu {
@@ -2158,6 +2439,15 @@
 						font-weight: 700;
 					}
 				}
+				.player-card {
+					width: 30%;
+					&:nth-child(n) {
+						margin: 0 5% 5% 0; 
+					}
+					&:nth-child(3n) {
+						margin-right: 0;
+					}
+				}
 				.footer-wrap {
 					font-size: .7em;
 				}
@@ -2301,13 +2591,95 @@
 				.description-wrap {
 					width: 60%;
 				}
-
+				.about-player {
+					padding: 0;
+					.info {
+						padding: 0;
+					}
+					.player-img {
+						position: static;
+						width: 100%;
+						height: auto;
+						transform: translateX(0);
+					}
+					.info-text {
+						background: $BaseGreen;
+						padding: 20px;
+						border-bottom: 1px solid white;
+					}
+					.position {
+						margin-top: 0;
+					}
+				}
 			}
 			@media screen and (max-width: 600px) {
 				#publication-video {
 					width: 75vw;
 					height: 43vw;
-				}			
+				}	
+				.standings {
+					thead {
+						display: none;
+					}
+					tr:hover {
+						background: white;
+					}
+					td{
+						display: inline-block;
+						vertical-align: top;
+						padding-top: 0;
+					}
+					td:first-child {
+						width: 10%;
+						&::before {
+							margin-bottom: 15px;
+						} 
+					}
+					td:nth-child(2) {
+						width: 90%;
+						position: relative;
+					}
+					td:nth-child(n + 3) {
+						display: none;
+						width: 14.286%;
+					}
+					td::before {
+						content: attr(data-label);
+						display: block;
+						background: $BaseGreen;
+						color: white;
+						margin-bottom: 5px;
+					}
+					.slide {
+						display: inline-block !important;
+					}
+				}
+				.team-logo-link {
+					content : '';
+					display: block;
+					width: 20px;
+					height: 20px;
+					background: url(../images/arrow.png) no-repeat top center  / contain;
+					position: absolute;
+					top: 35px;
+					right: 20px;
+					cursor: pointer;
+				}
+				.rotate-link {
+					transform: rotate(90deg);
+				}	
+				.player-card {
+					width: 48%;
+					&:nth-child(n) {
+						margin: 0 4% 4% 0; 
+					}
+					&:nth-child(even) {
+						margin-right: 0;
+					}
+				}
+				.tickets-table {
+					width: 100%;
+				}	
 			}
 			@media screen and (max-width: 550px){
 				.main-banner-wrap {
@@ -2369,6 +2741,12 @@
 			@media screen and (max-width: 400px) {
 				.margin-for-dots {
 					margin-bottom: 120px !important;
+				}
+				.player-card {
+					width: 100%;
+					&:nth-child(n) {
+						margin: 0 0 20px 0; 
+					}
 				}
 			}
 			@media screen and (max-width: 820px) and (orientation: landscape) {
