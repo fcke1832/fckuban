@@ -11,17 +11,19 @@
         {% endcomment %}
         <li><a href="{% url 'medialinks:articles_list' %}" title="СМИ о нас">СМИ о нас</a></li>
         {% if request.user.is_superuser or request.user.is_staff %}
-        <li><a href="{% url 'news:news_list_preview' %}" title="Предпросмотр новостей">Предпросмотр</a></li>
+        <li><a href="{% url 'news:news_list_preview' %}" rel="nofollow">Предпросмотр</a></li>
         {% endif %}
     </ul>
 
     <div class="main-menu-social-nets">
-        <a href="{{ youtube_channel }}" target="_blank"><img src="{% static 'images/youtube.png' %}"></a>
-        <a href="{{ telegram_channel }}" target="_blank"><img src="{% static 'images/telegram.png' %}"></a>
-        <a href="{{ instagram_link }}" target="_blank"><img src="{% static 'images/instagram.png' %}"></a>
-        <a href="{{ twitter_link }}" target="_blank"><img src="{% static 'images/twitter.png' %}"></a>
-        <a href="{{ facebook_link }}" target="_blank"><img src="{% static 'images/facebook.png' %}"></a>
+        <a href="{{ youtube_channel }}" target="_blank"><img src="{% static 'images/youtube-black.png' %}"></a>
+        <a href="{{ telegram_channel }}" target="_blank"><img src="{% static 'images/telegram-black.png' %}"></a>
+        <a href="{{ instagram_link }}" target="_blank"><img src="{% static 'images/instagram-black.png' %}"></a>
+        <a href="{{ twitter_link }}" target="_blank"><img src="{% static 'images/twitter-black.png' %}"></a>
+        <a href="{{ facebook_link }}" target="_blank"><img src="{% static 'images/facebook-black.png' %}"></a>
     </div>
+    {% comment %}
     <div class="search"></div>
+    {% endcomment %}
 </nav>
 <input type="search" class="search-field" placeholder="Функционал поиска пока находится в разработке...">
