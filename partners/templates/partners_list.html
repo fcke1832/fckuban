@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{% block content %}
+<div class="main-wrap">
+    <main>
+        <section class="white-bg-side-bar sponsors-wrap">
+            <main>
+
+                <h1>Спонсоры</h1>
+                {% for sponsor in sponsors %}
+                <a class="sponsor">
+                    {% thumbnail sponsor.image "70x70" crop="center" upscale=True as im %}
+                        <img src="{{ im.url }}">
+                    {% endthumbnail %}
+                    <div class="about-sponsor">
+                        <span class="name">{{ sponsor.title }}</span>
+                        <span class="description">{% if sponsor.description %}{{ sponsor.description }}{% endif %}</span>
+                        <span class="link">{% if sponsor.link %}{{ sponsor.link }}{% endif %}</span>
+                    </div>
+                </a>
+                <br>
+                {% endfor %}
+                <br>
+                <br>
+                <h1>Партнёры</h1>
+                {% for partner in partners %}
+                <a class="sponsor">
+                     {% thumbnail partner.image "70x70" crop="center" upscale=True as im %}
+                        <img src="{{ im.url }}">
+                    {% endthumbnail %}
+                    <div class="about-sponsor">
+                        <span class="name">{{ partner.title }}</span>
+                        <span class="description">{% if partner.description %}{{ partner.description }}{% endif %}</span>
+                        <span class="link">{% if partner.link %}{{ partner.link }}{% endif %}</span>
+                    </div>
+                </a>
+                <br>
+                {% endfor %}
+
+            </main>
+            <div class="side-bar">
+                {% include "mainpage/sidebar/calendar.html" %}
+                {% include "mainpage/sidebar/birthdays.html" %}
+                {% comment %}
+                {% include "mainpage/sidebar/translation-mini.html" %}
+                {% include "mainpage/sidebar/instagram-widget.html" %}
+                {% include "mainpage/sidebar/vk-widget.html" %}
+                {% include "mainpage/sidebar/events.html" %}
+                {% endcomment %}
+            </div>
+    </main>
+</div>
+{% endblock %}

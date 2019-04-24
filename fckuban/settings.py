@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'links',
     'news',
     'medialinks',
+    'partners',
     'seo',
     'tickets',
     'team',
