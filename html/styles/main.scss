@@ -783,6 +783,17 @@
 			.buy-tickets {
 				border-top: 1px solid lightgray;
 				padding: 6%;
+				text-align: center;
+				width: 100%;
+				background: white;
+				color: $BaseGreen;
+				box-sizing: border-box;
+				transition: background .2s;
+				&:hover {
+					background: $BaseGreen;
+					color: White;
+				}
+
 			}
 		}
 		.instagram-widget {
@@ -1835,11 +1846,15 @@
 				margin-top: 5px;
 			}
 		}
+		.tickets-wrap {
+			min-width: 1280px;
+		}
 		.ticket-map {
 			width: 100%;
 			margin-top: 20px;
 		}
-		.tickets-table {
+		.tickets-table,
+		.benefits {
 			background: white;
 			color: #084621;
 			border-collapse: collapse;
@@ -2721,9 +2736,9 @@
 						margin-right: 0;
 					}
 				}
-				.tickets-table {
+/*				.tickets-table {
 					width: 100%;
-				}	
+				}	*/
 			}
 			@media screen and (max-width: 550px){
 				.main-banner-wrap {
