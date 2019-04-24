@@ -1871,6 +1871,38 @@
 			color: black;
 			font-weight: 300;
 		}
+		.other-members {
+			width: 100%;
+			border: 1px solid lightgray;
+			color: black;
+			display: flex;
+			figure {
+				margin: 10px;
+			}
+			figcaption {
+				display: inline-block;
+				margin-left: 5px;
+				dd{
+					margin: 0;
+				}
+				dt {
+					font-size: 13px;
+					margin-top: 5px;
+				}
+			}
+		}
+		.team-members {
+			display: flex;
+			flex-wrap: wrap;
+			
+		}
+		.team-name {
+			border-right: 1px solid lightgray;
+			width: 35%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 		footer {
 			background: url(../images/yellow-background.jpg) no-repeat top center /cover;
 			padding: 2em;
@@ -2438,6 +2470,18 @@
 						font-style: italic;
 						font-weight: 700;
 					}
+				}
+				.other-members {
+					flex-direction: column;
+				}
+				.team-name {
+					width: 100%;
+					border-right: none;
+					border-bottom: 1px solid lightgray;
+					padding: 20px 0;
+				}
+				.team-members {
+					justify-content: center;
 				}
 				.player-card {
 					width: 30%;
