@@ -11,4 +11,6 @@ class TicketSaleView(TemplateView):
             context['link_buy_tickets'] = TicketSaleWidget.objects.all()[0].link
         except:
             context['link_buy_tickets'] = None
+
+        context['is_tickets'] = True
         return context
