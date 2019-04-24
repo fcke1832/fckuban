@@ -27,6 +27,7 @@ urlpatterns = [
     path('media/', include('medialinks.urls', namespace='medialinks')),
     path('tickets/', include('tickets.urls', namespace='tickets')),
     path('team/', include('team.urls', namespace='team')),
+    path('partners/', include('partners.urls', namespace='partners')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
