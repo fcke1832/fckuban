@@ -8,9 +8,9 @@
         {% comment %}
         <li><a href="{% url 'team:all_team' %}" title="Команда">Команда</a></li>
         {% endcomment %}
+        <li><a href="{% url 'tickets:ticket_sale' %}" title="Билеты">Билеты</a></li>
         <li><a href="{% url 'medialinks:articles_list' %}" title="СМИ о нас">СМИ о нас</a></li>
         {% if request.user.is_superuser or request.user.is_staff %}
-        <li><a href="{% url 'tickets:ticket_sale' %}" title="Билеты">Билеты</a></li>
         <li><a href="{% url 'partners:partners_list' %}" title="Партнёры">Партнёры</a></li>
         <li><a href="{% url 'news:news_list_preview' %}" rel="nofollow">Предпросмотр</a></li>
         {% endif %}
