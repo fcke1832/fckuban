@@ -10,7 +10,7 @@
 
                 <h1>Спонсоры</h1>
                 {% for sponsor in sponsors %}
-                <a class="sponsor">
+                <a class="sponsor" href="{{ sponsor.link }}">
                     {% thumbnail sponsor.image "70x70" crop="center" upscale=True as im %}
                         <img src="{{ im.url }}">
                     {% endthumbnail %}
@@ -26,7 +26,7 @@
                 <br>
                 <h1>Партнёры</h1>
                 {% for partner in partners %}
-                <a class="sponsor">
+                <a class="sponsor" href="{{ partner.link }}">
                      {% thumbnail partner.image "70x70" crop="center" upscale=True as im %}
                         <img src="{{ im.url }}">
                     {% endthumbnail %}
