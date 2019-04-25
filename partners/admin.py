@@ -8,9 +8,9 @@ from .models import Partner
 
 @admin.register(Partner)
 class PartnerAdmin(admin.ModelAdmin):
-    list_display = ('title', 'type_partner', 'is_active')
-    list_filter = ('title', 'type_partner', 'is_active')
-    list_editable = ('is_active', )
+    list_display = ('title', 'type_partner', 'number', 'is_active')
+    list_filter = ('title', 'type_partner', 'number', 'is_active')
+    list_editable = ('is_active', 'number', )
     fields = (
         'title', 'type_partner',
         'image', 'logo_thumbnail',

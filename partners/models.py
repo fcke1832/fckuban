@@ -21,6 +21,7 @@ class Partner(models.Model):
     )
     type_partner = models.PositiveSmallIntegerField('Тип партнёрства', choices=PARTNER_CHOICES, default=PARTNER)
     is_active = models.BooleanField('Активный', default=False)
+    number = models.PositiveSmallIntegerField('Порядковый номер', default=0)
 
     def __str__(self):
         return self.title
@@ -28,5 +29,6 @@ class Partner(models.Model):
     class Meta:
         verbose_name = 'Партнёр'
         verbose_name_plural = 'Партнёры'
+        ordering = ('-number', 'title',)
 
 
