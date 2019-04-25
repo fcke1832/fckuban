@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="tournament">{% if match.tournament %}{{ match.tournament }}{% endif %}<br>{% if match.tour %}{{ match.tour }}{% endif %}</div>
-            {% if match.link_tickets and request.user.is_superuser %}
+            {% if match.link_tickets %}
             <a href="{% url 'tickets:ticket_sale' %}" class="buy-tickets">Купить билеты</a>
             {% endif %}
             </div>
