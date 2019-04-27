@@ -2,7 +2,143 @@
 {% load static %}
 
 {% block content %}
-    {% include "mainpage/head_banner.html" %}
-    <br>
-    <h1>Команда в данный момент находится в процессе комплектации. Следите за обновлениями.</h1>
+    <div class="main-wrap">
+        <h1>Команда</h1>
+            <section class="white-bg-side-bar no-side-bar">
+                <main>
+                    <div class="player-cards-wrap">
+                        {% for keeper in goalkeepers %}
+                        <a href="{% url 'team:player_detail' keeper.slug %}" class="player-card">
+                            <div class="picturefield">
+                                {% if keeper.image %}
+                                    <img src="{{ keeper.image.url }}">
+                                {% endif %}
+                                <img src="{% static 'images/player-2.jpg' %}">
+                            </div>
+                            <div class="player-info">
+                                <span class="player-number">{{ keeper.number }}</span>
+                                <span class="player-name">{{ keeper.get_second_name }}</span>
+                            </div>
+                        </a>
+                        {% endfor %}
+
+                        {% for defender in defenders %}
+                        <a href="{% url 'team:player_detail' defender.slug %}" class="player-card">
+                            <div class="picturefield">
+                                {% if defender.image %}
+                                    <img src="{{ defender.image.url }}">
+                                {% endif %}
+                                <img src="{% static 'images/player-2.jpg' %}">
+                            </div>
+                            <div class="player-info">
+                                <span class="player-number">{{ defender.number }}</span>
+                                <span class="player-name">{{ defender.get_second_name }}</span>
+                            </div>
+                        </a>
+                        {% endfor %}
+
+                        {% for midfielder in midfielders %}
+                        <a href="{% url 'team:player_detail' midfielder.slug %}" class="player-card">
+                            <div class="picturefield">
+                                {% if midfielder.image %}
+                                    <img src="{{ midfielder.image.url }}">
+                                {% endif %}
+                                <img src="{% static 'images/player-2.jpg' %}">
+                            </div>
+                            <div class="player-info">
+                                <span class="player-number">{{ midfielder.number }}</span>
+                                <span class="player-name">{{ midfielder.get_second_name }}</span>
+                            </div>
+                        </a>
+                        {% endfor %}
+
+                        {% for forward in forwards %}
+                        <a href="{% url 'team:player_detail' forward.slug %}" class="player-card">
+                            <div class="picturefield">
+                                {% if forward.image %}
+                                    <img src="{{ forward.image.url }}">
+                                {% endif %}
+                                <img src="{% static 'images/player-2.jpg' %}">
+                            </div>
+                            <div class="player-info">
+                                <span class="player-number">{{ forward.number }}</span>
+                                <span class="player-name">{{ forward.get_second_name }}</span>
+                            </div>
+                        </a>
+                        {% endfor %}
+
+                    </div>
+                    <section class="other-members">
+                        <div class="team-name">
+                            lorem ipsum
+                        </div>
+                        <div class="team-members">
+                            <figure>
+                                <img src="images/pablo_vercellone2.jpg">
+                                <figcaption>
+                                    <dd>Lorem Ipsum</dd>
+                                    <dt>Manager</dt>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/pablo_vercellone2.jpg">
+                                <figcaption>
+                                    <dd>Lorem Ipsum</dd>
+                                    <dt>Manager</dt>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/pablo_vercellone2.jpg">
+                                <figcaption>
+                                    <dd>Lorem Ipsum</dd>
+                                    <dt>Manager</dt>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/pablo_vercellone2.jpg">
+                                <figcaption>
+                                    <dd>Lorem Ipsum</dd>
+                                    <dt>Manager</dt>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/pablo_vercellone2.jpg">
+                                <figcaption>
+                                    <dd>Lorem Ipsum</dd>
+                                    <dt>Manager</dt>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/pablo_vercellone2.jpg">
+                                <figcaption>
+                                    <dd>Lorem Ipsum</dd>
+                                    <dt>Manager</dt>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/pablo_vercellone2.jpg">
+                                <figcaption>
+                                    <dd>Lorem Ipsum</dd>
+                                    <dt>Manager</dt>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/pablo_vercellone2.jpg">
+                                <figcaption>
+                                    <dd>Lorem Ipsum</dd>
+                                    <dt>Manager</dt>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/pablo_vercellone2.jpg">
+                                <figcaption>
+                                    <dd>Lorem Ipsum</dd>
+                                    <dt>Manager</dt>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </section>
+                </main> 
+            </section>
+    </div>
 {% endblock %}

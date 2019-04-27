@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="main-wrap">
+            <section class="white-bg-side-bar">
+                <main>
+                    <div class="about-player">
+                        <div class="info">
+                            <img class="player-img" src="{{ player.image.url }}">  
+                            <div class="info-text">
+                                <h1 class="last-name">{{ player.get_second_name }}</h1>
+                                <h2>
+                                    <span class="number">{{ player.number }}</span>
+                                    <span class="full-name">{{ player.get_second_name }}</span>    
+                                </h2>
+                                <ul>
+                                    <li>Рост: {{ player.growth }}см.</li>
+                                    <li>Вес: {{ player.weight }}кг.</li>
+                                    <li>Родился: {{ player.birthday|date:"SHORT_DATE_FORMAT" }}.</li>
+                                </ul>
+                            </div>
+                            <div class="position">
+                                <img src="{% static 'images/field.png' %}">
+                                <span class="position-name">Позиция: {{ player.get_position_display }}.</span>
+                            </div>
+                        </div>
+                        <a href="javascript:;" class="other-players">Другие игроки</a>
+                    </div>
+                    <div class="other-players-slider">
+                        {% for other_player in other_players %}
+                        <a href="{% url 'team:player_detail' other_player.slug %}">
+                            <img src="{{ other_player.image }}">
+                        </a>
+                        {% endfor %}                       
+                    </div>
+                    <div class="player-bio">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </main>
+                <div class="side-bar">
+                    {% include "mainpage/sidebar/calendar.html" %}
+                    {% include "mainpage/sidebar/birthdays.html" %}
+                </div>  
+            </section>
+        </div>
+{% endblock %}
