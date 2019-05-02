@@ -52,6 +52,15 @@ class Team(models.Model):
     )
     points = models.PositiveSmallIntegerField('Очки', default=0)
     matches = models.PositiveSmallIntegerField('Матчи', default=0)
+    win_matches = models.PositiveSmallIntegerField('Победы', default=0)
+    losing_matches = models.PositiveSmallIntegerField('Поражения', default=0)
+    draw_matches = models.PositiveSmallIntegerField('Ничьи', default=0)
+    home_matches = models.PositiveSmallIntegerField('Сыграно домашних матчей', default=0)
+    guest_matches = models.PositiveSmallIntegerField('Сыграно гостевых матчей', default=0)
+    goals_scored = models.PositiveSmallIntegerField('Забито мячей', default=0)
+    goals_scored_guest = models.PositiveSmallIntegerField('Забито мячей в гостях', default=0)
+    goals_conceded = models.PositiveSmallIntegerField('Пропущено мячей', default=0)
+    goals_difference = models.SmallIntegerField('Разница мячей', default=0)
     is_active = models.BooleanField('Активная', default=True)
     is_fcke = models.BooleanField('Наша команда', default=False)
     logo = ImageField('Логотип', default='', null=True, blank=True, upload_to='media/logo')
@@ -63,6 +72,10 @@ class Team(models.Model):
     class Meta:
         verbose_name = 'Команда'
         verbose_name_plural = 'Команды'
+        ordering = ('position_number', 'win_matches', 'win_matches', 'goals_scored', 'goals_scored_guest',)
+
+    def get_tournament_statistics(self):
+        pass
 
 
 class MatchTour(models.Model):
