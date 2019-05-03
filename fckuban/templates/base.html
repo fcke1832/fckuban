@@ -5,11 +5,11 @@
     <meta name="google-site-verification" content="5lFSXFWw_sr4AKf21xGUsUn3WmtAZz3QCaxGgWhv3uU" />
 </head>
 <body>
-    <div class="site">
+    <div class="site {% if is_tickets %}tickets-wrap{% endif %}">
         <header>
             {% include "top_menu.html" %}
         </header>
-        <div class="site-content">
+        <div class="site-content {% if is_tickets %}tickets-wrap{% endif %}">
             {% block content %}{% endblock %}
         </div>
         <footer>

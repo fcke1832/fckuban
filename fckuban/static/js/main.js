@@ -40,6 +40,11 @@ if ($(this).width() >= 956) {
  if ($(this).width() >= 2560){
   $('.scrollbar').height($('.scoretable') - 70 - $('.team-select').height());
 };
+$(".team").append("<a href='javascript:;' class='team-logo-link'>");
+$('.team-logo-link').on('click',function() {
+  $(this).toggleClass('rotate-link');
+  $(this).parent().siblings("td:nth-child(n + 3)").toggleClass('slide');
+});
 // sript for Header Menu and scoretable on resize
 window.addEventListener("resize", function() {
   if ($(this).width() >= 956) {
@@ -133,6 +138,16 @@ $('.calendar-info').slick({
   draggable: false,
   swipe: false,
   initialSlide: Initial,
+});
+$('.other-players').on('click',function() {
+ $(".other-players-slider").slideToggle();
+});
+$('.other-players-slider').slick({
+  infinite: true,
+  dots: false,
+  arrows: true, 
+  slidesToShow: 5,
+  slidesToScroll: 1,
 });
 $('.open-publication-slider').slick({
   infinite: true,

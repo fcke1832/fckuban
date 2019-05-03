@@ -1,5 +1,7 @@
 from sorl.thumbnail import ImageField
+from transliterate import translit
 from django.db import models
+from django.utils.text import slugify
 
 
 class BaseTeamMember(models.Model):
@@ -8,11 +10,21 @@ class BaseTeamMember(models.Model):
     image = ImageField(
         'Фото',
         default='',
-        null=None,
-        blank=False,
+        null=True,
+        blank=True,
         upload_to='media/team_upload',
         help_text='Размер фото 150x250'
     )
+    slug = models.SlugField('ЧПУ', max_length=200, null=True, blank=True, unique=True)
+
+    def get_second_name(self):
+        return self.full_name.split()[0]
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            slug = slugify(translit(str(self.full_name), 'ru', reversed=True))
+            self.slug = slug
+        super(BaseTeamMember, self).save(*args, **kwargs)
 
 
 class Player(BaseTeamMember):

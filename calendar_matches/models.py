@@ -1,5 +1,6 @@
 from django.db import models
 from tournaments.models import Team, Tournament
+from tickets.models import TicketProgram
 
 
 class Match(models.Model):
@@ -15,6 +16,14 @@ class Match(models.Model):
     guest_goals = models.PositiveSmallIntegerField('Голы гостей', default=0)
     tour = models.CharField('Тур', max_length=10, blank=True, null=True)
     time_invisible = models.BooleanField('Скрыть время', default=False)
+    ticket_program = models.ForeignKey(
+        TicketProgram,
+        verbose_name='Билетная программа',
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
+    link_tickets = models.URLField('Ссылка на онлайн-продажу билетов', blank=True, null=True)
 
     def __str__(self):
         return '{0} - {1}'.format(self.home_team, self.guest_team)
