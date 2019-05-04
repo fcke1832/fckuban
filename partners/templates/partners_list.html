@@ -5,10 +5,11 @@
 {% block content %}
 <div class="main-wrap">
     <main>
-        <section class="white-bg-side-bar sponsors-wrap">
+        <section class="white-bg-side-bar">
             <main>
 
-                <h1>Спонсоры</h1>
+                <h1 style="margin-top: 0; color: black;">Спонсоры</h1>
+                <div class="sponsors-wrap">
                 {% for sponsor in sponsors %}
                 <a class="sponsor" href="{{ sponsor.link }}">
                     {% thumbnail sponsor.image "70x70" crop="center" upscale=True as im %}
@@ -22,9 +23,11 @@
                 </a>
                 <br>
                 {% endfor %}
+                </div>
                 <br>
                 <br>
-                <h1>Партнёры</h1>
+                <h1 style="margin-top: 0; color: black;">Партнёры</h1>
+                <div class="sponsors-wrap">
                 {% for partner in partners %}
                 <a class="sponsor" href="{{ partner.link }}">
                      {% thumbnail partner.image "70x70" crop="center" upscale=True as im %}
@@ -38,6 +41,7 @@
                 </a>
                 <br>
                 {% endfor %}
+                </div>
 
             </main>
             <div class="side-bar">
