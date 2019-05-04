@@ -2,173 +2,171 @@
 $(document).ready(function(){
   var gamedate = $("div.calendar-nav").find("div.slick-slide").children();
   var win = $(this);
-
-  $('.publication-p').each(function(index, element) {
+  // замена лишних строк на троеточие в плитке новостей
+  $(".publication-p").each(function(index, element) {
     $clamp(element, { clamp: 5});
   });
-
+  // таймер на странице онлайн-трансляций
   var timer = new Timer();
-  $('#chronometre .startButton').click(function () {
+  $("#chronometre .startButton").click(function () {
     timer.start();
   });
-  $('#chronometre .pauseButton').click(function () {
+  $("#chronometre .pauseButton").click(function () {
     timer.pause();
   });
-  $('#chronometre .stopButton').click(function () {
+  $("#chronometre .stopButton").click(function () {
     timer.stop();
   });
-  $('#chronometre .resetButton').click(function () {
+  $("#chronometre .resetButton").click(function () {
     timer.reset();
   });
-  timer.addEventListener('secondsUpdated', function (e) {
-    $('#chronometre .values').html(timer.getTimeValues().toString());
+  timer.addEventListener("secondsUpdated", function (e) {
+    $("#chronometre .values").html(timer.getTimeValues().toString());
   });
-  timer.addEventListener('started', function (e) {
-    $('#chronometre .values').html(timer.getTimeValues().toString());
+  timer.addEventListener("started", function (e) {
+    $("#chronometre .values").html(timer.getTimeValues().toString());
   });
-  timer.addEventListener('reset', function (e) {
-    $('#chronometre .values').html(timer.getTimeValues().toString());
+  timer.addEventListener("reset", function (e) {
+    $("#chronometre .values").html(timer.getTimeValues().toString());
   });
-// scotetable table height
-if ($(this).width() <= 955) {
-  $('.scrollbar').css('height' , '100%');
-};
-if ($(this).width() >= 956) {
-  $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
-};
- // scrollbar height on wide screen
- if ($(this).width() >= 2560){
-  $('.scrollbar').height($('.scoretable') - 70 - $('.team-select').height());
-};
-$(".team").append("<a href='javascript:;' class='team-logo-link'>");
-$('.team-logo-link').on('click',function() {
-  $(this).toggleClass('rotate-link');
-  $(this).parent().siblings("td:nth-child(n + 3)").toggleClass('slide');
-});
-// sript for Header Menu and scoretable on resize
-window.addEventListener("resize", function() {
-  if ($(this).width() >= 956) {
-    $(".header-menu").css('display' , 'block');
-    $('.scoretable-items').css("display", "block");
-    $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
-  }else {
-    $('.header-menu').css('display' , 'none'); 
-  }
-});
-// sript  scrollbar on resize
-window.addEventListener("resize", function() {
-  if ($(this).width() >= 2560) {
-    $('.scrollbar').height($('.scoretable').height() - 70 - $('.team-select').height());
-  }else {
-    $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
-  }
-});
-window.addEventListener("resize", function() {
+  // высота турнирной таблицы на разных экранах
   if ($(this).width() <= 955) {
-   $('.scrollbar').css('height' , '100%');
- }else {
-  $('.scrollbar').height($('.scoretable').height() - 50 - $('.team-select').height());
-}
-});
-// sript for Scoretable on resize
-$('.scoretable-trigger').on("click", function() {
-  if (win.width() <= 956) {
-    $('.scoretable-items').slideToggle();       
+    $(".scrollbar").css("height" , "100%");
   };
-});
-$(window).on('orientationchange', function() {
-  $('.scoretable-items').css("display", "");
-});
-// Insagram widget
-var galleryFeed = new Instafeed({
-  get: "user",
-  userId: 4622774,
-  accessToken: "4622774.7cbaeb5.ec8c5041b92b44ada03e4a4a9153bc54",
-  resolution: "thumbnail",
-  useHttp: "true",
-  limit: 9,
-  template: '<div class="img-wrap"><a href="{{link}}"><div class="img-featured-container"><div class="img-backdrop"></div><div class="description-container"><i class="icon ion-heart"></i><span class="likes">{{likes}}</span><i class="icon icon-chatbubble"></i><span class="comments">{{comments}}</span></div><img src="{{image}}" class="img-responsive"></div></a></div>',
-  target: "instafeed-gallery-feed",
-});
-galleryFeed.run();
-
-// sliders
-$('.main-slider').slick({
- dots: true,
- speed: 500,
- fade: true,
- cssEase: 'linear',
- autoplay: true,
- autoplaySpeed: 7000,
- responsive: [
- {
-  breakpoint: 850,
-  settings: {
-    arrows: false,
-    dots: true
+  if ($(this).width() >= 956) {
+    $(".scrollbar").height($(".scoretable").height() - 50 - $(".team-select").height());
+  };
+  if ($(this).width() >= 2560){
+    $(".scrollbar").height($(".scoretable") - 70 - $(".team-select").height());
+  };
+  window.addEventListener("resize", function() {
+    if ($(this).width() >= 2560) {
+      $(".scrollbar").height($(".scoretable").height() - 70 - $(".team-select").height());
+    }else {
+      $(".scrollbar").height($(".scoretable").height() - 50 - $(".team-select").height());
+    }
+  });
+  window.addEventListener("resize", function() {
+    if ($(this).width() <= 955) {
+     $(".scrollbar").css("height" , "100%");
+   }else {
+    $(".scrollbar").height($(".scoretable").height() - 50 - $(".team-select").height());
   }
-}
-]
 });
-var SlidesCount = $('.day').closest('span').length - 1;
-var Initial = $('#current-slide').index();
-$('.calendar-nav').slick({
-  slidesToShow: SlidesCount,
-  slidesToScroll: 1,
-  asNavFor: '.calendar-info',
-  dots: false,
-  centerMode: true,
-  centerPadding: '0px',
-  arrows: false,
-  focusOnSelect: true,
-  infinite: false,
-  initialSlide: Initial,
-  variableWidth: true,
-  draggable:false,
-  swipe: false
+  // анимация стрелки в строке турнирной таблицы на мал. экранах
+  $(".team").append("<a href='javascript:;' class='team-logo-link'>");
+  $(".team-logo-link").on("click",function() {
+    $(this).toggleClass("rotate-link");
+    $(this).parent().siblings("td:nth-child(n + 3)").toggleClass("slide");
+  });
+  // Сворачивание главного меню нв маленьком экране
+  window.addEventListener("resize", function() {
+    if ($(this).width() >= 956) {
+      $(".header-menu").css("display" , "block");
+      $(".scoretable-items").css("display", "block");
+      $(".scrollbar").height($(".scoretable").height() - 50 - $(".team-select").height());
+    }else {
+      $(".header-menu").css("display" , "none"); 
+    }
+  });
+  // слайд турнирной таблицы на маленьких экранах
+  $(".scoretable-trigger").on("click", function() {
+    if (win.width() <= 956) {
+      $(".scoretable-items").slideToggle();       
+    };
+  });
+  $(window).on("orientationchange", function() {
+    $(".scoretable-items").css("display", "");
+  });
+  // Insagram виджет
+  var galleryFeed = new Instafeed({
+    get: "user",
+    userId: 4622774,
+    accessToken: "4622774.7cbaeb5.ec8c5041b92b44ada03e4a4a9153bc54",
+    resolution: "thumbnail",
+    useHttp: "true",
+    limit: 9,
+    template: '<div class="img-wrap"><a href="{{link}}"><div class="img-featured-container"><div class="img-backdrop"></div><div class="description-container"><i class="icon ion-heart"></i><span class="likes">{{likes}}</span><i class="icon icon-chatbubble"></i><span class="comments">{{comments}}</span></div><img src="{{image}}" class="img-responsive"></div></a></div>',
+    target: "instafeed-gallery-feed",
+  });
+  galleryFeed.run();
+  // слайдеры
+  $(".main-slider").slick({
+   dots: true,
+   speed: 500,
+   fade: true,
+   cssEase: "linear",
+   autoplay: true,
+   autoplaySpeed: 7000,
+   responsive: [
+   {
+    breakpoint: 850,
+    settings: {
+      arrows: false,
+      dots: true
+    }
+  }
+  ]
 });
-$('.calendar-info').slick({
-  infinite: false,
-  dots: false,
-  arrows: false, 
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: false,
-  asNavFor: '.calendar-nav',
-  draggable: false,
-  swipe: false,
-  initialSlide: Initial,
-});
-$('.other-players').on('click',function() {
- $(".other-players-slider").slideToggle();
-});
-$('.other-players-slider').slick({
-  infinite: true,
-  dots: false,
-  arrows: true, 
-  slidesToShow: 5,
-  slidesToScroll: 1,
-});
-$('.open-publication-slider').slick({
-  infinite: true,
-  dots: true,
-  arrows: true, 
-  slidesToShow: 1,
-  slidesToScroll: 1,
-});
-var PublicationSlidesLenght = $('.open-publication-slider').find($('li')).length
-if (PublicationSlidesLenght > 9) {
-  $('.open-publication-slider').addClass('margin-for-dots');
-}
-//popup image in slider
-$(".popup").click(function(){
+  var SlidesCount = $(".day").closest("span").length - 1;
+  var Initial = $("#current-slide").index();
+  $(".calendar-nav").slick({
+    slidesToShow: SlidesCount,
+    slidesToScroll: 1,
+    asNavFor: ".calendar-info",
+    dots: false,
+    centerMode: true,
+    centerPadding: "0px",
+    arrows: false,
+    focusOnSelect: true,
+    infinite: false,
+    initialSlide: Initial,
+    variableWidth: true,
+    draggable:false,
+    swipe: false
+  });
+  $(".calendar-info").slick({
+    infinite: false,
+    dots: false,
+    arrows: false, 
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    asNavFor: ".calendar-nav",
+    draggable: false,
+    swipe: false,
+    initialSlide: Initial,
+  });
+  $(".other-players").on("click",function() {
+   $(".other-players-slider").slideToggle();
+ });
+  $(".other-players-slider").slick({
+    infinite: true,
+    dots: false,
+    arrows: true, 
+    slidesToShow: 5,
+    slidesToScroll: 1,
+  });
+  $(".open-publication-slider").slick({
+    infinite: true,
+    dots: true,
+    arrows: true, 
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  });
+  var PublicationSlidesLenght = $(".open-publication-slider").find($("li")).length
+  if (PublicationSlidesLenght > 9) {
+    $(".open-publication-slider").addClass("margin-for-dots");
+  }
+  //выпадающее фото в слайдере на странице новости
+  $(".popup").click(function(){
     var img = $(this);
     var src = img.attr('src');
     $("body").append("<div class='popup-wrap'>"+ 
-             "<div class='popup-bg'>"+ 
-             "<img src='"+src+"' class='popup-img'/>"+ 
-             "</div>"+
-             "</div>"); 
+     "<div class='popup-bg'>"+ 
+     "<img src='"+src+"' class='popup-img'/>"+ 
+     "</div>"+
+     "</div>"); 
     $(".popup-wrap").fadeIn(800); 
     $(".popup-bg").click(function(){    
       $(".popup-wrap").fadeOut(800); 
@@ -176,29 +174,30 @@ $(".popup").click(function(){
         $(".popup-wrap").remove(); 
       }, 800);
     });
-});
-// header menu and searchfield slide
-$('.menu-icon').on('click',function() {
- $(".header-menu").slideToggle();
-});
-$('.search').on('click',function() {
- $(".search-field").slideToggle();
-});
-$('.team-button').on('click',function() {
-  $('.team-button').not(this).removeClass('active-button');
-  $(this).addClass('active-button');
-});
-// size for calendar navigation items
-$('div.calendar-nav').find("div.slick-slide").children().addClass('game-date').width($('.calendar-nav').width() * 0.17);
-$('div.slick-current').find("div.game-date").addClass('current').width($('.calendar-nav').width() * 0.32);
-$('.game-date').on('click', function() {
-  $('.game-date').not(this).removeClass('current').width($('.calendar-nav').width() * 0.17);
-  $(this).addClass('current').width($('.calendar-nav').width() * 0.32);
-});
-$( window ).on("resize", function(){
- $('.game-date').width($('.calendar-nav').width() * 0.17);
- $('div.slick-current').find("div.game-date").width($('.calendar-nav').width() * 0.32);
-});  
+  });
+  // слайд меню и поиска на маленьких экранах
+  $(".menu-icon").on("click",function() {
+   $(".header-menu").slideToggle();
+ });
+  $(".search").on("click",function() {
+   $(".search-field").slideToggle();
+ });
+  // стиль кнопки комманды в турнирной таблице
+  $(".team-button").on("click",function() {
+    $(".team-button").not(this).removeClass("active-button");
+    $(this).addClass("active-button");
+  });
+  // ширина элементов навигации в календаре
+  $("div.calendar-nav").find("div.slick-slide").children().addClass("game-date").width($(".calendar-nav").width() * 0.17);
+  $("div.slick-current").find("div.game-date").addClass("current").width($(".calendar-nav").width() * 0.32);
+  $(".game-date").on("click", function() {
+    $(".game-date").not(this).removeClass("current").width($(".calendar-nav").width() * 0.17);
+    $(this).addClass("current").width($(".calendar-nav").width() * 0.32);
+  });
+  $( window ).on("resize", function(){
+   $(".game-date").width($(".calendar-nav").width() * 0.17);
+   $("div.slick-current").find("div.game-date").width($(".calendar-nav").width() * 0.32);
+ });  
 });
 
 
