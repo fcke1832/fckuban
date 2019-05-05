@@ -18,27 +18,28 @@
                                 <th data-label="В">В</th>
                                 <th data-label="Н">Н</th>
                                 <th data-label="П">П</th>
-                                <th data-label="ГЗ">ГЗ</th>
-                                <th data-label="ГП">ГП</th>
+                                <th data-label="Мячи">Мячи</th>
                                 <th data-label="О">О</th>
                             </tr>                       
                         </thead>
                         <tbody>
                             {% for team in teams %}
-                            <tr>
-                                <td scope="row" data-label="№">1</td>
-                                <td data-label="Команда" class="team"><img src="{{ team.logo.url }}" class="team-logo">{{ team.name }}</td>
+                            <tr {% if team.is_fcke %}class='special'{% endif %}>
+                                <td scope="row" data-label="№">{{ forloop.counter }}</td>
+                                <td data-label="Команда" class="team">
+                                    <div class="img-wrap"><img src="{{ team.logo.url }}" class="team-logo"></div>{{ team.name }}
+                                </td>
                                 <td data-label="И">{{ team.matches }}</td>
                                 <td data-label="В">{{ team.win_matches }}</td>
                                 <td data-label="Н">{{ team.draw_matches }}</td>
                                 <td data-label="П">{{ team.losing_matches }}</td>
-                                <td data-label="ГЗ">{{ team.goals_scored }}</td>
-                                <td data-label="ГП">{{ team.goals_conceded }}</td>
+                                <td data-label="Мячи">{{ team.goals_scored }}-{{ team.goals_conceded }}</td>
                                 <td data-label="О">{{ team.points }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>        
                     </table>
+                    {% comment %}
                     <div class="abbreviations">
                         <div class="abbreviation">
                             <span class="min-abbreviation">И</span>
@@ -69,6 +70,8 @@
                             <span class="full-abbreviation">Очки</span>
                         </div>
                     </div>
+                    {% endcomment %}
+                    {% include "rules.html" %}
                 </main>
                 <div class="side-bar">
                     <div class="game-calendar">

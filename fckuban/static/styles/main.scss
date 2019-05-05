@@ -290,6 +290,7 @@
 	}
 	.scoretable {
 		padding: 20px;
+		padding-bottom: 30px;
 		padding-right: 4px;
 		background-color: white;
 		text-align: center;
@@ -335,10 +336,6 @@
 			tr:nth-child(odd) {
 				background-color: rgb(237,248,242);
 			}
-			tr.special{
-				background-color:rgb(235,202,39);
-				font-weight: 600;
-			}
 			td {
 				padding: .4em 10px;
 				white-space: pre;
@@ -380,6 +377,20 @@
 					color: white;	
 				}
 			}
+		}
+	}
+	tr.special{
+		background-color:rgb(235,202,39) !important;
+		font-weight: 600;
+	}
+	.full-scoretable {
+		background: $BaseGreen;
+		font-weight: bold;
+		display: inline-block;
+		width: 100%;
+		padding: 3px;
+		&:hover {
+			color: $BaseYellow;
 		}
 	}
 	.active-button {
@@ -1653,16 +1664,27 @@
 			tr:nth-child(odd) {
 				background: #edf8f2;
 			}
-			tr:hover {
-				background: $BaseYellow;
+			td:nth-child(n + 3),
+			th:nth-child(n + 3) {
+				width: 70px;
+			}
+			.img-wrap {
+				height: 40px;
+				width: 40px;
+				overflow: hidden;
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: 10px;
+				position: relative;
 			}
 		}
 		.team-logo {
-			max-height: 40px;
+			height: 100%;
 			width: auto;
-			margin-right: 15px;
-			display: inline-block;
-			vertical-align: middle;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translate(-50%);
 		}
 		.no-side-bar {
 			main {
@@ -1677,11 +1699,11 @@
 			width: 100%;
 		} 
 		.player-card {
-			width: 18%;
+			width: 30%;
 			position: relative;
 			display: block;
 			margin: 0 2.5% 2.5% 0;
-			&:nth-child(5n) {
+			&:nth-child(3n) {
 				margin-right: 0;
 			}
 			.player-number {
@@ -1807,15 +1829,17 @@
 			}
 		}
 		.sponsors-wrap {
-			color: black;
-			h1 {
-				margin-top: 0;
-			}
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
 		}
 		.sponsor {
+			width: 48%;
 			color: black;
 			display: flex;
 			align-items: center;
+			flex-wrap: wrap;
+			margin: 15px 0;
 			img {
 				width: 70px;
 				height: auto;
@@ -1885,6 +1909,11 @@
 		.full-abbreviation {
 			color: black;
 			font-weight: 300;
+		}
+		.rules {
+			color: gray;
+			font-size: 14px;
+			margin: 20px 0;
 		}
 		.other-members {
 			width: 100%;
@@ -1987,14 +2016,11 @@
 				width: 544px;
 				height: 306px;
 			}
-			.player-card {
-				width: 23%;
-				&:nth-child(n) {
-					margin:0 2.6% 2.6% 0;
+			.standings {
+				td:nth-child(n + 3),
+				th:nth-child(n + 3) {
+					width: 55px;
 				}
-				&:nth-child(4n) {
-					margin-right: 0;
-				}				
 			}
 			.about-player {
 				.player-img {
@@ -2650,6 +2676,9 @@
 				.description-wrap {
 					width: 60%;
 				}
+				.sponsor {
+					width: 100%;
+				}
 				.about-player {
 					padding: 0;
 					.info {
@@ -2677,6 +2706,7 @@
 					height: 43vw;
 				}	
 				.standings {
+					font-size: 15px;
 					thead {
 						display: none;
 					}
@@ -2700,7 +2730,7 @@
 					}
 					td:nth-child(n + 3) {
 						display: none;
-						width: 14.286%;
+						width: 16.666%;
 					}
 					td::before {
 						content: attr(data-label);
@@ -2720,8 +2750,8 @@
 					height: 20px;
 					background: url(../images/arrow.png) no-repeat top center  / contain;
 					position: absolute;
-					top: 35px;
-					right: 20px;
+					top: 32px;
+					right: -20px;
 					cursor: pointer;
 				}
 				.rotate-link {
