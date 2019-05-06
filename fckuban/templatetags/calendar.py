@@ -30,7 +30,6 @@ def current_tournament(context):
     if current_tournament:
         is_position_teams = current_tournament.team.filter(is_active=True).exclude(position_number=None).order_by('position_number')
         zero_position_teams = current_tournament.team.filter(is_active=True, position_number=None)
-        from IPython import embed; embed()
         # list(chain(is_position_teams, zero_position_teams)) = context['teams']
     return current_tournament
 
