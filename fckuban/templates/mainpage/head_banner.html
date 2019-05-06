@@ -43,9 +43,7 @@
                     </tbody>
                 </table>
                 </div>
-                {% if request.user.is_superuser %}
                 <a href="{% url 'tournaments:standings' %}" class="full-scoretable">Полная таблица</a>
-                {% endif %}
             </div>
         </div>
 
