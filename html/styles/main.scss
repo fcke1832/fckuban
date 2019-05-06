@@ -2720,6 +2720,7 @@
 						display: inline-block;
 						vertical-align: top;
 						padding-top: 0;
+						padding-bottom: 5px;
 					}
 					td:first-child {
 						width: 10%;
@@ -2753,9 +2754,10 @@
 					height: 20px;
 					background: url(../images/arrow.png) no-repeat top center  / contain;
 					position: absolute;
-					top: 32px;
+					top: 50%;
 					right: -20px;
 					cursor: pointer;
+					transform: translateY(-50%);
 				}
 				.rotate-link {
 					transform: rotate(90deg);
