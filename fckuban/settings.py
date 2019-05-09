@@ -159,6 +159,15 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+# -------------------------------------------------------------------------------------------
+# SOLR-THUMBNAIL
+# -------------------------------------------------------------------------------------------
+
+THUMBNAIL_COLORSPACE = None
+THUMBNAIL_PRESERVE_FORMAT = False
+THUMBNAIL_FORMAT = 'PNG'
+
+
 try:
     from .local_settings import *
 except ImportError:
