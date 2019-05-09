@@ -8,12 +8,20 @@
             <section class="publications-wrap">
                 <div class="opened-publication">
                     <div class="news-date">{{ article.date_pub }}</div>
-                    <span>Источник: <a href="{{ article.sourse }}">{{ article.sourse_name }}</a></span>
+                    <span>Источник: 
+                        {% if article.sourse_name %}
+                            <a href="{{ article.sourse }}">{{ article.sourse_name }}</a>
+                        {% else %}
+                            Не указан
+                        {% endif %}
+                    </span>
                     <h1 class="publication-title opened-title">{{ article.title|upper }}</h1>
                     <div class="opened-publication-img-wrap">
+                        {% if article.is_image %}
                         {% thumbnail article.image "1500x800" crop="center" upscale=True as im %}
                             <img src="{{ im.url }}" height="100%" width="100%">
-                        {% endthumbnail %}                  
+                        {% endthumbnail %}
+                        {% endif %}
                     </div>
                     <div class="publication-text">
                         {{ article.news_text|safe }}

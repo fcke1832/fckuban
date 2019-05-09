@@ -12,6 +12,7 @@ class Article(BaseNews):
     Модель статьи из сторонних СМИ
     """
     image = ImageField('Превью фото', default='', null=True, blank=True, upload_to='media/medialinks_upload')
+    is_image = models.BooleanField('Фото в новости', default=True)
     sourse = models.URLField('Ссылка на источник', null=True, blank=True)
     sourse_name = models.CharField('Название источника статьи', max_length=200, null=True, blank=True)
 
