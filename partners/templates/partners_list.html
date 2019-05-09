@@ -11,14 +11,21 @@
                 <h1 style="margin-top: 0; color: black;">Спонсоры</h1>
                 <div class="sponsors-wrap">
                 {% for sponsor in sponsors %}
-                <a class="sponsor" href="{{ sponsor.link }}">
+                <a class="sponsor" href="{% if sponsor.link  %}{{ sponsor.link }}{% endif %}" 
+                    {% if not sponsor.link  %}style="cursor:default"{% endif %}>
                     {% thumbnail sponsor.image "70x70" crop="center" upscale=True as im %}
                         <img src="{{ im.url }}">
                     {% endthumbnail %}
                     <div class="about-sponsor">
                         <span class="name">{{ sponsor.title }}</span>
                         <span class="description">{% if sponsor.description %}{{ sponsor.description }}{% endif %}</span>
-                        <span class="link">{% if sponsor.link %}{{ sponsor.link }}{% endif %}</span>
+                        <span class="link" {% if not sponsor.link %}style="text-decoration:none"{% endif %}>
+                            {% if sponsor.link %}
+                                {{ sponsor.link }}
+                            {% else %}
+                                {{ sponsor.contacts }}
+                            {% endif %}
+                        </span>
                     </div>
                 </a>
                 <br>
@@ -29,14 +36,21 @@
                 <h1 style="margin-top: 0; color: black;">Партнёры</h1>
                 <div class="sponsors-wrap">
                 {% for partner in partners %}
-                <a class="sponsor" href="{{ partner.link }}">
+                <a class="sponsor" href="{% if partner.link %}{{ partner.link }}{% endif %}" 
+                    {% if not partner.link  %}style="cursor:default"{% endif %}>
                      {% thumbnail partner.image "70x70" crop="center" upscale=True as im %}
                         <img src="{{ im.url }}">
                     {% endthumbnail %}
                     <div class="about-sponsor">
                         <span class="name">{{ partner.title }}</span>
                         <span class="description">{% if partner.description %}{{ partner.description }}{% endif %}</span>
-                        <span class="link">{% if partner.link %}{{ partner.link }}{% endif %}</span>
+                        <span class="link" {% if not partner.link %}style="text-decoration:none"{% endif %}>
+                            {% if partner.link %}
+                                {{ partner.link }}
+                            {% else %}
+                                {{ partner.contacts }}
+                            {% endif %}
+                        </span>
                     </div>
                 </a>
                 <br>

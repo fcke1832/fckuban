@@ -10,6 +10,7 @@ class Partner(models.Model):
     )
     title = models.CharField('Название', max_length=100)
     link = models.URLField('Ссылка на сайт', blank=True, null=True)
+    contacts = models.CharField('Контакты', max_length=50, blank=True, null=True)
     description = models.CharField('Описание', blank=True, null=True, max_length=255)
     image = ImageField(
         'Загрузить логотип',
