@@ -14,8 +14,8 @@ class PartnerAdmin(admin.ModelAdmin):
     fields = (
         'title', 'type_partner',
         'image', 'logo_thumbnail',
-        'link', 'description',
-        'is_active',
+        'link', 'contacts',
+        'description', 'is_active',
     )
     readonly_fields = ('logo_thumbnail',)
 
