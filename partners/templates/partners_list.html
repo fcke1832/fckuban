@@ -13,7 +13,7 @@
                 {% for sponsor in sponsors %}
                 <a class="sponsor" href="{% if sponsor.link  %}{{ sponsor.link }}{% endif %}" 
                     {% if not sponsor.link  %}style="cursor:default"{% endif %}>
-                    {% thumbnail sponsor.image "70x70" crop="center" upscale=True as im %}
+                    {% thumbnail sponsor.image "70x70" format="PNG" crop="center" upscale=True as im %}
                         <img src="{{ im.url }}">
                     {% endthumbnail %}
                     <div class="about-sponsor">
@@ -38,7 +38,7 @@
                 {% for partner in partners %}
                 <a class="sponsor" href="{% if partner.link %}{{ partner.link }}{% endif %}" 
                     {% if not partner.link  %}style="cursor:default"{% endif %}>
-                     {% thumbnail partner.image "70x70" crop="center" upscale=True as im %}
+                     {% thumbnail partner.image "70x70"  format="PNG"  crop="center" upscale=True as im %}
                         <img src="{{ im.url }}">
                     {% endthumbnail %}
                     <div class="about-sponsor">
