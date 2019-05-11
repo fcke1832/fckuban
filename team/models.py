@@ -6,19 +6,44 @@ from django.utils.text import slugify
 
 class BaseTeamMember(models.Model):
     full_name = models.CharField('ФИО', max_length=200)
-    birthday = models.DateField('Дата рождения')
+    birthday = models.DateField('Дата рождения', null=True, blank=True)
     image = ImageField(
-        'Фото',
+        'Фото в списке',
         default='',
         null=True,
         blank=True,
         upload_to='media/team_upload',
-        help_text='Размер фото 150x250'
     )
-    slug = models.SlugField('ЧПУ', max_length=200, null=True, blank=True, unique=True)
+    image_hover = ImageField(
+        'Фото при наведении',
+        default='',
+        null=True,
+        blank=True,
+        upload_to='media/team_upload',
+    )
+    image_detail = ImageField(
+        'Фото персональной страницы',
+        default='',
+        null=True,
+        blank=True,
+        upload_to='media/team_upload',
+    )
+    image_slider = ImageField(
+        'Фото в слайдере',
+        default='',
+        null=True,
+        blank=True,
+        upload_to='media/team_upload',
+    )
+
+    slug = models.SlugField('ЧПУ', max_length=200, null=True, blank=True)
 
     def get_second_name(self):
-        return self.full_name.split()[0]
+        try:
+            second_name = self.full_name.split()[0]
+        except:
+            second_name = ''
+        return second_name
 
     def save(self, *args, **kwargs):
         if not self.slug:
