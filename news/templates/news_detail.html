@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load thumbnail %}
 
 {% block content %}
 <div class="main-wrap white-bg-side-bar">
@@ -12,25 +11,15 @@
 			<div class="opened-publication-img-wrap">
 
                 {% if news.crop_image_detail_page == news.CENTER %}
-                    {% thumbnail news.image "1500x800" crop="center" upscale=True as im %}
-                        <img src="{{ im.url }}" height="100%" width="100%">
-                    {% endthumbnail %}
+                    <img src="{{ news.thumbnail_center_detail_page }}" height="100%" width="100%">
                 {% elif news.crop_image_detail_page == news.RIGHT %}
-                    {% thumbnail news.image "1500x800" crop="right" upscale=True as im %}
-                        <img src="{{ im.url }}" height="100%" width="100%">
-                    {% endthumbnail %}
+                    <img src="{{ news.thumbnail_right_detail_page }}" height="100%" width="100%">
                 {% elif news.crop_image_detail_page == news.LEFT %}
-                    {% thumbnail news.image "1500x800" crop="left" upscale=True as im %}
-                        <img src="{{ im.url }}" height="100%" width="100%">
-                    {% endthumbnail %}
+                    <img src="{{ news.thumbnail_left_detail_page }}" height="100%" width="100%">
                 {% elif news.crop_image_detail_page == news.TOP %}
-                    {% thumbnail news.image "1500x800" crop="top" upscale=True as im %}
-                        <img src="{{ im.url }}" height="100%" width="100%">
-                    {% endthumbnail %}
+                    <img src="{{ news.thumbnail_top_detail_page }}" height="100%" width="100%">
                 {% else %}
-                    {% thumbnail news.image "1500x800" crop="bottom" upscale=True as im %}
-                        <img src="{{ im.url }}" height="100%" width="100%">
-                    {% endthumbnail %}
+                    <img src="{{ news.thumbnail_bottom_detail_page }}" height="100%" width="100%">
                 {% endif %}
 
             </div>
@@ -54,9 +43,7 @@
 			<div class="open-publication-slider">
 				{% for slider_image in slider_images %}
 					<div class="img-wrap">
-						{% thumbnail slider_image.slider_image "1800x1200" upscale=True as im %}
-							<img src="{{ im.url }}" class="popup">
-						{% endthumbnail %}
+						<img src="{{ slider_image.slider_thumbnail }}" class="popup">
 					</div>
 				{% endfor %}
  			</div>
@@ -83,9 +70,7 @@
 			{% if request.user.is_superuser %}
 				{% for news_item in another_news_admin %}
 					<a href="{% url 'news:news_detail' news_item.slug %}" class="publication">
-						{% thumbnail news_item.image "700x400" crop="center" as im %}
-			        		<img src="{{ im.url }}">
-                		{% endthumbnail %}
+                        <img src="{{ news_item.small_thumbnail }}">
 						<div class="publication-description">
 							<p class="publication-p">{{ news_item.title|upper }}<br>
 							</p>
@@ -96,9 +81,7 @@
 			{% else %}
             	{% for news_item in another_news %}
 					<a href="{% url 'news:news_detail' news_item.slug %}" class="publication">
-						{% thumbnail news_item.image "700x400" crop="center" as im %}
-			        		<img src="{{ im.url }}">
-                		{% endthumbnail %}
+                        <img src="{{ news_item.small_thumbnail }}">
 						<div class="publication-description">
 							<p class="publication-p">{{ news_item.title|upper }}<br>
 							</p>

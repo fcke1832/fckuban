@@ -1,4 +1,4 @@
-from sorl.thumbnail import ImageField
+from sorl.thumbnail import ImageField, get_thumbnail
 from transliterate import translit
 from ckeditor_uploader.fields import RichTextUploadingField
 
@@ -78,6 +78,80 @@ class News(BaseNews):
         verbose_name_plural = 'Новости'
         ordering = ('-date_pub',)
 
+    @property
+    def get_thumbnail_center(self, size='1200x800', crop='center'):
+        """
+        Возвращает preview изображения указанного размера с обрезкой по центру.
+        """
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
+    @property
+    def get_thumbnail_right(self, size='1200x800', crop='right'):
+        """
+        Возвращает preview изображения указанного размера с обрезкой справа.
+        """
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
+    @property
+    def get_thumbnail_left(self, size='1200x800', crop='left'):
+        """
+        Возвращает preview изображения указанного размера с обрезкой слева.
+        """
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
+    @property
+    def get_thumbnail_top(self, size='1200x800', crop='top'):
+        """
+        Возвращает preview изображения указанного размера с обрезкой сверху.
+        """
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
+    @property
+    def get_thumbnail_bottom(self, size='1200x800', crop='bottom'):
+        """
+        Возвращает preview изображения указанного размера с обрезкой снизу.
+        """
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
+    @property
+    def thumbnail_center_detail_page(self, size='1500x800', crop='center'):
+        """
+        Возвращает preview изображения указанного размера с обрезкой по центру.
+        """
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
+    @property
+    def thumbnail_right_detail_page(self, size='1500x800', crop='right'):
+        """
+        Возвращает preview изображения указанного размера с обрезкой справа.
+        """
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
+    @property
+    def thumbnail_left_detail_page(self, size='1500x800', crop='left'):
+        """
+        Возвращает preview изображения указанного размера с обрезкой слева.
+        """
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
+    @property
+    def thumbnail_top_detail_page(self, size='1500x800', crop='top'):
+        """
+        Возвращает preview изображения указанного размера с обрезкой сверху.
+        """
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
+    @property
+    def thumbnail_bottom_detail_page(self, size='1500x800', crop='bottom'):
+        """
+        Возвращает preview изображения указанного размера с обрезкой по центру.
+        """
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
+    @property
+    def small_thumbnail(self, size='700x400', crop='bottom'):
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
     def save(self, *args, **kwargs):
         if not self.slug:
             slug = slugify(translit(str(self.title), 'ru', reversed=True))
@@ -95,3 +169,7 @@ class NewsImage(models.Model):
     class Meta:
         verbose_name = 'Новостное фото'
         verbose_name_plural = 'Новостные фото'
+
+    @property
+    def slider_thumbnail(self, size='1800x1200', crop=None):
+        return get_thumbnail(self.slider_image, size, crop=crop, quality=99).url

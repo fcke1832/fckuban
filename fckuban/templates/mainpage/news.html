@@ -1,5 +1,4 @@
 {% load static %}
-{% load thumbnail %}
 
 <section class="news">
     <div class="main-news">
@@ -18,25 +17,15 @@
                 <div class="slide">
                     <a href="{% url 'news:news_detail' slider_news.slug %}">
                         {% if slider_news.crop_image == slider_news.CENTER %}
-                            {% thumbnail slider_news.image "1200x800" crop="center" upscale=True as im %}
-                                <img src="{{ im.url }}" height="100%" width="100%">
-                            {% endthumbnail %}
+                            <img src="{{ slider_news.get_thumbnail_center }}" height="100%" width="100%">
                         {% elif slider_news.crop_image == slider_news.RIGHT %}
-                            {% thumbnail slider_news.image "1200x800" crop="right" upscale=True as im %}
-                                <img src="{{ im.url }}" height="100%" width="100%">
-                            {% endthumbnail %}
+                            <img src="{{ slider_news.get_thumbnail_right }}" height="100%" width="100%">
                         {% elif slider_news.crop_image == slider_news.LEFT %}
-                            {% thumbnail slider_news.image "1200x800" crop="left" upscale=True as im %}
-                                <img src="{{ im.url }}" height="100%" width="100%">
-                            {% endthumbnail %}
+                            <img src="{{ slider_news.get_thumbnail_left }}" height="100%" width="100%">
                         {% elif slider_news.crop_image == slider_news.TOP %}
-                            {% thumbnail slider_news.image "1200x800" crop="top" upscale=True as im %}
-                                <img src="{{ im.url }}" height="100%" width="100%">
-                            {% endthumbnail %}
+                            <img src="{{ slider_news.get_thumbnail_top }}" height="100%" width="100%">
                         {% else %}
-                            {% thumbnail slider_news.image "1200x800" crop="bottom" upscale=True as im %}
-                                <img src="{{ im.url }}" height="100%" width="100%">
-                            {% endthumbnail %}
+                            <img src="{{ slider_news.get_thumbnail_bottom }}" height="100%" width="100%">
                         {% endif %}
                         <div class="slide-description">
                             <h3>{{ slider_news.title|upper }}</h3>
