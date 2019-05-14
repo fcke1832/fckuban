@@ -1,4 +1,4 @@
-from sorl.thumbnail import ImageField
+from sorl.thumbnail import ImageField, get_thumbnail
 from django.db import models
 from django.core.validators import MaxValueValidator
 
@@ -76,6 +76,10 @@ class Team(models.Model):
 
     def get_tournament_statistics(self):
         pass
+
+    @property
+    def get_thumbnail_logo(self, size='80x80', crop='center'):
+        return get_thumbnail(self.logo, size, crop=crop, quality=99).url
 
 
 class MatchTour(models.Model):
