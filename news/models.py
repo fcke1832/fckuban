@@ -149,7 +149,7 @@ class News(BaseNews):
         return get_thumbnail(self.image, size, crop=crop, quality=99).url
 
     @property
-    def small_thumbnail(self, size='700x400', crop='bottom'):
+    def small_thumbnail(self, size='700x400', crop='center'):
         return get_thumbnail(self.image, size, crop=crop, quality=99).url
 
     def save(self, *args, **kwargs):
