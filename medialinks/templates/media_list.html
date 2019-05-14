@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load thumbnail %}
 
 {% block content %}
     <div class="main-wrap">
@@ -11,9 +10,7 @@
                 {% for article in articles_list %}
                 <article class="mass-media-publication-wrap">
                     <div href="#" class="mass-media-publication">
-                        {% thumbnail article.image "393x225" upscale=True as im %}
-                            <img src="{{ im.url }}">
-                        {% endthumbnail %}
+                        <img src="{{ article.get_thumbnail_list }}">
                         <div class="description-wrap">
                             <a href="{% url 'medialinks:article_detail' article.slug %}">
                                 <h2>{{ article.title|upper }}</h2> 

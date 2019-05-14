@@ -1,4 +1,4 @@
-from sorl.thumbnail import ImageField
+from sorl.thumbnail import ImageField, get_thumbnail
 from transliterate import translit
 
 from django.db import models
@@ -29,3 +29,11 @@ class Article(BaseNews):
                 slug += "-{}".format(self.id)
             self.slug = slug
         super(Article, self).save(*args, **kwargs)
+
+    @property
+    def get_thumbnail(self, size='1500x800', crop='center'):
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
+    @property
+    def get_thumbnail_list(self, size='393x225', crop='center'):
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
