@@ -1,6 +1,6 @@
 {% load static %}
-{% load thumbnail %}
 {% url 'index' as main_url %}
+
 <div class="game-calendar">
 
     {% if request.get_full_path == main_url %}
@@ -27,11 +27,11 @@
                 </h4>
                 <div class="game-result">
                     <div class="team">
-                            {% thumbnail match.home_team.logo "80x80" crop="center" as im %}
-                                <img src="{{ im.url }}">
-                            {% empty %}
+                            {% if match.home_team.logo %}
+                                <img src="{{ match.home_team.get_thumbnail_logo }}">
+                            {% else %}
                                 <img src="{% static 'images/default_logo.jpg' %}" width="80" height="80">
-                            {% endthumbnail %}
+                            {% endif %}
                             <br>
                             {{ match.home_team.name.strip }}
                             <br>
@@ -48,11 +48,11 @@
                     </div>
                     <div class="team">
                         <span>
-                            {% thumbnail match.guest_team.logo "80x80" crop="center" as im %}
-                                <img src="{{ im.url }}">
-                            {% empty %}
+                            {% if match.guest_team.logo %}
+                                <img src="{{ match.guest_team.get_thumbnail_logo }}">
+                            {% else %}
                                 <img src="{% static 'images/default_logo.jpg' %}" width="80" height="80">
-                            {% endthumbnail %}
+                            {% endif %}
                             <br>
                             {{ match.guest_team.name.strip }}
                             <br>

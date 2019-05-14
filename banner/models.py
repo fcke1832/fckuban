@@ -1,5 +1,5 @@
 from django.db import models
-from sorl.thumbnail import ImageField
+from sorl.thumbnail import ImageField, get_thumbnail
 
 
 class Banner(models.Model):
@@ -9,6 +9,10 @@ class Banner(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def get_thumbnail(self, size='960x790', crop='center'):
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
 
     class Meta:
         verbose_name = 'Баннер'

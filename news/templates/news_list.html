@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load thumbnail %}
 
 {% block content %}
 <div class="main-wrap">
@@ -11,9 +10,7 @@
 
 			{% for news in news_list %}
 				<a href="{% url 'news:news_detail' news.slug %}" class="publication">
-					{% thumbnail news.image "393x225" crop="center" upscale=True as im %}
-						<img src="{{ im.url }}">
-					{% endthumbnail %}
+					<img src="{{ news.get_thumbnail_list }}">
 					<div class="publication-description">
 						<p class="publication-p">
 							{{ news.title|upper }}

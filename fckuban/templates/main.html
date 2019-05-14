@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load thumbnail %}
 
 {% block content %}
 
@@ -21,9 +20,7 @@
         {% if banner %}
             <div class="banner">
                 <h2>ИНФО</h2>
-                {% thumbnail banner.image "960x790" crop="center" upscale=True as im %}
-                    <a href="http://ookuban.com/"><img src="{{ im.url }}" height="100%" width="100%"></a>
-                {% endthumbnail %}
+                <a href="http://ookuban.com/"><img src="{{ banner.get_thumbnail }}" height="100%" width="100%"></a>
             </div>
         {% endif %}
 

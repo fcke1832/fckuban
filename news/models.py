@@ -152,6 +152,10 @@ class News(BaseNews):
     def small_thumbnail(self, size='700x400', crop='center'):
         return get_thumbnail(self.image, size, crop=crop, quality=99).url
 
+    @property
+    def get_thumbnail_list(self, size='393x225', crop='center'):
+        return get_thumbnail(self.image, size, crop=crop, quality=99).url
+
     def save(self, *args, **kwargs):
         if not self.slug:
             slug = slugify(translit(str(self.title), 'ru', reversed=True))
