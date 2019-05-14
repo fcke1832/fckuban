@@ -1,4 +1,4 @@
-from sorl.thumbnail import ImageField
+from sorl.thumbnail import ImageField, get_thumbnail
 from django.db import models
 
 
@@ -32,4 +32,6 @@ class Partner(models.Model):
         verbose_name_plural = 'Партнёры'
         ordering = ('-number', 'title',)
 
-
+    @property
+    def logo_thumbnail(self, size='70x70'):
+        return get_thumbnail(self.image, size, quality=99).url

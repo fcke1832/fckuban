@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load thumbnail %}
 
 {% block content %}
 <div class="main-wrap">
@@ -13,9 +12,7 @@
                 {% for sponsor in sponsors %}
                 <a class="sponsor" href="{% if sponsor.link  %}{{ sponsor.link }}{% endif %}" 
                     {% if not sponsor.link  %}style="cursor:default"{% endif %}>
-                    {% thumbnail sponsor.image "70x70" format="PNG" crop="center" upscale=True as im %}
-                        <img src="{{ im.url }}">
-                    {% endthumbnail %}
+                    <img src="{{ sponsor.logo_thumbnail }}">
                     <div class="about-sponsor">
                         <span class="name">{{ sponsor.title }}</span>
                         <span class="description">{% if sponsor.description %}{{ sponsor.description }}{% endif %}</span>
@@ -38,9 +35,7 @@
                 {% for partner in partners %}
                 <a class="sponsor" href="{% if partner.link %}{{ partner.link }}{% endif %}" 
                     {% if not partner.link  %}style="cursor:default"{% endif %}>
-                     {% thumbnail partner.image "70x70"  format="PNG"  crop="center" upscale=True as im %}
-                        <img src="{{ im.url }}">
-                    {% endthumbnail %}
+                    <img src="{{ partner.logo_thumbnail }}">
                     <div class="about-sponsor">
                         <span class="name">{{ partner.title }}</span>
                         <span class="description">{% if partner.description %}{{ partner.description }}{% endif %}</span>
