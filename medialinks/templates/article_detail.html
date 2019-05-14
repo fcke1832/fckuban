@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load thumbnail %}
 
 {% block content %}
     <div class="main-wrap white-bg-side-bar">
@@ -18,9 +17,7 @@
                     <h1 class="publication-title opened-title">{{ article.title|upper }}</h1>
                     <div class="opened-publication-img-wrap">
                         {% if article.is_image %}
-                        {% thumbnail article.image "1500x800" crop="center" upscale=True as im %}
-                            <img src="{{ im.url }}" height="100%" width="100%">
-                        {% endthumbnail %}
+                        <img src="{{ article.get_thumbnail }}" height="100%" width="100%">
                         {% endif %}
                     </div>
                     <div class="publication-text">
