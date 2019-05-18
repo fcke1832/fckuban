@@ -1832,19 +1832,22 @@
 			display: flex;
 			flex-wrap: wrap;
 			flex-direction: row;
+			justify-content: space-between;
 		}
 		.sponsor {
 			width: 48%;
 			color: black;
 			display: flex;
-			align-items: center;
+			align-items: flex-start;
 			flex-wrap: wrap;
+			flex-direction: row;
 			margin: 15px 0;
 			img {
 				width: 70px;
 				height: auto;
 			}
 			.about-sponsor {
+				width: calc(100% - 80px);
 				display: inline-block;
 				margin-left: 10px;
 				span {
@@ -2717,6 +2720,7 @@
 						display: inline-block;
 						vertical-align: top;
 						padding-top: 0;
+						padding-bottom: 5px;
 					}
 					td:first-child {
 						width: 10%;
@@ -2750,9 +2754,10 @@
 					height: 20px;
 					background: url(../images/arrow.png) no-repeat top center  / contain;
 					position: absolute;
-					top: 32px;
+					top: 50%;
 					right: -20px;
 					cursor: pointer;
+					transform: translateY(-50%);
 				}
 				.rotate-link {
 					transform: rotate(90deg);
