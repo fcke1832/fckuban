@@ -12,8 +12,8 @@
                     <table class="standings">
                         <thead>
                             <tr>
-                                <th scope="row" data-label="№">№</th>
-                                <th data-label="Команда">Команда</th>
+                                <th scope="row" data-label="">№</th>
+                                <th data-label="">Команда</th>
                                 <th data-label="И">И</th>
                                 <th data-label="В">В</th>
                                 <th data-label="Н">Н</th>
@@ -25,8 +25,8 @@
                         <tbody>
                             {% for team in teams %}
                             <tr {% if team.is_fcke %}class='special'{% endif %}>
-                                <td scope="row" data-label="№">{{ forloop.counter }}</td>
-                                <td data-label="Команда" class="team">
+                                <td scope="row" data-label="">{{ forloop.counter }}</td>
+                                <td data-label="" class="team">
                                     <div class="img-wrap"><img src="{{ team.logo.url }}" class="team-logo"></div>{{ team.name }}
                                 </td>
                                 <td data-label="И">{{ team.matches }}</td>
