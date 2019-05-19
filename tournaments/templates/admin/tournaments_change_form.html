@@ -1,0 +1,13 @@
+{% extends "admin/change_form.html" %}
+{% load static admin_static %}
+
+{% block object-tools-items %}
+    <div>
+        <form action="{% url 'admin:calculate_standings' %}" method="POST">
+            {% csrf_token %}
+                <button type="submit" class="button">Пересчитать таблицу</button>
+        </form>
+    </div>
+    <br/>
+    {{ block.super }}
+{% endblock %}
