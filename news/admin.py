@@ -43,4 +43,10 @@ class NewsAdmin(admin.ModelAdmin):
         else:
             return ''
 
+    def save_model(self, request, obj, form, change):
+        super(NewsAdmin, self).save_model(request, obj, form, change)
+
+        for image in request.FILES.getlist('photos_multiple'):
+            obj.slider_images.get_or_create(slider_image=image)
+
     photo_thumbnail.short_description = 'Главное фото'
