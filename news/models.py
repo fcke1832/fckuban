@@ -171,8 +171,11 @@ class NewsImage(models.Model):
     image_news = models.ForeignKey(News, models.CASCADE, related_name='slider_images')
 
     class Meta:
-        verbose_name = 'Новостное фото'
-        verbose_name_plural = 'Новостные фото'
+        verbose_name = 'Фото для слайдера'
+        verbose_name_plural = 'Фото для слайдера'
+
+    def __str__(self):
+        return self.image_news.title
 
     @property
     def slider_thumbnail(self, size='1800x1200', crop=None):
