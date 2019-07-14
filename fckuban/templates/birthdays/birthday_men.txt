@@ -1,0 +1,3 @@
+{% for man in birthdays_men %}
+{{ man.date_of_birth }} {{ man }}
+{% endfor %}
