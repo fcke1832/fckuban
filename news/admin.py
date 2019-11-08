@@ -1,9 +1,34 @@
 from sorl.thumbnail import get_thumbnail
 
 from django.contrib import admin
+from django.contrib.admin.widgets import AdminFileWidget
+from django.forms import ModelForm
 from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 
 from .models import News, NewsImage, NewsHashTag
+
+
+class AdminImageWidget(AdminFileWidget):
+    def render(self, name, value, attrs=None):
+        output = []
+        if value and getattr(value, "url", None):
+            t = get_thumbnail(value,'100x100')
+            output.append('<img src="{}">'.format(t.url))
+        output.append(super(AdminFileWidget, self).render(name, value, attrs))
+        return mark_safe(u''.join(output))
+
+
+class NewsImageForm(ModelForm):
+    """
+    Image Admin Form
+    """
+    class Meta:
+        model = NewsImage
+        fields = "__all__"
+        widgets = {
+            'slider_image' : AdminImageWidget,
+        }
 
 
 @admin.register(NewsHashTag)
@@ -14,7 +39,8 @@ class NewsHashTagAdmin(admin.ModelAdmin):
 
 class NewsImageInline(admin.TabularInline):
     model = NewsImage
-    extra = 1
+    form = NewsImageForm
+    extra = 0
 
 
 class NewsHashTagInline(admin.TabularInline):
