@@ -169,6 +169,7 @@ class News(BaseNews):
 class NewsImage(models.Model):
     slider_image = ImageField('Фото для слайдера', default='', null=None, blank=False, upload_to='media/news_upload')
     image_news = models.ForeignKey(News, models.CASCADE, related_name='slider_images')
+    tip = models.CharField('Комментарий к фото', null=True, blank=True, max_length=100)
 
     class Meta:
         verbose_name = 'Фото для слайдера'

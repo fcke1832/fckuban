@@ -43,7 +43,7 @@
 			<div class="open-publication-slider">
 				{% for slider_image in slider_images %}
 					<div class="img-wrap">
-						<img src="{{ slider_image.slider_thumbnail }}" class="popup">
+						<img src="{{ slider_image.slider_thumbnail }}" {% if slider_image.tip %} title="{{ slider_image.tip }}" {% endif %} class="popup">
 					</div>
 				{% endfor %}
  			</div>
