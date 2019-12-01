@@ -1,3 +1,4 @@
+from datetime import datetime
 from sorl.thumbnail import ImageField, get_thumbnail
 from transliterate import translit
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -159,9 +160,7 @@ class News(BaseNews):
     def save(self, *args, **kwargs):
         if not self.slug:
             slug = slugify(translit(str(self.title), 'ru', reversed=True))
-            q = News.objects.filter(slug=slug).exclude(pk=self.pk)
-            if q.count() > 1:
-                slug += "-{}".format(self.id)
+            slug += "-{}".format(datetime.now().timestamp())
             self.slug = slug
         super(News, self).save(*args, **kwargs)
 
