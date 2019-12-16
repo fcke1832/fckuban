@@ -5,7 +5,7 @@
 <div class="main-wrap">
 	<main>
 		<section class="publications-wrap news-wrap">
-			<h1>НОВОСТИ</h1>
+			<h1>НОВОСТИ{% if is_filter and current_hashtag %} ПО ХЕШТЕГУ #{{ current_hashtag.text }}{% endif %}</h1>
 			<div class="publications-items">
 
 			{% for news in news_list %}

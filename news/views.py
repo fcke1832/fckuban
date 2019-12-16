@@ -5,7 +5,7 @@ from django.urls import reverse
 from links.models import SocialNetworkLink
 from fckuban.views import get_calendar, get_calendar_matches
 from birthdays.views import today_birtdays, check_today
-from .models import News, NewsImage
+from .models import News, NewsImage, NewsHashTag
 
 
 class NewsListView(ListView):
@@ -15,6 +15,24 @@ class NewsListView(ListView):
 
     def get_queryset(self):
         return News.objects.filter(published=True).order_by('-date_pub')
+
+
+class NewsListFilterView(ListView):
+    model = News
+    template_name = 'news_list.html'
+    context_object_name = 'news_list'
+
+    def get_queryset(self):
+        hashtag_id = self.kwargs.get('pk', None)
+        return News.objects.filter(published=True, hashtags__id=hashtag_id).order_by('-date_pub')
+
+    def get_context_data(self, **kwargs):
+        context = super(NewsListFilterView, self).get_context_data(**kwargs)
+        hashtag_id = self.kwargs.get('pk', None)
+        context['is_filter'] = True
+        context['current_hashtag'] = NewsHashTag.objects.filter(pk=hashtag_id).first()
+        # from IPython import embed; embed()
+        return context
 
 
 def news_list_preview(request):

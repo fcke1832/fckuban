@@ -33,11 +33,11 @@
 				{% endcomment %}
 			<div class="publication-text">
 				{{ news.news_text|safe }}
-				{% if request.user.is_superuser %}
+
 				{% for hashtag in news.hashtags.all %}
-					<a href="#" class="hashtag-link">#{{ hashtag.text }}</a>
+					<a href="{% url 'news:news_list_filter' hashtag.pk %}" class="hashtag-link">#{{ hashtag.text }}</a>
 				{% endfor %}
-				{% endif %}
+
 			</div>
 			{% if slider_images %}
 			<div class="open-publication-slider">

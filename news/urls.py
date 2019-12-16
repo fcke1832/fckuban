@@ -7,4 +7,5 @@ urlpatterns = [
     path('newslist/', views.NewsListView.as_view(), name='news_list'),
     path('news_detail/<str:slug>/', views.NewsDetailView.as_view(), name='news_detail'),
     path('newslist_preview/', views.news_list_preview, name='news_list_preview'),
+    path('newslist_filter_hashtag/<int:pk>/', views.NewsListFilterView.as_view(), name='news_list_filter'),
 ]
