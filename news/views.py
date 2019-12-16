@@ -31,7 +31,6 @@ class NewsListFilterView(ListView):
         hashtag_id = self.kwargs.get('pk', None)
         context['is_filter'] = True
         context['current_hashtag'] = NewsHashTag.objects.filter(pk=hashtag_id).first()
-        # from IPython import embed; embed()
         return context
 
 
