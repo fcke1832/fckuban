@@ -33,15 +33,14 @@ class Article(BaseNews):
         ordering = ("-date_pub",)
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            slug = slugify(translit(str(self.title), "ru", reversed=True))
-            exists_slug = Article.objects.filter(slug=slug).exclude(pk=self.pk).exists()
-            while exists_slug:
-                slug = "{}-{}".format(slug, getrandbits(16))
-                exists_slug = (
-                    Article.objects.filter(slug=slug).exclude(pk=self.pk).exists()
-                )
-            self.slug = slug
+        slug = slugify(translit(str(self.title), "ru", reversed=True))
+        exists_slug = Article.objects.filter(slug=slug).exclude(pk=self.pk).exists()
+        while exists_slug:
+            slug = "{}-{}".format(slug, getrandbits(16))
+            exists_slug = (
+                Article.objects.filter(slug=slug).exclude(pk=self.pk).exists()
+            )
+        self.slug = slug
         super(Article, self).save(*args, **kwargs)
 
     @property
