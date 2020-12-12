@@ -27,7 +27,7 @@
                             <tr {% if team.is_fcke %}class='special'{% endif %}>
                                 <td scope="row" data-label="">{{ forloop.counter }}</td>
                                 <td data-label="" class="team">
-                                    <div class="img-wrap"><img src="{{ team.logo.url }}" class="team-logo"></div>{{ team.name }}
+                                    <div class="img-wrap"><img src="{% if team.logo %}{{ team.logo.url }}{% endif %}" class="team-logo"></div>{{ team.name }}
                                 </td>
                                 <td data-label="И">{{ team.matches }}</td>
                                 <td data-label="В">{{ team.win_matches }}</td>
