@@ -90,10 +90,16 @@ class MatchTourInline(admin.TabularInline):
         )
         if db_field.name == "home_team" or db_field.name == "guest_team":
             try:
-                matchtour = MatchTour.objects.get(pk=request.path_info.split("/")[-3])
-                tournament = matchtour.tour.tournament
+                tour_id = request.resolver_match.kwargs["object_id"]
+            except Exception as err:
+                tour_id = None
+
+            tour = Tour.objects.filter(id=tour_id).last()
+
+            if tour and hasattr(tour, "tournament"):
+                tournament = tour.tournament
                 field.queryset = field.queryset.filter(tournament=tournament)
-            except:
+            else:
                 field.queryset = field.queryset.none()
 
         return field
