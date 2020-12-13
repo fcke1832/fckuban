@@ -89,11 +89,7 @@ class MatchTourInline(admin.TabularInline):
             db_field, request, **kwargs
         )
         if db_field.name == "home_team" or db_field.name == "guest_team":
-            try:
-                tour_id = request.resolver_match.kwargs["object_id"]
-            except Exception as err:
-                tour_id = None
-
+            tour_id = request.resolver_match.kwargs.get("object_id")
             tour = Tour.objects.filter(id=tour_id).last()
 
             if tour and hasattr(tour, "tournament"):
