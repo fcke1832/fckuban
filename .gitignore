@@ -58,3 +58,6 @@ local.py
 /cache/
 /fckuban/static/images/publication-img.jpg
 /fckuban/static/images/test*
+
+venv/
+.venv/
