@@ -107,16 +107,12 @@ class TestArticleModel:
         assert article.get_thumbnail_list == '/media/cache/393x225/article.png'
         get_thumbnail.assert_called_once_with(article.image, '393x225', crop='center', quality=99)
 
-    def test_get_thumbnail_fails_without_image(self, monkeypatch):
-        """БАГ-011: превью вызывается без проверки наличия изображения."""
-        monkeypatch.setattr('medialinks.models.get_thumbnail', MagicMock(return_value=None))
-
+    def test_get_thumbnail_fails_without_image(self):
+        """БАГ-011: превью статьи без картинки возвращает пустую строку."""
         article = make_article(title='Без картинки')
 
-        # Ожидаемое поведение: превью возвращает пустую строку/заглушку.
-        # assert article.get_thumbnail == ''
-        with pytest.raises(AttributeError):
-            _ = article.get_thumbnail
+        assert article.get_thumbnail == ''
+        assert article.get_thumbnail_list == ''
 
 
 @pytest.mark.django_db

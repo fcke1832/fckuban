@@ -34,4 +34,6 @@ class Partner(models.Model):
 
     @property
     def logo_thumbnail(self, size='70x70'):
+        if not self.image:
+            return ''
         return get_thumbnail(self.image, size, quality=99).url

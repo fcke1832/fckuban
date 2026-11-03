@@ -10,6 +10,9 @@ changed.
 Baseline before the upgrade (kept intact in `venv/`): Python 3.6.15, Django 2.0.7
 → `299 passed`, coverage 99.24 %.
 
+> **Update 2026-11-03:** the code fixes below were approved and applied — see
+> §10 for the current status. Sections 5–7 describe the state *before* the fixes.
+
 ---
 
 ## 1. TL;DR
@@ -315,3 +318,58 @@ All other admin add pages and all changelists returned HTTP 200.
 The admin/migration probes were temporary pytest files under `.tmp/` (deleted
 afterwards); they were not added to the project test suite and did not touch
 application code.
+
+---
+
+## 10. Update 2026-11-03 — code fixes applied (approved by the owner)
+
+The owner approved fixing BUG-023, BUG-001, the two admin blockers and the
+missing-image crashes (including BUG-011 with its one-line test update).
+14 files changed (+60/−37), plus this report; `db.sqlite3` rebuilt from scratch.
+
+### Fixed
+
+| Bug | File | Change |
+|-----|------|--------|
+| BUG-023 | `team/migrations/0007_auto_20190509_2142.py` | takes the historical model via `apps.get_model('team', 'BaseTeamMember')` instead of importing the live model; slug is generated in the migration with the same `slugify(translit(...))` logic |
+| BUG-001 | `fckuban/views.py`, `news/views.py`, `partners/views.py`, `medialinks/views.py` (×2), `tournaments/views.py` | `future_match` falls back to `None` when the calendar is empty instead of `calendar_matches[-1]` → no more `IndexError` |
+| admin | `news/admin.py` | `AdminImageWidget.render(..., renderer=None)` and passes `renderer` to `super()` |
+| admin | `tournaments/templates/admin/tournaments_change_form.html` | `{% load static %}` instead of the removed `admin_static` |
+| BUG-004 | `partners/models.py` | `Partner.logo_thumbnail` returns `''` when there is no image |
+| BUG-014 | `news/models.py` | new `_thumbnail_url()` helper; all 11 `get_thumbnail*` properties + `NewsImage.slider_thumbnail` return `''` without a file |
+| BUG-009 | `team/templates/player.html` | `{% if player.image %}` with the same placeholder as `all_team.html` |
+| BUG-011 | `medialinks/models.py`, `medialinks/tests.py` | `get_thumbnail` / `get_thumbnail_list` return `''` without an image; the test now asserts the empty string instead of `pytest.raises(AttributeError)` |
+| — | `pytest.ini` | `--nomigrations` removed (the workaround for BUG-023 is no longer needed) |
+
+### Verification after the fixes
+
+```bash
+uv run python manage.py migrate      # fresh DB: OK, 0 unapplied; second run: "No migrations to apply"
+uv run pytest                        # 299 passed (with real migrations, no --nomigrations)
+uv run python manage.py check        # 0 errors, 23 warnings (unchanged: 22× W042, 1× W340)
+```
+
+`runserver` on the fresh DB returns HTTP 200 for `/`, `/partners/`,
+`/tournaments/standings/`, `/media/article_list/`, `/news/newslist/`,
+`/tickets/sale`, `/team/all_team/`, `/admin/login/`; `/admin/` → 302.
+News/Tournament admin add pages and changelists → 200 (verified with a
+staff user probe). An article without an image no longer breaks
+`/media/article_list/` or its detail page (probe: 200, thumbnails `''`).
+
+### Still open (not touched without a separate approval)
+
+1. **BUG-019** — `Match.start_time` is nullable but `get_calendar_matches()`
+   calls `match.start_time.date()`; a match without `start_time` still produces
+   a 500.
+2. All other BUGS.md items (002, 005–008, 010, 012, 013, 015–018, 020–024) are
+   unchanged; their tests still pin the current behaviour.
+
+### Notes
+
+- `embed_video` logs `UnknownBackendException` when a `{% video %}` tag gets an
+  empty URL (main page, empty DB) — the page still returns 200; this is log
+  noise, not a crash.
+- The old partially migrated dev DB was moved to `/tmp/db.sqlite3.partial-*`
+  (outside the project); the new `db.sqlite3` is built from migrations and is
+  git-ignored.
+- Working-tree changes are **not committed** yet.
