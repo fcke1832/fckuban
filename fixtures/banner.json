@@ -1,0 +1,20 @@
+[
+  {
+    "model": "banner.banner",
+    "pk": 1,
+    "fields": {
+      "title": "Абонементы на сезон 2026/2027",
+      "published": true,
+      "image": "fixtures/banners/banner-1.png"
+    }
+  },
+  {
+    "model": "banner.banner",
+    "pk": 2,
+    "fields": {
+      "title": "Кубок России. «Кубань» — «Ротор»",
+      "published": false,
+      "image": "fixtures/banners/banner-2.png"
+    }
+  }
+]

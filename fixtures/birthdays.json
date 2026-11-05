@@ -1,0 +1,57 @@
+[
+  {
+    "model": "birthdays.birthdayitem",
+    "pk": 1,
+    "fields": {
+      "name": "Виктор",
+      "second_name": "Панов",
+      "date_of_birth": "1970-11-04",
+      "image": "fixtures/birthdays/birthday-1.png",
+      "crop_image": 0
+    }
+  },
+  {
+    "model": "birthdays.birthdayitem",
+    "pk": 2,
+    "fields": {
+      "name": "Никита",
+      "second_name": "Лаврентьев",
+      "date_of_birth": "1997-11-14",
+      "image": "fixtures/birthdays/birthday-2.png",
+      "crop_image": 1
+    }
+  },
+  {
+    "model": "birthdays.birthdayitem",
+    "pk": 3,
+    "fields": {
+      "name": "Денис",
+      "second_name": "Харламов",
+      "date_of_birth": "2001-07-19",
+      "image": "fixtures/birthdays/birthday-3.png",
+      "crop_image": 0
+    }
+  },
+  {
+    "model": "birthdays.birthdayitem",
+    "pk": 4,
+    "fields": {
+      "name": "Сергей",
+      "second_name": "Мельников",
+      "date_of_birth": "1993-09-09",
+      "image": "fixtures/birthdays/birthday-4.png",
+      "crop_image": 2
+    }
+  },
+  {
+    "model": "birthdays.birthdayitem",
+    "pk": 5,
+    "fields": {
+      "name": "Олег",
+      "second_name": "Терехин",
+      "date_of_birth": "1967-06-21",
+      "image": "fixtures/birthdays/birthday-5.png",
+      "crop_image": 0
+    }
+  }
+]
