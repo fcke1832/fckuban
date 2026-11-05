@@ -61,3 +61,6 @@ local.py
 
 venv/
 .venv/
+
+# collectstatic output (STATIC_ROOT = BASE_DIR/static)
+/static/
