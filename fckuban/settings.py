@@ -145,6 +145,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
+# Фикстуры проекта лежат в корне репозитория: BASE_DIR/fixtures.
+# Благодаря этому работает и короткая запись: python manage.py loaddata tournaments
+FIXTURE_DIRS = [os.path.join(BASE_DIR, 'fixtures')]
+
 
 # -------------------------------------------------------------------------------------------
 # CKEDITOR
