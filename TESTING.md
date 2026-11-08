@@ -1,58 +1,72 @@
-# TESTING.md — запуск тестов
+# TESTING.md — тесты и локальная проверка
 
-Тесты написаны на **pytest + pytest-django**. Пока проект живёт на
-**Python 3.6 / Django 2.0.7**, используются версии, совместимые с этим стеком.
+Стек: **Python 3.14 + Django 5.2 LTS**, зависимости и запуск — через **uv**
+(см. `pyproject.toml` / `uv.lock`).
 
-## Текущий стек (Python 3.6, Django 2.0.7)
-
-```bash
-python3.6 -m venv venv
-venv/bin/pip install -r requirements-no-mysql.txt
-venv/bin/pip install pytest==6.2.5 pytest-django==4.1.0 pytest-cov==3.0.0 coverage==6.2
-```
-
-Запуск:
+## Установка окружения
 
 ```bash
-venv/bin/python -m pytest
-venv/bin/python -m pytest --cov --cov-report=term-missing
-venv/bin/python -m pytest --cov --cov-report=html   # htmlcov/index.html
+uv sync            # создаёт .venv на Python 3.14 и ставит зависимости
 ```
+
+## Запуск тестов
+
+```bash
+uv run pytest
+uv run pytest --cov --cov-report=term-missing
+uv run pytest --cov --cov-report=html   # htmlcov/index.html
+```
+
+Текущий результат: **301 passed**, покрытие — 99 %+ (см. отчёт
+`UPGRADE_PY314_DJ52.md`).
 
 ## Конфигурация
 
 - `pytest.ini` — `DJANGO_SETTINGS_MODULE=fckuban.test_settings`,
-  `python_files = tests.py test_*.py`, `testpaths` по приложениям.
+  `python_files = tests.py test_*.py *_tests.py`, `testpaths` по приложениям.
 - `fckuban/test_settings.py` — SQLite `:memory:`, временный `MEDIA_ROOT`,
   быстрый хешер паролей. Боевые настройки не переопределяются.
 - `.coveragerc` — branch coverage, исключены миграции/тесты/`wsgi.py`/venv.
-- `conftest.py` — общие фикстуры.
+- `conftest.py` — общие фикстуры (изображение, пользователи, локаль).
+- `fckuban/test_fixtures.py` — смоук-тест: демонстрационные фикстуры из
+  `fixtures/` загружаются и повторный `loaddata` не создаёт дубликаты.
 
-## Важно: `--nomigrations`
+## `pytest`, а не `manage.py test`
 
-В `pytest.ini` включён `--nomigrations`, потому что миграция
-`team/migrations/0007_auto_20190509_2142.py` импортирует живую модель и падает
-на чистой БД (см. `BUGS.md`, BUG-023). После исправления миграции флаг можно
-убрать и проверить создание БД с нуля:
-
-```bash
-venv/bin/python manage.py migrate
-venv/bin/python -m pytest
-```
-
-## После перехода на Django 5.x / Python 3.14
-
-Ограничивающие версии pytest/pytest-django/coverage больше не нужны:
+Тесты написаны в pytest-стиле (функции и обычные классы `Test*`, а не
+`unittest.TestCase`), поэтому стандартный раннер Django их не видит:
 
 ```bash
-uv add --dev pytest pytest-django pytest-cov
-uv run pytest --cov
+uv run python manage.py test   # Ran 0 tests
 ```
 
-Тесты написаны так, чтобы не зависеть от деталей Django 2.0 (кроме
-`news/admin.py:13` и `banner/admin.py:20` — см. `BUGS.md`).
+Единственная правильная команда — `uv run pytest`. В `AGENTS.md` указана
+команда `python manage.py pytest` — такой команды в Django нет, это
+расхождение документации с кодом.
+
+## Миграции
+
+`--nomigrations` больше не используется: BUG-023 исправлен, тестовая БД
+строится реальными миграциями. Проверка чистой БД:
+
+```bash
+uv run python manage.py migrate
+uv run pytest
+```
+
+## Локальный запуск и фикстуры
+
+```bash
+uv run python manage.py migrate          # SQLite: db.sqlite3
+./fixtures/load_fixtures.sh              # демо-данные + картинки
+uv run python manage.py createsuperuser  # для входа в /admin/
+uv run python manage.py runserver
+```
+
+`DEBUG = True` для разработки задаётся в `fckuban/local_settings.py`
+(не попадает в git). Подробности по фикстурам — `fixtures/README.md`.
 
 ## Найденные дефекты
 
 Все ошибки, обнаруженные тестами, и закомментированные «правильные» проверки
-описаны в [`BUGS.md`](BUGS.md). Код приложения намеренно не исправлялся.
+описаны в [`BUGS.md`](BUGS.md).

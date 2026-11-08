@@ -131,9 +131,11 @@ TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
+
+# Django 5 по умолчанию создаёт BigAutoField, что потребовало бы миграций на все
+# модели проекта (и смены типа существующих int-колонок). Оставляем AutoField.
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 
 # Static files (CSS, JavaScript, Images)

@@ -19,7 +19,7 @@
 
 ## 1. Быстрый запуск (одна команда)
 
-Из корня проекта (там, где лежит `manage.py`):
+Из корня проекта (там, где лежит `manage.py`), после `uv sync` и `uv run python manage.py migrate`:
 
 ```bash
 ./fixtures/load_fixtures.sh
@@ -27,6 +27,9 @@
 
 Скрипт копирует картинки, загружает все фикстуры в правильном порядке и печатает количество созданных объектов.
 Интерпретатор можно переопределить: `PYTHON=.venv/bin/python ./fixtures/load_fixtures.sh`.
+
+Пользователей фикстуры не создают: для входа в `/admin/` выполните
+`uv run python manage.py createsuperuser`.
 
 ## 2. Запуск вручную
 
@@ -40,7 +43,7 @@ cp -R fixtures/images/. media/fixtures/
 Загрузить все фикстуры одной командой (порядок файлов важен, файлы перечислены явно):
 
 ```bash
-python manage.py loaddata \
+uv run python manage.py loaddata \
     fixtures/tournaments.json \
     fixtures/team.json \
     fixtures/partners.json \
@@ -54,20 +57,20 @@ python manage.py loaddata \
 Так как `fixtures/` добавлен в `FIXTURE_DIRS` (`fckuban/settings.py`), те же данные можно загрузить по коротким именам:
 
 ```bash
-python manage.py loaddata tournaments team partners news medialinks calendar_matches birthdays banner
+uv run python manage.py loaddata tournaments team partners news medialinks calendar_matches birthdays banner
 ```
 
 ## 3. Загрузка одного приложения
 
 ```bash
-python manage.py loaddata fixtures/tournaments.json   # турниры, туры, команды, матчи туров
-python manage.py loaddata fixtures/team.json          # игроки и тренерский штаб
-python manage.py loaddata fixtures/partners.json      # партнёры и спонсоры
-python manage.py loaddata fixtures/news.json          # хештэги, новости, фото слайдера
-python manage.py loaddata fixtures/medialinks.json    # статьи из СМИ
-python manage.py loaddata fixtures/calendar_matches.json  # календарь матчей
-python manage.py loaddata fixtures/birthdays.json     # именинники
-python manage.py loaddata fixtures/banner.json        # баннеры
+uv run python manage.py loaddata fixtures/tournaments.json   # турниры, туры, команды, матчи туров
+uv run python manage.py loaddata fixtures/team.json          # игроки и тренерский штаб
+uv run python manage.py loaddata fixtures/partners.json      # партнёры и спонсоры
+uv run python manage.py loaddata fixtures/news.json          # хештэги, новости, фото слайдера
+uv run python manage.py loaddata fixtures/medialinks.json    # статьи из СМИ
+uv run python manage.py loaddata fixtures/calendar_matches.json  # календарь матчей
+uv run python manage.py loaddata fixtures/birthdays.json     # именинники
+uv run python manage.py loaddata fixtures/banner.json        # баннеры
 ```
 
 `calendar_matches.json` ссылается на `Team` и `Tournament`, поэтому загружайте его **после** `tournaments.json`.
@@ -80,17 +83,17 @@ python manage.py loaddata fixtures/banner.json        # баннеры
 ```bash
 # локальная SQLite-база создаётся заново
 rm -f db.sqlite3
-python manage.py migrate
+uv run python manage.py migrate
 ./fixtures/load_fixtures.sh
 ```
 
-Не хотите удалять базу — удалите только объекты фикстур через `python manage.py shell` или админку
+Не хотите удалять базу — удалите только объекты фикстур через `uv run python manage.py shell` или админку
 (`flush` очистит вообще все данные, включая пользователей).
 
 ## 5. Проверка результата
 
 ```bash
-python manage.py shell -c "
+uv run python manage.py shell -c "
 from tournaments.models import Tournament, Team, MatchTour
 from team.models import Player, Coach
 from news.models import News, NewsHashTag, NewsImage
@@ -112,7 +115,7 @@ print('партнёров:', Partner.objects.count(), 'именинников:',
 Пересчитать турнирную таблицу по загруженным `MatchTour` (значения в `Team` уже согласованы с результатами матчей):
 
 ```bash
-python manage.py shell -c "
+uv run python manage.py shell -c "
 from tournaments.models import Tournament
 Tournament.objects.get(pk=1).calculate_statistics()
 "

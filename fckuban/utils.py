@@ -1,8 +1,9 @@
 import os
 import random
 import datetime
-import pytz
 from hashlib import md5
+from zoneinfo import ZoneInfo
+
 from django.conf import settings
 
 
@@ -15,5 +16,5 @@ def image_path(instance, filename):
 
 
 def check_now():
-    tz = pytz.timezone(settings.TIME_ZONE)
-    return datetime.datetime.now(tz)
+    """Текущее время в таймзоне проекта (stdlib zoneinfo, без pytz)."""
+    return datetime.datetime.now(ZoneInfo(settings.TIME_ZONE))
