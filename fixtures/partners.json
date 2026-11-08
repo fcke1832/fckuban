@@ -1,0 +1,58 @@
+[
+  {
+    "model": "partners.partner",
+    "pk": 1,
+    "fields": {
+      "title": "Банк «Кубань Кредит»",
+      "link": "https://www.kubankredit.ru/",
+      "contacts": "+7 (861) 213-36-00",
+      "description": "Генеральный спонсор футбольного клуба «Кубань»",
+      "image": "fixtures/partners/partner-1.png",
+      "type_partner": 2,
+      "is_active": true,
+      "number": 10
+    }
+  },
+  {
+    "model": "partners.partner",
+    "pk": 2,
+    "fields": {
+      "title": "Торговая сеть «Магнит»",
+      "link": "https://magnit.ru/",
+      "contacts": "8 800 200-90-02",
+      "description": "Официальный спонсор клуба",
+      "image": "fixtures/partners/partner-2.png",
+      "type_partner": 2,
+      "is_active": true,
+      "number": 9
+    }
+  },
+  {
+    "model": "partners.partner",
+    "pk": 3,
+    "fields": {
+      "title": "Агрокомплекс «Кубань»",
+      "link": "https://agro-kuban.ru/",
+      "contacts": "+7 (861) 210-00-00",
+      "description": "Официальный партнёр клуба",
+      "image": "fixtures/partners/partner-3.png",
+      "type_partner": 1,
+      "is_active": true,
+      "number": 8
+    }
+  },
+  {
+    "model": "partners.partner",
+    "pk": 4,
+    "fields": {
+      "title": "ПАО «Кубаньэнерго»",
+      "link": "https://www.kubanenergo.ru/",
+      "contacts": "+7 (861) 279-20-00",
+      "description": "Партнёр клуба, сезон 2026/2027",
+      "image": "fixtures/partners/partner-4.png",
+      "type_partner": 1,
+      "is_active": false,
+      "number": 0
+    }
+  }
+]

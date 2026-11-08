@@ -1,0 +1,122 @@
+[
+  {
+    "model": "calendar_matches.match",
+    "pk": 1,
+    "fields": {
+      "is_active": true,
+      "home_team": 1,
+      "guest_team": 2,
+      "tournament": 1,
+      "stadium": "Стадион «Кубань», Краснодар",
+      "start_time": "2026-07-19T19:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false,
+      "home_goals": 2,
+      "guest_goals": 1,
+      "tour": "1",
+      "time_invisible": false,
+      "ticket_program": null,
+      "link_tickets": "https://tickets.fckuban.ru/match/1"
+    }
+  },
+  {
+    "model": "calendar_matches.match",
+    "pk": 2,
+    "fields": {
+      "is_active": true,
+      "home_team": 5,
+      "guest_team": 1,
+      "tournament": 1,
+      "stadium": "Волгоград Арена, Волгоград",
+      "start_time": "2026-07-26T19:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false,
+      "home_goals": 0,
+      "guest_goals": 1,
+      "tour": "2",
+      "time_invisible": false,
+      "ticket_program": null,
+      "link_tickets": null
+    }
+  },
+  {
+    "model": "calendar_matches.match",
+    "pk": 3,
+    "fields": {
+      "is_active": false,
+      "home_team": 1,
+      "guest_team": 6,
+      "tournament": 1,
+      "stadium": "Стадион «Кубань», Краснодар",
+      "start_time": "2026-08-02T19:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false,
+      "home_goals": 3,
+      "guest_goals": 0,
+      "tour": "3",
+      "time_invisible": false,
+      "ticket_program": null,
+      "link_tickets": "https://tickets.fckuban.ru/match/3"
+    }
+  },
+  {
+    "model": "calendar_matches.match",
+    "pk": 4,
+    "fields": {
+      "is_active": true,
+      "home_team": 1,
+      "guest_team": 7,
+      "tournament": 1,
+      "stadium": "Стадион «Кубань», Краснодар",
+      "start_time": "2026-11-08T19:00:00+03:00",
+      "is_finished": false,
+      "is_canceled": false,
+      "home_goals": 0,
+      "guest_goals": 0,
+      "tour": "4",
+      "time_invisible": false,
+      "ticket_program": null,
+      "link_tickets": "https://tickets.fckuban.ru/match/4"
+    }
+  },
+  {
+    "model": "calendar_matches.match",
+    "pk": 5,
+    "fields": {
+      "is_active": true,
+      "home_team": 6,
+      "guest_team": 2,
+      "tournament": 1,
+      "stadium": "Стадион «Кубань Холдинг», Павловская",
+      "start_time": "2026-11-08T18:00:00+03:00",
+      "is_finished": false,
+      "is_canceled": false,
+      "home_goals": 0,
+      "guest_goals": 0,
+      "tour": "4",
+      "time_invisible": true,
+      "ticket_program": null,
+      "link_tickets": null
+    }
+  },
+  {
+    "model": "calendar_matches.match",
+    "pk": 6,
+    "fields": {
+      "is_active": true,
+      "home_team": 2,
+      "guest_team": 1,
+      "tournament": 1,
+      "stadium": "Стадион «Центральный», Новороссийск",
+      "start_time": "2026-11-15T18:00:00+03:00",
+      "is_finished": false,
+      "is_canceled": false,
+      "home_goals": 0,
+      "guest_goals": 0,
+      "tour": "5",
+      "time_invisible": false,
+      "ticket_program": null,
+      "link_tickets": null
+    }
+  }
+]

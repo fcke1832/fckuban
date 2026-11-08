@@ -7,7 +7,11 @@
                 <main>
                     <div class="about-player">
                         <div class="info">
-                            <img class="player-img" src="{{ player.image.url }}">  
+                            {% if player.image %}
+                                <img class="player-img" src="{{ player.image.url }}">
+                            {% else %}
+                                <img class="player-img" src="{% static 'images/player-2.jpg' %}">
+                            {% endif %}
                             <div class="info-text">
                                 <h1 class="last-name">{{ player.get_second_name }}</h1>
                                 <h2>

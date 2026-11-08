@@ -45,8 +45,12 @@ class Article(BaseNews):
 
     @property
     def get_thumbnail(self, size="1500x800", crop="center"):
+        if not self.image:
+            return ''
         return get_thumbnail(self.image, size, crop=crop, quality=99).url
 
     @property
     def get_thumbnail_list(self, size="393x225", crop="center"):
+        if not self.image:
+            return ''
         return get_thumbnail(self.image, size, crop=crop, quality=99).url

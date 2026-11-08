@@ -1,0 +1,32 @@
+[
+  {
+    "model": "medialinks.article",
+    "pk": 1,
+    "fields": {
+      "title": "«Кубань» начала сезон с победы над «Черноморцем»",
+      "date_pub": "2026-07-20T09:00:00+03:00",
+      "news_text": "<p>Краснодарская «Кубань» стартовала в новом сезоне Второй лиги «Б» с домашней победы над «Черноморцем» — 2:1.</p><p>Обозреватели отмечают уверенную игру жёлто-зелёных во втором тайме.</p>",
+      "published": true,
+      "slug": "kuban-nachala-sezon-s-pobedy",
+      "image": "fixtures/medialinks/article-1.png",
+      "is_image": true,
+      "sourse": "https://kubnews.ru/sport/2026/07/20/kuban-chernomorets",
+      "sourse_name": "Кубанские новости"
+    }
+  },
+  {
+    "model": "medialinks.article",
+    "pk": 2,
+    "fields": {
+      "title": "Болельщики «Кубани» готовят перформанс к матчу с «Динамо»",
+      "date_pub": "2026-11-03T15:30:00+03:00",
+      "news_text": "<p>Активные болельщики «Кубани» анонсировали большой перформанс на матче четвёртого тура против ставропольского «Динамо».</p><p>Организаторы просят прийти на стадион заранее.</p>",
+      "published": true,
+      "slug": "bolelshchiki-kubani-gotovyat-performans",
+      "image": "fixtures/medialinks/article-2.png",
+      "is_image": true,
+      "sourse": "https://www.sports.ru/football/2026/11/03/kuban-dinamo-performans",
+      "sourse_name": "Sports.ru"
+    }
+  }
+]

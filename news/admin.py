@@ -10,12 +10,12 @@ from .models import News, NewsImage, NewsHashTag
 
 
 class AdminImageWidget(AdminFileWidget):
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         output = []
         if value and getattr(value, "url", None):
             t = get_thumbnail(value,'100x100')
             output.append('<img src="{}">'.format(t.url))
-        output.append(super(AdminFileWidget, self).render(name, value, attrs))
+        output.append(super(AdminFileWidget, self).render(name, value, attrs, renderer))
         return mark_safe(u''.join(output))
 
 

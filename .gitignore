@@ -58,3 +58,9 @@ local.py
 /cache/
 /fckuban/static/images/publication-img.jpg
 /fckuban/static/images/test*
+
+venv/
+.venv/
+
+# collectstatic output (STATIC_ROOT = BASE_DIR/static)
+/static/

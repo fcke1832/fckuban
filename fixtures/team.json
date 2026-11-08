@@ -1,0 +1,292 @@
+[
+  {
+    "model": "team.baseteammember",
+    "pk": 1,
+    "fields": {
+      "full_name": "Алексей Гордеев",
+      "birthday": "1994-02-11",
+      "image": "fixtures/team/player-1.png",
+      "image_hover": "fixtures/team/player-1.png",
+      "image_detail": "fixtures/team/player-1.png",
+      "image_slider": "fixtures/team/player-1.png",
+      "slug": "gordeev-aleksey"
+    }
+  },
+  {
+    "model": "team.player",
+    "pk": 1,
+    "fields": {
+      "position": 0,
+      "weight": 84,
+      "growth": 190,
+      "number": 1
+    }
+  },
+  {
+    "model": "team.baseteammember",
+    "pk": 2,
+    "fields": {
+      "full_name": "Максим Родионов",
+      "birthday": "1998-06-05",
+      "image": "fixtures/team/player-2.png",
+      "image_hover": "fixtures/team/player-2.png",
+      "image_detail": "fixtures/team/player-2.png",
+      "image_slider": "fixtures/team/player-2.png",
+      "slug": "rodionov-maksim"
+    }
+  },
+  {
+    "model": "team.player",
+    "pk": 2,
+    "fields": {
+      "position": 0,
+      "weight": 82,
+      "growth": 188,
+      "number": 12
+    }
+  },
+  {
+    "model": "team.baseteammember",
+    "pk": 3,
+    "fields": {
+      "full_name": "Иван Селезнёв",
+      "birthday": "1996-08-23",
+      "image": "fixtures/team/player-3.png",
+      "image_hover": "fixtures/team/player-3.png",
+      "image_detail": "fixtures/team/player-3.png",
+      "image_slider": "fixtures/team/player-3.png",
+      "slug": "seleznev-ivan"
+    }
+  },
+  {
+    "model": "team.player",
+    "pk": 3,
+    "fields": {
+      "position": 1,
+      "weight": 80,
+      "growth": 186,
+      "number": 3
+    }
+  },
+  {
+    "model": "team.baseteammember",
+    "pk": 4,
+    "fields": {
+      "full_name": "Дмитрий Королёв",
+      "birthday": "1995-01-17",
+      "image": "fixtures/team/player-4.png",
+      "image_hover": "fixtures/team/player-4.png",
+      "image_detail": "fixtures/team/player-4.png",
+      "image_slider": "fixtures/team/player-4.png",
+      "slug": "korolev-dmitriy"
+    }
+  },
+  {
+    "model": "team.player",
+    "pk": 4,
+    "fields": {
+      "position": 1,
+      "weight": 83,
+      "growth": 189,
+      "number": 4
+    }
+  },
+  {
+    "model": "team.baseteammember",
+    "pk": 5,
+    "fields": {
+      "full_name": "Артём Быков",
+      "birthday": "1999-03-30",
+      "image": "fixtures/team/player-5.png",
+      "image_hover": "fixtures/team/player-5.png",
+      "image_detail": "fixtures/team/player-5.png",
+      "image_slider": "fixtures/team/player-5.png",
+      "slug": "bykov-artem"
+    }
+  },
+  {
+    "model": "team.player",
+    "pk": 5,
+    "fields": {
+      "position": 1,
+      "weight": 76,
+      "growth": 182,
+      "number": 22
+    }
+  },
+  {
+    "model": "team.baseteammember",
+    "pk": 6,
+    "fields": {
+      "full_name": "Никита Лаврентьев",
+      "birthday": "1997-11-14",
+      "image": "fixtures/team/player-6.png",
+      "image_hover": "fixtures/team/player-6.png",
+      "image_detail": "fixtures/team/player-6.png",
+      "image_slider": "fixtures/team/player-6.png",
+      "slug": "lavrentev-nikita"
+    }
+  },
+  {
+    "model": "team.player",
+    "pk": 6,
+    "fields": {
+      "position": 2,
+      "weight": 72,
+      "growth": 178,
+      "number": 7
+    }
+  },
+  {
+    "model": "team.baseteammember",
+    "pk": 7,
+    "fields": {
+      "full_name": "Павел Дорошенко",
+      "birthday": "2000-05-22",
+      "image": "fixtures/team/player-7.png",
+      "image_hover": "fixtures/team/player-7.png",
+      "image_detail": "fixtures/team/player-7.png",
+      "image_slider": "fixtures/team/player-7.png",
+      "slug": "doroshenko-pavel"
+    }
+  },
+  {
+    "model": "team.player",
+    "pk": 7,
+    "fields": {
+      "position": 2,
+      "weight": 70,
+      "growth": 176,
+      "number": 8
+    }
+  },
+  {
+    "model": "team.baseteammember",
+    "pk": 8,
+    "fields": {
+      "full_name": "Сергей Мельников",
+      "birthday": "1993-09-09",
+      "image": "fixtures/team/player-8.png",
+      "image_hover": "fixtures/team/player-8.png",
+      "image_detail": "fixtures/team/player-8.png",
+      "image_slider": "fixtures/team/player-8.png",
+      "slug": "melnikov-sergey"
+    }
+  },
+  {
+    "model": "team.player",
+    "pk": 8,
+    "fields": {
+      "position": 2,
+      "weight": 74,
+      "growth": 180,
+      "number": 10
+    }
+  },
+  {
+    "model": "team.baseteammember",
+    "pk": 9,
+    "fields": {
+      "full_name": "Роман Гончаров",
+      "birthday": "1998-12-01",
+      "image": "fixtures/team/player-9.png",
+      "image_hover": "fixtures/team/player-9.png",
+      "image_detail": "fixtures/team/player-9.png",
+      "image_slider": "fixtures/team/player-9.png",
+      "slug": "goncharov-roman"
+    }
+  },
+  {
+    "model": "team.player",
+    "pk": 9,
+    "fields": {
+      "position": 3,
+      "weight": 78,
+      "growth": 184,
+      "number": 9
+    }
+  },
+  {
+    "model": "team.baseteammember",
+    "pk": 10,
+    "fields": {
+      "full_name": "Денис Харламов",
+      "birthday": "2001-07-19",
+      "image": "fixtures/team/player-10.png",
+      "image_hover": "fixtures/team/player-10.png",
+      "image_detail": "fixtures/team/player-10.png",
+      "image_slider": "fixtures/team/player-10.png",
+      "slug": "kharlamov-denis"
+    }
+  },
+  {
+    "model": "team.player",
+    "pk": 10,
+    "fields": {
+      "position": 3,
+      "weight": 75,
+      "growth": 181,
+      "number": 11
+    }
+  },
+  {
+    "model": "team.baseteammember",
+    "pk": 11,
+    "fields": {
+      "full_name": "Олег Терехин",
+      "birthday": "1967-06-21",
+      "image": "fixtures/team/coach-1.png",
+      "image_hover": "fixtures/team/coach-1.png",
+      "image_detail": "fixtures/team/coach-1.png",
+      "image_slider": "fixtures/team/coach-1.png",
+      "slug": "terekhin-oleg"
+    }
+  },
+  {
+    "model": "team.coach",
+    "pk": 11,
+    "fields": {
+      "position": 0
+    }
+  },
+  {
+    "model": "team.baseteammember",
+    "pk": 12,
+    "fields": {
+      "full_name": "Андрей Смирнов",
+      "birthday": "1972-04-03",
+      "image": "fixtures/team/coach-2.png",
+      "image_hover": "fixtures/team/coach-2.png",
+      "image_detail": "fixtures/team/coach-2.png",
+      "image_slider": "fixtures/team/coach-2.png",
+      "slug": "smirnov-andrey"
+    }
+  },
+  {
+    "model": "team.coach",
+    "pk": 12,
+    "fields": {
+      "position": 1
+    }
+  },
+  {
+    "model": "team.baseteammember",
+    "pk": 13,
+    "fields": {
+      "full_name": "Виктор Панов",
+      "birthday": "1970-11-04",
+      "image": "fixtures/team/coach-3.png",
+      "image_hover": "fixtures/team/coach-3.png",
+      "image_detail": "fixtures/team/coach-3.png",
+      "image_slider": "fixtures/team/coach-3.png",
+      "slug": "panov-viktor"
+    }
+  },
+  {
+    "model": "team.coach",
+    "pk": 13,
+    "fields": {
+      "position": 2
+    }
+  }
+]

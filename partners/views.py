@@ -23,7 +23,8 @@ class PartnerListView(ListView):
         try:
             context['future_match'] = (sorted(futured_calendar_matches, key=lambda instance: instance.start_time))[0]
         except IndexError:
-            context['future_match'] = context['calendar_matches'][-1]
+            matches = context['calendar_matches']
+            context['future_match'] = matches[-1] if matches else None
         social_networks_links = SocialNetworkLink.objects.all()
         if social_networks_links:
             for link in social_networks_links:

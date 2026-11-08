@@ -1,0 +1,515 @@
+[
+  {
+    "model": "tournaments.tournament",
+    "pk": 1,
+    "fields": {
+      "title": "Вторая лига «Б», группа 1 (сезон 2026/2027)",
+      "on_main": true,
+      "in_calendar": true
+    }
+  },
+  {
+    "model": "tournaments.tournament",
+    "pk": 2,
+    "fields": {
+      "title": "Кубок России 2026/2027",
+      "on_main": false,
+      "in_calendar": false
+    }
+  },
+  {
+    "model": "tournaments.tournament",
+    "pk": 3,
+    "fields": {
+      "title": "Товарищеские матчи",
+      "on_main": false,
+      "in_calendar": false
+    }
+  },
+  {
+    "model": "tournaments.tour",
+    "pk": 1,
+    "fields": {
+      "number": 1,
+      "tournament": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "tournaments.tour",
+    "pk": 2,
+    "fields": {
+      "number": 2,
+      "tournament": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "tournaments.tour",
+    "pk": 3,
+    "fields": {
+      "number": 3,
+      "tournament": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "tournaments.tour",
+    "pk": 4,
+    "fields": {
+      "number": 4,
+      "tournament": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "tournaments.tour",
+    "pk": 5,
+    "fields": {
+      "number": 1,
+      "tournament": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "tournaments.tour",
+    "pk": 6,
+    "fields": {
+      "number": 2,
+      "tournament": 3,
+      "is_active": false
+    }
+  },
+  {
+    "model": "tournaments.team",
+    "pk": 1,
+    "fields": {
+      "name": "Кубань",
+      "location": "Краснодар",
+      "tournament": 1,
+      "points": 9,
+      "position_number": 1,
+      "matches": 3,
+      "win_matches": 3,
+      "draw_matches": 0,
+      "losing_matches": 0,
+      "home_matches": 2,
+      "guest_matches": 1,
+      "goals_scored": 6,
+      "goals_scored_guest": 1,
+      "goals_conceded": 1,
+      "goals_difference": 5,
+      "is_active": true,
+      "is_fcke": true,
+      "logo": "fixtures/tournaments/team-1.png"
+    }
+  },
+  {
+    "model": "tournaments.team",
+    "pk": 2,
+    "fields": {
+      "name": "Черноморец",
+      "location": "Новороссийск",
+      "tournament": 1,
+      "points": 6,
+      "position_number": 2,
+      "matches": 3,
+      "win_matches": 2,
+      "draw_matches": 0,
+      "losing_matches": 1,
+      "home_matches": 2,
+      "guest_matches": 1,
+      "goals_scored": 6,
+      "goals_scored_guest": 1,
+      "goals_conceded": 3,
+      "goals_difference": 3,
+      "is_active": true,
+      "is_fcke": false,
+      "logo": "fixtures/tournaments/team-2.png"
+    }
+  },
+  {
+    "model": "tournaments.team",
+    "pk": 3,
+    "fields": {
+      "name": "Биолог-Новокубанск",
+      "location": "Прогресс",
+      "tournament": 1,
+      "points": 5,
+      "position_number": 3,
+      "matches": 3,
+      "win_matches": 1,
+      "draw_matches": 2,
+      "losing_matches": 0,
+      "home_matches": 1,
+      "guest_matches": 2,
+      "goals_scored": 6,
+      "goals_scored_guest": 5,
+      "goals_conceded": 3,
+      "goals_difference": 3,
+      "is_active": true,
+      "is_fcke": false,
+      "logo": "fixtures/tournaments/team-3.png"
+    }
+  },
+  {
+    "model": "tournaments.team",
+    "pk": 4,
+    "fields": {
+      "name": "Машук-КМВ",
+      "location": "Пятигорск",
+      "tournament": 1,
+      "points": 4,
+      "position_number": 4,
+      "matches": 3,
+      "win_matches": 1,
+      "draw_matches": 1,
+      "losing_matches": 1,
+      "home_matches": 1,
+      "guest_matches": 2,
+      "goals_scored": 3,
+      "goals_scored_guest": 1,
+      "goals_conceded": 2,
+      "goals_difference": 1,
+      "is_active": true,
+      "is_fcke": false,
+      "logo": "fixtures/tournaments/team-4.png"
+    }
+  },
+  {
+    "model": "tournaments.team",
+    "pk": 5,
+    "fields": {
+      "name": "Ротор",
+      "location": "Волгоград",
+      "tournament": 1,
+      "points": 4,
+      "position_number": 5,
+      "matches": 3,
+      "win_matches": 1,
+      "draw_matches": 1,
+      "losing_matches": 1,
+      "home_matches": 2,
+      "guest_matches": 1,
+      "goals_scored": 2,
+      "goals_scored_guest": 1,
+      "goals_conceded": 2,
+      "goals_difference": 0,
+      "is_active": true,
+      "is_fcke": false,
+      "logo": "fixtures/tournaments/team-5.png"
+    }
+  },
+  {
+    "model": "tournaments.team",
+    "pk": 6,
+    "fields": {
+      "name": "Кубань Холдинг",
+      "location": "Павловская",
+      "tournament": 1,
+      "points": 3,
+      "position_number": 6,
+      "matches": 3,
+      "win_matches": 1,
+      "draw_matches": 0,
+      "losing_matches": 2,
+      "home_matches": 1,
+      "guest_matches": 2,
+      "goals_scored": 2,
+      "goals_scored_guest": 2,
+      "goals_conceded": 6,
+      "goals_difference": -4,
+      "is_active": true,
+      "is_fcke": false,
+      "logo": "fixtures/tournaments/team-6.png"
+    }
+  },
+  {
+    "model": "tournaments.team",
+    "pk": 7,
+    "fields": {
+      "name": "Динамо",
+      "location": "Ставрополь",
+      "tournament": 1,
+      "points": 2,
+      "position_number": 7,
+      "matches": 3,
+      "win_matches": 0,
+      "draw_matches": 2,
+      "losing_matches": 1,
+      "home_matches": 2,
+      "guest_matches": 1,
+      "goals_scored": 3,
+      "goals_scored_guest": 0,
+      "goals_conceded": 5,
+      "goals_difference": -2,
+      "is_active": true,
+      "is_fcke": false,
+      "logo": "fixtures/tournaments/team-7.png"
+    }
+  },
+  {
+    "model": "tournaments.team",
+    "pk": 8,
+    "fields": {
+      "name": "Алания-2",
+      "location": "Владикавказ",
+      "tournament": 1,
+      "points": 0,
+      "position_number": 8,
+      "matches": 3,
+      "win_matches": 0,
+      "draw_matches": 0,
+      "losing_matches": 3,
+      "home_matches": 1,
+      "guest_matches": 2,
+      "goals_scored": 1,
+      "goals_scored_guest": 1,
+      "goals_conceded": 7,
+      "goals_difference": -6,
+      "is_active": true,
+      "is_fcke": false,
+      "logo": "fixtures/tournaments/team-8.png"
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 1,
+    "fields": {
+      "tour": 1,
+      "home_team": 1,
+      "guest_team": 2,
+      "is_active": true,
+      "home_goals": 2,
+      "guest_goals": 1,
+      "start_time": "2026-07-19T19:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 2,
+    "fields": {
+      "tour": 1,
+      "home_team": 7,
+      "guest_team": 5,
+      "is_active": true,
+      "home_goals": 1,
+      "guest_goals": 1,
+      "start_time": "2026-07-19T18:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 3,
+    "fields": {
+      "tour": 1,
+      "home_team": 6,
+      "guest_team": 3,
+      "is_active": true,
+      "home_goals": 0,
+      "guest_goals": 3,
+      "start_time": "2026-07-20T18:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 4,
+    "fields": {
+      "tour": 1,
+      "home_team": 4,
+      "guest_team": 8,
+      "is_active": true,
+      "home_goals": 2,
+      "guest_goals": 0,
+      "start_time": "2026-07-20T19:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 5,
+    "fields": {
+      "tour": 2,
+      "home_team": 5,
+      "guest_team": 1,
+      "is_active": true,
+      "home_goals": 0,
+      "guest_goals": 1,
+      "start_time": "2026-07-26T19:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 6,
+    "fields": {
+      "tour": 2,
+      "home_team": 2,
+      "guest_team": 7,
+      "is_active": true,
+      "home_goals": 2,
+      "guest_goals": 0,
+      "start_time": "2026-07-26T18:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 7,
+    "fields": {
+      "tour": 2,
+      "home_team": 3,
+      "guest_team": 4,
+      "is_active": true,
+      "home_goals": 1,
+      "guest_goals": 1,
+      "start_time": "2026-07-27T18:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 8,
+    "fields": {
+      "tour": 2,
+      "home_team": 8,
+      "guest_team": 6,
+      "is_active": true,
+      "home_goals": 0,
+      "guest_goals": 2,
+      "start_time": "2026-07-27T19:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 9,
+    "fields": {
+      "tour": 3,
+      "home_team": 1,
+      "guest_team": 6,
+      "is_active": true,
+      "home_goals": 3,
+      "guest_goals": 0,
+      "start_time": "2026-08-02T19:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 10,
+    "fields": {
+      "tour": 3,
+      "home_team": 7,
+      "guest_team": 3,
+      "is_active": true,
+      "home_goals": 2,
+      "guest_goals": 2,
+      "start_time": "2026-08-02T18:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 11,
+    "fields": {
+      "tour": 3,
+      "home_team": 5,
+      "guest_team": 4,
+      "is_active": true,
+      "home_goals": 1,
+      "guest_goals": 0,
+      "start_time": "2026-08-03T19:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 12,
+    "fields": {
+      "tour": 3,
+      "home_team": 2,
+      "guest_team": 8,
+      "is_active": true,
+      "home_goals": 3,
+      "guest_goals": 1,
+      "start_time": "2026-08-03T18:00:00+03:00",
+      "is_finished": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 13,
+    "fields": {
+      "tour": 4,
+      "home_team": 1,
+      "guest_team": 7,
+      "is_active": false,
+      "home_goals": 0,
+      "guest_goals": 0,
+      "start_time": "2026-11-08T19:00:00+03:00",
+      "is_finished": false,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 14,
+    "fields": {
+      "tour": 4,
+      "home_team": 6,
+      "guest_team": 2,
+      "is_active": false,
+      "home_goals": 0,
+      "guest_goals": 0,
+      "start_time": "2026-11-08T18:00:00+03:00",
+      "is_finished": false,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 15,
+    "fields": {
+      "tour": 4,
+      "home_team": 3,
+      "guest_team": 5,
+      "is_active": false,
+      "home_goals": 0,
+      "guest_goals": 0,
+      "start_time": "2026-11-09T18:00:00+03:00",
+      "is_finished": false,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "tournaments.matchtour",
+    "pk": 16,
+    "fields": {
+      "tour": 4,
+      "home_team": 8,
+      "guest_team": 4,
+      "is_active": false,
+      "home_goals": 0,
+      "guest_goals": 0,
+      "start_time": "2026-11-09T19:00:00+03:00",
+      "is_finished": false,
+      "is_canceled": false
+    }
+  }
+]

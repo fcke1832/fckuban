@@ -1,0 +1,137 @@
+[
+  {
+    "model": "news.newshashtag",
+    "pk": 1,
+    "fields": {
+      "text": "#Кубань"
+    }
+  },
+  {
+    "model": "news.newshashtag",
+    "pk": 2,
+    "fields": {
+      "text": "#ВтораяЛига"
+    }
+  },
+  {
+    "model": "news.newshashtag",
+    "pk": 3,
+    "fields": {
+      "text": "#Матч"
+    }
+  },
+  {
+    "model": "news.newshashtag",
+    "pk": 4,
+    "fields": {
+      "text": "#Трансферы"
+    }
+  },
+  {
+    "model": "news.newshashtag",
+    "pk": 5,
+    "fields": {
+      "text": "#КубокРоссии"
+    }
+  },
+  {
+    "model": "news.news",
+    "pk": 1,
+    "fields": {
+      "title": "«Кубань» обыграла «Черноморец» в первом туре сезона",
+      "date_pub": "2026-07-19T21:10:00+03:00",
+      "news_text": "<p>В матче первого тура Второй лиги «Б» «Кубань» на своём поле обыграла новороссийский «Черноморец» со счётом 2:1.</p><p>Голами в составе жёлто-зелёных отметились Роман Гончаров и Сергей Мельников. Ответный мяч гости забили с пенальти во втором тайме.</p><p>Следующий матч команда проведёт в Волгограде против «Ротора».</p>",
+      "published": true,
+      "slug": "kuban-obygrala-chernomorets",
+      "is_periodic": false,
+      "image": "fixtures/news/news-1.png",
+      "crop_image": 0,
+      "crop_image_detail_page": 0,
+      "hashtags": [1, 3]
+    }
+  },
+  {
+    "model": "news.news",
+    "pk": 2,
+    "fields": {
+      "title": "Роман Гончаров перешёл в «Кубань»",
+      "date_pub": "2026-07-25T12:00:00+03:00",
+      "news_text": "<p>Нападающий Роман Гончаров подписал контракт с «Кубанью» сроком на два года.</p><p>В прошлом сезоне форвард провёл 28 матчей и забил 12 мячей. В новой команде Гончаров будет выступать под девятым номером.</p>",
+      "published": true,
+      "slug": "roman-goncharov-pereshel-v-kuban",
+      "is_periodic": false,
+      "image": "fixtures/news/news-2.png",
+      "crop_image": 3,
+      "crop_image_detail_page": 0,
+      "hashtags": [1, 4]
+    }
+  },
+  {
+    "model": "news.news",
+    "pk": 3,
+    "fields": {
+      "title": "«Кубань» сыграет с «Динамо» из Ставрополя",
+      "date_pub": "2026-11-02T10:00:00+03:00",
+      "news_text": "<p>В четвёртом туре Второй лиги «Б» «Кубань» примет на своём поле ставропольское «Динамо».</p><p>Матч состоится 8 ноября на стадионе «Кубань». Начало встречи — в 19:00.</p>",
+      "published": true,
+      "slug": "kuban-sygraet-s-dinamo-iz-stavropolya",
+      "is_periodic": false,
+      "image": "fixtures/news/news-3.png",
+      "crop_image": 0,
+      "crop_image_detail_page": 1,
+      "hashtags": [1, 3]
+    }
+  },
+  {
+    "model": "news.news",
+    "pk": 4,
+    "fields": {
+      "title": "Открыта онлайн-продажа билетов на матч с «Динамо»",
+      "date_pub": "2026-11-06T10:00:00+03:00",
+      "news_text": "<p>С 6 ноября открыта онлайн-продажа билетов на домашний матч «Кубани» против ставропольского «Динамо».</p><p>Билеты можно приобрести на официальном сайте клуба и в кассах стадиона.</p>",
+      "published": false,
+      "slug": "otkryta-prodazha-biletov-na-dinamo",
+      "is_periodic": true,
+      "image": "fixtures/news/news-4.png",
+      "crop_image": 0,
+      "crop_image_detail_page": 0,
+      "hashtags": [1, 3]
+    }
+  },
+  {
+    "model": "news.newsimage",
+    "pk": 1,
+    "fields": {
+      "slider_image": "fixtures/news/slider-1.png",
+      "image_news": 1,
+      "tip": "Первый гол «Кубани» в сезоне"
+    }
+  },
+  {
+    "model": "news.newsimage",
+    "pk": 2,
+    "fields": {
+      "slider_image": "fixtures/news/slider-2.png",
+      "image_news": 1,
+      "tip": "Болельщики на трибунах стадиона «Кубань»"
+    }
+  },
+  {
+    "model": "news.newsimage",
+    "pk": 3,
+    "fields": {
+      "slider_image": "fixtures/news/slider-3.png",
+      "image_news": 2,
+      "tip": "Роман Гончаров с игровой футболкой"
+    }
+  },
+  {
+    "model": "news.newsimage",
+    "pk": 4,
+    "fields": {
+      "slider_image": "fixtures/news/slider-1.png",
+      "image_news": 3,
+      "tip": "Стадион «Кубань» перед матчем"
+    }
+  }
+]
