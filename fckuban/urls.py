@@ -13,23 +13,33 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
+from django.contrib.sitemaps.views import sitemap
+from django.urls import include, path
+
+from dues.admin import dues_admin_site
 
 from . import views
+from .sitemaps import SITEMAPS
 
 urlpatterns = [
-    path('', views.MainView.as_view(), name='index'),
-    path('admin/', admin.site.urls),
-    path('news/', include('news.urls', namespace='news')),
-    path('media/', include('medialinks.urls', namespace='medialinks')),
-    path('tickets/', include('tickets.urls', namespace='tickets')),
-    path('team/', include('team.urls', namespace='team')),
-    path('partners/', include('partners.urls', namespace='partners')),
-    path('tournaments/', include('tournaments.urls', namespace='tournaments')),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path("", views.MainView.as_view(), name="index"),
+    path("robots.txt", views.robots_txt, name="robots_txt"),
+    path("sitemap.xml", sitemap, {"sitemaps": SITEMAPS}, name="sitemap"),
+    path("admin/", admin.site.urls),
+    path("kroo/manage/", dues_admin_site.urls),
+    path("kroo/", include("kroo.urls", namespace="kroo")),
+    path("news/", include("news.urls", namespace="news")),
+    path("media/", include("medialinks.urls", namespace="medialinks")),
+    path("tickets/", include("tickets.urls", namespace="tickets")),
+    path("team/", include("team.urls", namespace="team")),
+    path("partners/", include("partners.urls", namespace="partners")),
+    path("tournaments/", include("tournaments.urls", namespace="tournaments")),
+    path("video/", include("links.urls", namespace="video")),
+    path("ckeditor/", include("ckeditor_uploader.urls")),
 ]
 
 if settings.DEBUG is True:

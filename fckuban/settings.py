@@ -11,96 +11,126 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+
+import environ
 import pymysql
+
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
+# Читаем .env из корня проекта; переменные окружения имеют приоритет.
+env = environ.Env(
+    DJANGO_DEBUG=(bool, False),
+    DJANGO_ALLOWED_HOSTS=(list, ["127.0.0.1", "localhost"]),
+)
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$)+45d!_io%bnwos(8@*j&0jmt#q&!qq4r&$_3f)+5n4uq5a5!'
+SECRET_KEY = env("DJANGO_SECRET_KEY")
+DEBUG = env("DJANGO_DEBUG")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# Версия шаблонов сайта: v1 — старая вёрстка (fallback), v2 — новый дизайн (по умолчанию).
+SITE_VERSION = env("SITE_VERSION", default="v2")
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0', '*']
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
 
 
 # Application definition
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
     # libs
-    'ckeditor',
-    'ckeditor_uploader',
-    'embed_video',
-    'sorl.thumbnail',
-
+    "ckeditor",
+    "ckeditor_uploader",
+    "embed_video",
+    "sorl.thumbnail",
     # apps
-    'banner',
-    'birthdays',
-    'calendar_matches',
-    'fckuban',
-    'links',
-    'news',
-    'medialinks',
-    'partners',
-    'seo',
-    'tickets',
-    'team',
-    'translation',
-    'tournaments',
+    "banner",
+    "birthdays",
+    "calendar_matches",
+    "fckuban",
+    "links",
+    "news",
+    "medialinks",
+    "partners",
+    "seo",
+    "tickets",
+    "team",
+    "translation",
+    "tournaments",
+    # сайт КРОО «Кубань» и отдельная БД взносов
+    "kroo",
+    "dues",
 ]
 
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'fckuban.urls'
+ROOT_URLCONF = "fckuban.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'fckuban.wsgi.application'
+WSGI_APPLICATION = "fckuban.wsgi.application"
 
 
 # Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+#
+# Локально — SQLite. В продакшене — PostgreSQL или MySQL через DATABASE_URL,
+# например: postgres://user:password@127.0.0.1:5432/fckuban
+#            mysql://user:password@127.0.0.1:3306/fckuban
+DATABASE_URL = env("DATABASE_URL", default="")
+if DATABASE_URL:
+    DATABASES = {"default": env.db_url("DATABASE_URL")}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
     }
-}
+
+# Сайт КРОО: отдельная БД взносов. В продакшене обязателен PostgreSQL через
+# KROO_DUES_DATABASE_URL; локальный fallback — отдельный SQLite-файл.
+KROO_DUES_DATABASE_URL = env("KROO_DUES_DATABASE_URL", default="")
+if KROO_DUES_DATABASE_URL:
+    DATABASES["dues"] = env.db_url_config(KROO_DUES_DATABASE_URL)
+else:
+    DATABASES["dues"] = {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db_kroo_dues.sqlite3"),
+        "OPTIONS": {"timeout": 20},
+    }
+
+# Взносы — только в БД dues, остальные приложения — только в default.
+DATABASE_ROUTERS = ["dues.router.DuesRouter"]
 
 
 # Password validation
@@ -108,26 +138,38 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+
+# Авторизация сайта КРОО: вход по логину или e-mail.
+AUTHENTICATION_BACKENDS = ["kroo.backends.EmailOrUsernameBackend"]
+LOGIN_URL = "kroo:login"
+LOGIN_REDIRECT_URL = "kroo:profile"
+LOGOUT_REDIRECT_URL = "kroo:index"
+
+# В разработке письма сброса пароля печатаются в консоль. В продакшене
+# задайте SMTP-бэкенд и DEFAULT_FROM_EMAIL через окружение.
+EMAIL_BACKEND = env("EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend")
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="КРОО «Кубань» <noreply@kroo-kuban.ru>")
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = "ru"
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = "Europe/Moscow"
 
 USE_I18N = True
 
@@ -135,21 +177,21 @@ USE_TZ = True
 
 # Django 5 по умолчанию создаёт BigAutoField, что потребовало бы миграций на все
 # модели проекта (и смены типа существующих int-колонок). Оставляем AutoField.
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+STATIC_URL = "/static/"
+MEDIA_URL = "/media/"
 
 # Фикстуры проекта лежат в корне репозитория: BASE_DIR/fixtures.
 # Благодаря этому работает и короткая запись: python manage.py loaddata tournaments
-FIXTURE_DIRS = [os.path.join(BASE_DIR, 'fixtures')]
+FIXTURE_DIRS = [os.path.join(BASE_DIR, "fixtures")]
 
 
 # -------------------------------------------------------------------------------------------
@@ -160,9 +202,9 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 
 
 CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-        'extraPlugins': 'youtube',
+    "default": {
+        "toolbar": "full",
+        "extraPlugins": "youtube",
     },
 }
 
@@ -172,10 +214,13 @@ CKEDITOR_CONFIGS = {
 
 THUMBNAIL_COLORSPACE = None
 THUMBNAIL_PRESERVE_FORMAT = False
-THUMBNAIL_FORMAT = 'PNG'
+THUMBNAIL_QUALITY = 99
 
 
 try:
-    from .local_settings import *
+    from .local_settings import *  # noqa: F403
 except ImportError:
     pass
+
+# v1 остаётся на PNG как рабочий fallback; v2 генерирует WebP.
+THUMBNAIL_FORMAT = "WEBP" if SITE_VERSION == "v2" else "PNG"

@@ -1,9 +1,8 @@
-from itertools import chain
-
 from django import template
 from django.db.models import Prefetch
-from tournaments.models import Tournament, Team
 
+from calendar_matches.models import Match
+from tournaments.models import Tournament
 
 register = template.Library()
 
@@ -13,7 +12,7 @@ def get_calendar():
     Получаем турниры для календаря и связанные с ними матчи
     """
     return Tournament.objects.filter(in_calendar=True).prefetch_related(
-        Prefetch('match', queryset=Match.objects.filter(is_active=True))
+        Prefetch("match", queryset=Match.objects.filter(is_active=True))
     )
 
 
@@ -28,7 +27,9 @@ def get_tournament():
 def current_tournament(context):
     current_tournament = get_tournament()
     if current_tournament:
-        is_position_teams = current_tournament.team.filter(is_active=True).exclude(position_number=None).order_by('position_number')
+        is_position_teams = (
+            current_tournament.team.filter(is_active=True).exclude(position_number=None).order_by("position_number")
+        )
         zero_position_teams = current_tournament.team.filter(is_active=True, position_number=None)
         # list(chain(is_position_teams, zero_position_teams)) = context['teams']
     return current_tournament
@@ -39,8 +40,6 @@ def calendar_tournaments(context):
     calendar_tournaments = get_calendar()
     # calendar_tournaments = context['calendar_tournaments']
     return calendar_tournaments
-
-
 
 
 # from django.views.generic import TemplateView
@@ -54,9 +53,6 @@ def calendar_tournaments(context):
 # from birthdays.views import today_birtdays, check_today
 
 
-
-
-
 # def get_calendar_matches(calendar_tournaments):
 #     now = check_now().date()
 #     calendar_matches = []
@@ -68,8 +64,6 @@ def calendar_tournaments(context):
 #                 if match.start_time.date() >= now:
 #                     futured_calendar_matches.append(match)
 #     return calendar_matches, futured_calendar_matches
-
-
 
 
 #     def check_news_time(self, news):
@@ -107,7 +101,6 @@ def calendar_tournaments(context):
 #             youtube_link = None
 #         if youtube_link:
 #             context['youtube_link'] = youtube_link
-
 
 
 #         try:
