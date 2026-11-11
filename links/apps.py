@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class LinksConfig(AppConfig):
-    name = 'links'
-    verbose_name = 'Ссылки на наши интернет-ресурсы'
+    name = "links"
+    verbose_name = "Ссылки на наши интернет-ресурсы"
