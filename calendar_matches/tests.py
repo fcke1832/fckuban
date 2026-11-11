@@ -1,4 +1,5 @@
 """Тесты приложения calendar_matches."""
+
 import datetime
 
 import pytest
@@ -15,19 +16,19 @@ from tournaments.models import Team, Tournament
 
 @pytest.fixture
 def tournament(db):
-    return Tournament.objects.create(title='Первенство России')
+    return Tournament.objects.create(title="Первенство России")
 
 
 @pytest.fixture
 def teams(db, tournament):
-    home = Team.objects.create(name='Кубань', location='Краснодар', tournament=tournament)
-    guest = Team.objects.create(name='Ротор', location='Волгоград', tournament=tournament)
+    home = Team.objects.create(name="Кубань", location="Краснодар", tournament=tournament)
+    guest = Team.objects.create(name="Ротор", location="Волгоград", tournament=tournament)
     return home, guest
 
 
 class TestCalendarMatchesConfig:
     def test_app_config(self):
-        assert CalendarMatchesConfig.name == 'calendar_matches'
+        assert CalendarMatchesConfig.name == "calendar_matches"
 
 
 @pytest.mark.django_db
@@ -40,7 +41,7 @@ class TestMatchModel:
             tournament=tournament,
             start_time=timezone.now(),
         )
-        assert str(match) == 'Кубань(Краснодар) - Ротор(Волгоград)'
+        assert str(match) == "Кубань(Краснодар) - Ротор(Волгоград)"
 
     def test_defaults(self, teams, tournament):
         home, guest = teams
@@ -66,7 +67,7 @@ class TestMatchModel:
 
     def test_ticket_program_set_null_on_delete(self, teams, tournament):
         home, guest = teams
-        program = TicketProgram.objects.create(name='Сезон')
+        program = TicketProgram.objects.create(name="Сезон")
         match = Match.objects.create(
             home_team=home,
             guest_team=guest,
@@ -106,15 +107,15 @@ class TestMatchAdmin:
     def test_registered_and_config(self):
         model_admin = MatchAdmin(Match, admin.site)
         assert model_admin.list_display == (
-            'home_team',
-            'guest_team',
-            'start_time',
-            'is_finished',
-            'is_canceled',
-            'time_invisible',
-            'is_active',
+            "home_team",
+            "guest_team",
+            "start_time",
+            "is_finished",
+            "is_canceled",
+            "time_invisible",
+            "is_active",
         )
-        assert model_admin.list_editable == ('start_time', 'time_invisible', 'is_active')
-        assert model_admin.list_display_links == ('home_team', 'guest_team')
-        assert 'is_finished' in model_admin.list_filter
+        assert model_admin.list_editable == ("start_time", "time_invisible", "is_active")
+        assert model_admin.list_display_links == ("home_team", "guest_team")
+        assert "is_finished" in model_admin.list_filter
         assert Match in admin.site._registry
