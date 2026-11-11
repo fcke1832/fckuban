@@ -1,6 +1,8 @@
 import calendar
 import locale
+
 from fckuban.utils import check_now
+
 from .models import BirthdayItem
 
 
@@ -17,8 +19,8 @@ def check_today():
     """
     Название текущего месяца и даты на русском
     """
-    locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
+    locale.setlocale(locale.LC_ALL, "ru_RU.UTF-8")
     now = check_now()
     day = now.day
     month = calendar.month_name[now.month.numerator]
-    return "{} {}".format(day, month)
+    return f"{day} {month}"
