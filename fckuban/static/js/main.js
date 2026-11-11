@@ -78,18 +78,6 @@ $(document).ready(function(){
   $(window).on("orientationchange", function() {
     $(".scoretable-items").css("display", "");
   });
-  // Insagram виджет
-  var galleryFeed = new Instafeed({
-    get: "user",
-    userId: 4622774,
-    accessToken: "4622774.7cbaeb5.ec8c5041b92b44ada03e4a4a9153bc54",
-    resolution: "thumbnail",
-    useHttp: "true",
-    limit: 9,
-    template: '<div class="img-wrap"><a href="{{link}}"><div class="img-featured-container"><div class="img-backdrop"></div><div class="description-container"><i class="icon ion-heart"></i><span class="likes">{{likes}}</span><i class="icon icon-chatbubble"></i><span class="comments">{{comments}}</span></div><img src="{{image}}" class="img-responsive"></div></a></div>',
-    target: "instafeed-gallery-feed",
-  });
-  galleryFeed.run();
   // слайдеры
   $(".main-slider").slick({
    dots: true,
